@@ -1,0 +1,97 @@
+{
+    "monsters": {
+        "id": {
+            "name":"",
+            "size":"",
+            "type":"",
+            "alignment":"",
+            "ac":"",
+            "hp":"",
+            "speed":"",
+            "stats": {
+                "str": 0,
+                "dex": 0,
+                "con": 0,
+                "int": 0,
+                "wis": 0,
+                "cha": 0
+            },
+            "skills":[
+                {
+                    "name": "",
+                    "modifier":""
+                }
+            ],
+            "resistances": {
+                "damage": [],
+                "condition": []
+            },
+            "immunities": {
+                "damage": [],
+                "condition": []
+            },
+            "senses": [],
+            "languages": [],
+            "challenge":{
+                "level": 0,
+                "xp": 0
+            },
+            "actions":[
+                {
+                    "name": "",
+                    "description": ""
+                }
+            ],
+            "abilities":[
+                {
+                    "name": "",
+                    "description": ""
+                }
+            ]
+        }
+    },
+    "scenes": {
+        "id": {
+            "name":"",
+            "description":"",
+            "map":"",
+            "key_points": [],
+            "nav": [
+                {
+                    "name": "",
+                    "destination": ""
+                }
+            ]
+        }
+    },
+    "encounters": {
+        "id": {
+            "name":"",
+            "description":"",
+            "map":"",
+            "key_points": [],
+            "monsters": [
+                "id"
+            ],
+            "puzzles": [
+                "id"
+            ],
+            "nav": [
+                {
+                    "name": "",
+                    "destination": ""
+                }
+            ]
+        }
+    },
+    "puzzles":{
+        "id": {
+            "task": "",
+            "hints": [
+                "",
+                ""
+            ],
+            "solution": ""
+        }
+    }
+}

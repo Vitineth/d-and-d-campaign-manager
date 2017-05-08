@@ -1,0 +1,20 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116.84 116.84">
+    <defs>
+        <style>
+            .cls-1{
+                fill:#1d1d1b;
+                stroke:#fff;
+                stroke-miterlimit:10;
+                stroke-width:10px;
+            }
+            .cls-2{
+                font-size:60px;
+                fill:#fff;
+                font-family:Lato-Black, Lato;
+            }
+        </style>
+    </defs>
+    <title>dice</title>
+    <polygon class="cls-1" points="83.81 15.4 108.81 58.7 83.81 102 33.81 102 8.81 58.7 33.81 15.4 83.81 15.4"/>
+    <text class="cls-2" transform="translate(41.41 79.27)">6</text>
+</svg>

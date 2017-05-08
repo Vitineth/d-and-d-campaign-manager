@@ -1,0 +1,808 @@
+/* # MATERIAL DESIGN FEATURES #
+ * Styles for components based off the Google Material Design Style Guide. 
+ *
+ * Table of Contents:
+ *  0. General Tools
+ *  1. Checkbox
+ *    1a. Core
+ *    1b. Light
+ *      1bi.  On
+ *      1bii. Off
+ *    1c. Dark
+ *      1ci.  On
+ *      1cii. Off
+ *    1d. Real Checkbox
+ *  2. Buttons
+ *    2a. Raised
+ *      2ai. Dense
+ *    2b. Flat
+ *    2c. Floating Action
+ * 3. Dropdowns
+ *    3a. Closed Dropdowns
+ *    3b. Open Dropdowns
+ * 4. Cards
+ * 5. Chips
+ * 6. Data Tables
+ * 7. Scroll Bars
+ */
+
+/* 0.    General Tools */
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Roboto';
+}
+
+.clearfix::after { 
+   content: " ";
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+
+/* 1.    Checkbox */
+
+/* 1a.   Checkbox > Core */
+.checkbox-slider-back{
+    width: 24px;
+    height: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    margin: 12px;
+
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 2px;
+}
+
+.checkbox-inner{
+    width: 16px;
+    height: 16px;
+    border-radius: 10px;
+    position: relative;
+    top: -3px;
+    left: -3px;
+}
+
+.checkbox-focus-shadow{
+    width: 29px;
+    height: 29px;
+    position: relative;
+    top: -7px;
+    left: -7px;
+    border-radius: 30px;
+    display: none;
+}
+
+/* 1bi.  Checkbox > Light > On */
+
+.checkbox-slider-back[data-style=lighton]{
+    background: #6dbeb7;
+}
+
+.checkbox-inner[data-style=lighton]{
+    background: #009688;
+}
+
+.checkbox-focus-shadow[data-style=lighton]{
+    background: rgba(149, 232, 227, 0.45);
+}
+
+/* 1bii. Checkbox > Light > Off */
+
+.checkbox-slider-back[data-style=lightoff]{
+    background: #939393;
+}
+
+.checkbox-inner[data-style=lightoff]{
+    background: #fafafa;
+}
+
+.checkbox-focus-shadow[data-style=lightoff]{
+    background: rgba(221, 221, 221, 0.45);
+}
+
+/* 1ci.  Checkbox > Dark > On */
+
+.checkbox-slider-back[data-style=darkon]{
+    background: #5a7f7c;
+}
+
+.checkbox-inner[data-style=darkon]{
+    background: #80cbc4;
+}
+
+/* 1cii. Checkbox > Dark > Off */
+
+.checkbox-slider-back[data-style=darkoff]{
+    background: #717171;
+}
+
+.checkbox-inner[data-style=darkoff]{
+    background: #bdbdbd;
+}
+
+/* 1d.   Checkbox > Real Checkbox */
+
+input[type=checkbox][data-converted]{
+    display: none;
+}
+
+/* 2.    Buttons */
+
+/* 2a.   Raised Button */
+button.raised{
+    height: 36px;
+    border: none;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 2px;
+    font-size: 13pt;
+    font-family: 'Roboto';
+    background: #2196f3;
+    color: white;
+    min-width: 88px;
+    margin-left: 8px;
+    margin-right: 8px;
+    
+    -webkit-box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+    -moz-box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+    box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+}
+
+/* 2ai.  Dense */
+
+button.raised.dense{
+    height: 32px;
+    font-size: 12px;
+}
+
+/* 2b.   Flat*/
+
+button.flat{
+    border: none;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
+    min-width: 88px;
+    height: 36px;
+    background: white;
+    color: #2196f3;
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 2c.   Floating Action Button */
+button.floating-action{
+    width: 56px;
+    height: 56px;
+    border-radius: 56px;
+    border: none;
+    background: #ff4081;
+    color: white;
+    font-size: 29px;
+    margin: 16px;
+    padding: 0;
+    
+    -webkit-box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+    -moz-box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+    box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+}
+
+/* 3.    Dropdowns */
+
+/* 3a.   Closed Dropdowns */
+
+.dropdown-close{
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin-left: 24px;
+    margin-right: 16px;
+    min-width: 122px;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid #c7c7c7;
+}
+
+.dropdown-chevron{
+    float: right;
+    margin-left: 24px;
+    margin-right: 16px;
+}
+
+/* 3b.   Open Dropdowns */
+
+.dropdown-open{
+    background: white;
+    -webkit-box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+    -moz-box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+    box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+    margin-left: 24px;
+    margin-right: 16px;
+}
+
+.dropdown-entry{ 
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 24px;
+    padding-right: 16px;
+    background: white;
+    min-width: 122px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.dropdown-entry:hover{
+    background: #eeeeee;
+}
+
+.dropdown-entry.active{
+    color: #ec008c;
+}
+
+/* 4.    Cards */
+
+.card{
+    margin: 8px;
+    padding: 16px;
+    background: white;
+    -webkit-box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+    -moz-box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+    box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+}
+
+/* 4a.   Card Structure */
+
+.one-width-card{
+    width: 8.3333%;
+    float: left;
+}
+
+.two-width-card{
+    width: 16.6666%;
+    float: left;
+}
+
+.three-width-card{
+    width: 25%;
+    float: left;
+}
+
+.four-width-card{
+    width: 33.333333%;
+    float: left;
+}
+
+.five-width-card{
+    width: 41.6666%;
+    float: left;
+}
+
+.six-width-card{
+    width: 50%;
+    float: left;
+}
+
+.seven-width-card{
+    width: 58.3333%;
+    float: left;
+}
+
+.eight-width-card{
+    width: 66.6666%;
+    float: left;
+}
+
+.nine-width-card{
+    width: 75%;
+    float: left;
+}
+
+.ten-width-card{
+    width: 83.3333%;
+    float: left;
+}
+
+.eleven-width-card{
+    width: 91.6666%;
+    float: left;
+}
+
+.twelve-width-card{
+    width: 100%;
+    float: left;
+}
+
+/* 4b.   Block Image Action Cards */
+
+.card.image-block{
+    padding: 0;
+}
+
+.card-header-image{
+    width: 100%;
+    margin-bottom: -78px;
+}
+
+.card-header{
+    position: relative;
+    top: -70px;
+    left: 20px;
+    color: white;
+}
+
+.card-small-action-4-width{
+    width: 33.33333%;
+    float: left;
+    text-align: center;
+    font-size: 22px;
+    background: white;
+    color: gray;
+    padding: 10px;
+}
+
+.card-small-action-4-width:hover{
+    background: #ececec;
+    cursor: pointer;
+}
+
+.card-header-image > img{
+    width: 100%;
+}
+
+/* 4c.   Small Image Card */
+
+.card-subheader{
+    font-size: 17px;
+    color: gray;
+}
+
+.card-title{
+    font-size: 28px;
+}
+
+.card-image{
+    width: 70px;
+    float: right;
+    position: relative;
+    top: -69px;
+}
+
+.card-image > img{
+    width: 100%;
+}
+
+.card-body{
+    margin-top: 15px;
+}
+
+.card-headers{
+    margin-top: 8px;
+}
+
+/* 5.    Chips */
+
+.chip{
+    background: #e0e0e0;
+    display: inline-block;
+    border-radius: 32px;
+}
+
+/* 5a.   Image Chips */
+
+.chip-image{
+    width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    float: left;
+    margin-right: -4px;
+}
+
+.chip-image > img {
+    width: 100%;
+    border-radius: 32px;
+}
+
+.chip-text{
+    float: left;
+    font-size: 13px;
+    color: rgb(33,33,33);
+    line-height: 32px;
+    margin-right: 12px;
+    margin-left: 12px;
+}
+
+/* 5b.   Delete Chips */
+
+.chip-icon{
+    height: 32px;
+    font-size: 18px;
+    line-height: 32px;
+    margin-left: -6px;
+    margin-right: 5px;
+}
+
+/* 6.    Data Tables */
+
+.clear-table td, .clear-table th{
+    border: none;
+}
+
+.data-table{
+    width: 100%;
+}
+
+.data-table th{
+    font-size: 13px;
+    color: rgb(117,117,117);
+}
+
+.data-table td{
+    font-size: 12px;
+    color: rgb(33, 33, 33);
+}
+
+.data-table tr:hover{
+    background: #EEEEEE;
+}
+
+.data-table tr{
+    border-bottom: 1px solid #e0e0e0;
+    height: 40px;
+}
+
+.data-table tr:last-child{
+    border-bottom: none;
+}
+
+/* 7.    Scrollbars */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #484848;
+}
+
+::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* 8.    Dialogs */
+
+/* 8a.   Dialog Background */
+.dialog-background{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.2);
+}
+
+/* 8b.   Dialog Foreground */
+
+.dialog-foreground{
+    width: 30%;
+    background: white;
+    -webkit-box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+    -moz-box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+    box-shadow: 3px 3px 10px -2px rgba(128,128,128,1);
+}
+
+.dialog-content-area{
+    padding: 24px;
+}
+
+.dialog-buttons{
+    height: 52px;
+    padding: 8px;
+    padding-left: 24px;
+}
+
+.dialog-title{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 28px;
+    padding-bottom: 20px;
+}
+
+.dialog-content{
+    font-size: 17px;
+    color: #777777;
+}
+
+/**/
+
+.expansion-table td{
+    padding-left: 16px;
+    color: rgb(117, 117, 117);
+}
+
+.expansion-table td:first-child{
+    padding-left: 0;
+    color: rgb(33,33,33);
+}
+
+.expansion-table{
+    width: 100%;
+    margin-right: 64px;
+    margin-left: 24px;
+    margin-bottom: 0;
+}
+
+.expansion-chevron{
+    float: right;
+    position: relative;
+    left: -40px;
+}
+
+.expansion-header{
+    border-bottom: 1px solid rgb(224, 224, 224);
+    cursor: pointer;
+}
+
+.expansion-panel .primary{
+    color: rgb(33, 33, 33);
+    font-size: 15px;
+    width: 30%;
+}
+
+.expansion-panel .primary-sub{
+    color: rgb(117, 117, 117);
+    font-size: 12px;
+}
+
+.expansion-panel .secondary{
+    color: rgb(117, 117, 117);
+    font-size: 12px;
+}
+
+.expansion{
+    background: white;
+}
+
+.expansion-container{
+    -webkit-box-shadow: 1px 1px 10px -2px rgba(128,128,128,1);
+    -moz-box-shadow: 1px 1px 10px -2px rgba(128,128,128,1);
+    box-shadow: 1px 1px 10px -2px rgba(128,128,128,1);
+    margin-bottom: 20px;
+}
+
+.expansion-body{
+    padding: 20px;
+    display: none;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+.expansion-actions{
+    float: right;
+    margin-top: 10px;
+    margin-bottom: -20px;
+}
+
+.expansion-divider{
+    margin-top: 10px;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: 0;
+    border-color: rgb(224,224,224);
+}
+
+.one-line i{
+    width: 72px;
+    border-radius: 56px;
+    font-size: 20px;
+}
+
+.one-line{
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.one-line li{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.one-line span{
+    font-weight: 500;
+}
+
+.two-line img{
+    max-width: 56px;
+    border-radius: 56px;
+    height: 56px;
+    margin-left: 16px;
+    color:  red;
+    float: left;
+}
+
+.two-line .wrapper{
+    float: left;
+    margin-left: 36px;
+    height: 56px;
+}
+
+.two-line .primary{
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.two-line .secondary{
+    color: rgb(117,117,117);
+    font-size: 14px;
+    font-weight: 400;
+    max-height: 22px;
+    overflow-y: hidden;
+}
+
+.two-line li{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.three-line img{
+    max-width: 56px;
+    border-radius: 56px;
+    height: 56px;
+    margin-left: 16px;
+    color:  red;
+    float: left;
+}
+
+.three-line .wrapper{
+    float: left;
+    margin-left: 36px;
+    max-width: 70%;
+}
+
+@media(max-width: 962px) and (min-width: 737px){
+    .three-line .wrapper{
+        max-width: 80%;
+    }
+}
+
+@media(max-width: 737px){
+    .three-line .wrapper{
+        max-width: 75%;
+    }
+}
+
+
+.three-line .primary{
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.three-line .secondary{
+    color: rgb(117,117,117);
+    font-size: 14px;
+    font-weight: 400;
+    max-height: 45px;
+    overflow-y: hidden;
+}
+
+.three-line li{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.picker{
+    max-width: 290px;
+    -webkit-box-shadow: 1px 1px 10px -2px rgba(128,128,128,1);
+    -moz-box-shadow: 1px 1px 10px -2px rgba(128,128,128,1);
+    box-shadow: 1px 1px 10px -2px rgba(128,128,128,1);
+}
+
+.p-header{
+    background: #009688;
+    padding: 15px;
+    color: white;
+}
+
+.p-calendar td{
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+}
+
+.p-calendar {
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.p-top-bar{
+}
+
+.p-top-bar table{
+    margin-bottom: 0;
+}
+
+.picker .selected{
+    position: absolute;
+    background: #009688;
+    width: 28px;
+    height: 28px;
+    z-index: 0;
+    margin-top: -24px;
+    margin-left: -8px;
+    border-radius: 32px;
+    opacity: 0.5;
+}
+
+.p-tbtd-1{
+    width: 1%; 
+    padding-left: 10px !important; 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0;
+}
+
+.p-tbtd-2{
+    text-align: center;
+}
+
+.p-tbtd-3{
+    width: 1%; 
+    padding-right: 10px !important; 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0;
+}
+
+.p-top-bar td{
+    border-bottom: none;
+}
+
+.p-main{
+    color: white;
+    font-weight: 500;
+    font-size: 28px;
+}

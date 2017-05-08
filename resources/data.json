@@ -1,0 +1,94 @@
+{
+    "title": "The Plot of Aladrin",
+    "begin": "e__dr1",
+    "monsters": {
+        "hell_hound": {
+            "name":"hell hound",
+            "size":"medium",
+            "type":"fiend",
+            "alignment":"lawful evil",
+            "ac":"15 (natural armor)",
+            "hp":"45 (7d8+14)",
+            "speed":"50ft",
+            "stats": {
+                "str": 17,
+                "dex": 12,
+                "con": 14,
+                "int": 6,
+                "wis": 13,
+                "cha": 6
+            },
+            "skills":[
+                {
+                    "name": "perception",
+                    "modifier":"+5"
+                }
+            ],
+            "resistances": {
+                "damage": [],
+                "condition": []
+            },
+            "immunities": {
+                "damage": ["fire"],
+                "condition": []
+            },
+            "senses": [
+                "darkvision (60ft)",
+                "passive perception (15)"
+            ],
+            "languages": [
+                "infernal (understood, not spoken)"
+            ],
+            "challenge":{
+                "level": 3,
+                "xp": 700
+            },
+            "actions":[
+                {
+                    "name": "bite",
+                    "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) piercing damage plus 7 (2d6) fire damage. "
+                },
+                {
+                    "name": "Fire Breath (Recharge 5-6) ",
+                    "description": "THe hound exhales fire in a 15-foot cone. Each creature in that area must make a DC 12 Dexterity waving throw, taking 21 (6d6) fire damage on a failed save or half as much damage on a successful one."
+                }
+            ],
+            "abilities":[
+                {
+                    "name": "Keen Hearing and Smell",
+                    "description": "The hound has advantage on Wisdom (Perception) checks that rely on hearing or smell. "
+                },
+                {
+                    "name": "Pack Tactics ",
+                    "description": "The hound has advantage on an attack roll against a creature if a least one of the hound's allies is within 5 feet of the creature and the ally isn't incapacitated."
+                }
+            ]
+        }
+    },
+    "scenes": [
+    ],
+    "encounters": {
+        "dr1": {
+            "name":"Dungeon Room 1",
+            "description":"Lorem ipsum",
+            "map":null,
+            "key_points": [
+                "kp1",
+                "kp2"
+            ],
+            "monsters": [
+                "hell_hound"
+            ],
+            "puzzles": [
+            ],
+            "navigation":{
+                "next": {
+                    "location": "e__dr1",
+                    "icon": "fa fa-check"
+                }
+            }
+        }
+    },
+    "puzzles":{
+    }
+}
