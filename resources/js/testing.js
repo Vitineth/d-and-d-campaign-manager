@@ -75,7 +75,7 @@ function verifyCampaign(){
 
 bus.on("trigger-load", function(id){
     bus.emit("loading-begin");
-    
+
     if(id.indexOf("e__") == 0){
         //Load an encounter;
         if(!campaign.encounters.hasOwnProperty(id.replace("e__", ""))){
@@ -104,7 +104,7 @@ bus.on('expand-query', function(query, option){
         bus.emit("expand-query-results", []);
         return;
     }
-    
+
     var results = [];
     console.log(option + ", " + query);
 

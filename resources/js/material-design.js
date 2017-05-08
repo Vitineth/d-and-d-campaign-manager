@@ -4,7 +4,7 @@ $(document).ready(function(){
     initializeDropdowns();
     initializeDialogs();
     initializeExpansions();
-    
+
     $(".date-picker").each(function(){
         var now = moment();
         regeneratePicker($(this), now.month() + 1, now.year());
@@ -12,25 +12,25 @@ $(document).ready(function(){
         $($(this).find(".fa.fa-chevron-left")[0]).click(function(){
             var activeIndex = that.attr("data-month");
             var activeYear = parseInt(that.attr("data-year") || now.year());
-            
+
             activeIndex--;
             if(activeIndex < 1) {
                 activeIndex = 12;
                 activeYear--;
             }
-            
+
             regeneratePicker(that, activeIndex, activeYear);
         });
         $($(this).find(".fa.fa-chevron-right")[0]).click(function(){
             var activeIndex = that.attr("data-month");
             var activeYear = parseInt(that.attr("data-year") || now.year());
-            
+
             activeIndex++;
             if(activeIndex > 12) {
                 activeIndex = 1;
                 activeYear++;
             }
-            
+
             regeneratePicker(that, activeIndex, activeYear);
         });
     });
@@ -84,12 +84,12 @@ function regeneratePicker(picker, monthIndex, year){
             $(this).parent().parent().parent().find("div.selected").remove();
             $(this).parent().parent().parent().parent().parent().attr("data-day", $(this).attr("data-date"));
             $("<div class=\"selected\"></div>").appendTo($(this));
-            
+
             var day = picker.attr("data-day");
             var month = picker.attr("data-month");
             var year = picker.attr("data-year");
             var mom = moment(year + "-" + pad(month, 2) + "-" + pad(day, 2));
-            
+
             picker.find(".p-main").text(moment.weekdaysShort()[mom.day()] + ", " + moment.monthsShort()[mom.month()] + " " + pad(day, 2));
             picker.find(".p-small").text(year);
         });
@@ -97,9 +97,9 @@ function regeneratePicker(picker, monthIndex, year){
 }
 
 function pad(n, width, z) {
-  z = z || '0';
-  n = n + '';
-  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+    z = z || '0';
+    n = n + '';
+    return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
 
 function initializeExpansions(){
@@ -115,55 +115,55 @@ function initializeExpansions(){
         $(this).find("[data-type='expansion-action']").each(function(){
             actions.push($(this));
         });
-        
+
         var expansion = $("<div></div>");
         expansion.attr("class", "expansion");
-        
+
         var panel = $("<div></div>");
         panel.attr("class", "expansion-panel");
         panel.appendTo(expansion);
-        
+
         var header = $("<div></div>");
         header.attr("class", "expansion-header");
         header.appendTo(panel);
-        
+
         var table = $("<table></table>");
         table.attr("class", "clear-table expansion-table");
         table.appendTo(header);
-        
+
         var tBody = $("<tbody></tbody>");
         tBody.appendTo(table);
-        
+
         var row = $("<tr></tr>");
         row.appendTo(tBody);
-        
+
         var titleDiv = $("<td></td>");
         titleDiv.attr("class", "primary");
         titleDiv.html(title);
         titleDiv.appendTo(row);
-        
+
         for(i in elements){
             var element = elements[i];
             var td = $("<td></td>");
             td.html(element);
             td.appendTo(row);
         }
-        
+
         var chevronTD = $("<td></td>");
         var chevronSpan = $("<span></span>");
         var chevron = $("<i></i>");
-        
+
         chevron.attr("class", "fa fa-chevron-down");
         chevronSpan.attr("class", "expansion-chevron");
         chevron.appendTo(chevronSpan);
         chevronSpan.appendTo(chevronTD);
         chevronTD.appendTo(row);
-        
+
         var divBody = $("<div></div>");
         divBody.attr("class", "expansion-body clearfix");
         divBody.html(body);
         divBody.appendTo(panel);
-        
+
         if(!disableActions){
             var hr = $("<hr>");
             hr.attr("class", "expansion-divider");
@@ -177,7 +177,7 @@ function initializeExpansions(){
                 actions[i].detach().appendTo(divActions);
             }
         }
-        
+
         expansion.insertAfter($(this));
         $(this).detach();
     })
@@ -221,7 +221,7 @@ function initializeDropdowns(){
             var original = $($(this).find("span")[0]).text();
             $(this).attr("data-save-text", original);
             $($(this).find("span")[0]).text("");
-            
+
             $(this).find(".dropdown-entry").each(function(){
                 $(this).css("display", "block");
             });
@@ -229,7 +229,7 @@ function initializeDropdowns(){
             $($(this).find(".fa.fa-chevron-down")[0]).css("display", "none");
         }
     });
-    
+
     $(".dropdown-entry").click(function(e){
         e.stopImmediatePropagation();
         var content = $(this).text();
@@ -252,14 +252,14 @@ function loadFonts(){
         google: {
             families: ['Roboto:400,500,700,900']
         }
-   };
+    };
 
-   (function(d) {
-      var wf = d.createElement('script'), s = d.scripts[0];
-      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-      wf.async = true;
-      s.parentNode.insertBefore(wf, s);
-   })(document);
+    (function(d) {
+        var wf = d.createElement('script'), s = d.scripts[0];
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+    })(document);
 }
 
 function convertCheckboxes(){

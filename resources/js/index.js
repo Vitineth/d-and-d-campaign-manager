@@ -83,9 +83,9 @@ function onFunction(func) {
                 types.push("f");
             }
         } else
-        if (types[expression.length - 1] == "f") {
-            expression[expression.length - 1] = func;
-        }
+            if (types[expression.length - 1] == "f") {
+                expression[expression.length - 1] = func;
+            }
     }
 }
 
