@@ -4,7 +4,7 @@
 // Because we are in the renderer thread we need to specify the dialog library as a remote to access it.
 const dialog = require('electron').remote.dialog;
 // We need to access our system bus to distribute the events around the systems.
-var bus = require('./resources/js/system-emitter.js');
+var bus = require('../system-emitter.js');
 
 //When we are on the loader page and actually try to load something we need to show the user the system
 //file chooser. As we are using JSON data as the storage format for our campaigns we add a filter for 
