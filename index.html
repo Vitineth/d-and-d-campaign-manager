@@ -14,196 +14,62 @@
         <div class="loading-div" style="display: none">
             <i class="fa fa-cog fa-spin"></i>
         </div>
-        <div data-page="explorer" style="display: none;">
-            <div class="row full-height">
-                <div class="nine columns full-height">
-                    <h4><small id="exp-type">Encounter</small><span id="exp-name">Dungeon Room 1</span></h4>
-                    <table class="full-width">
-                        <tr>
-                            <th style="width: 15%">Description</th>
-                            <td id="exp-description">Some text</td>
-                        </tr>
-                        <tr>
-                            <th>Key Points</th>
-                            <td>
-                                <ul id="exp-key-points"></ul>
-                            </td>
-                        </tr>
-                    </table>
-                    <h5 id="exp-monsters-title">Monsters</h5>
-                    <div class="expansion-container" id="exp-monsters-container">
-                    </div>
-                    <h5>Puzzles</h5>
-                    <div class="expansion-container" id="exp-puzzle-container">
-                        <div data-type="expansion" data-disable-actions="true">
-                            <div data-type="expansion-title">Puzzle</div>
-                            <div data-type="expansion-element">Angel</div>
-                            <div data-type="expansion-body"></div>
-                        </div>
-                        <div data-type="expansion" data-disable-actions="true">
-                            <div data-type="expansion-title">Puzzle</div>
-                            <div data-type="expansion-element">Angel</div>
-                            <div data-type="expansion-body"></div>
-                        </div>
-                        <div data-type="expansion" data-disable-actions="true">
-                            <div data-type="expansion-title">Puzzle</div>
-                            <div data-type="expansion-element">Angel</div>
-                            <div data-type="expansion-body"></div>
-                        </div>
-                        <div data-type="expansion" data-disable-actions="true">
-                            <div data-type="expansion-title">Puzzle</div>
-                            <div data-type="expansion-element">Angel</div>
-                            <div data-type="expansion-body"></div>
-                        </div>
-                    </div>
-                    <h4>Navigation</h4>
-                    <div class="row" id="exp-navigation">
-                        <div class="six columns">
-                            <button class="nav-button"><i class="fa fa-check"></i>Yes</button>
-                        </div>
-                        <div class="six columns">
-                            <button class="nav-button">Yes<i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="three columns">
-                    <div class="row">
-                        <div class="eight columns">
-                            <input id="search-field" type="text" class="full-width">
-                        </div>
-                        <div class="four columns">
-                            <select id="search-type">
-                                <option>Any</option>
-                                <option>Encounter</option>
-                                <option>Scene</option>
-                            </select>
-                            <div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="search-results">
-                        <ul id="sresults">
-                        </ul>
-                    </div>
-                    <div class="roll-container">
-                        <table class="roll-table" cellspacing="0" data-elevation="3">
-                            <tr>
-                                <td class="d2" style="border-top-left-radius: 4px">d2</td>
-                                <td class="d3">d3</td>
-                                <td class="d4">d4</td>
-                                <td class="d6" style="border-top-right-radius: 4px">d6</td>
-                            </tr>
-                            <tr>
-                                <td class="d8">d8</td>
-                                <td class="d10">d10</td>
-                                <td class="d12">d12</td>
-                                <td class="d20">d20</td>
-                            </tr>
-                            <tr>
-                                <td data-function="7" class="tb">7</td>
-                                <td data-function="8" class="tb">8</td>
-                                <td data-function="9" class="tb">9</td>
-                                <td data-function="a" class="tb">Adv</td>
-                            </tr>
-                            <tr>
-                                <td data-function="4" class="tb">4</td>
-                                <td data-function="5" class="tb">5</td>
-                                <td data-function="6" class="tb">6</td>
-                                <td data-function="d" class="tb">Dis</td>
-                            </tr>
-                            <tr>
-                                <td data-function="1" class="tb">1</td>
-                                <td data-function="2" class="tb">2</td>
-                                <td data-function="3" class="tb">3</td>
-                                <td data-function="b" class="tb"><i class="fa fa-arrow-left"></i></td>
-                            </tr>
-                            <tr>
-                                <td data-function="p" class="tb">+</td>
-                                <td data-function="0" class="tb">0</td>
-                                <td data-function="m" class="tb">-</td>
-                                <td data-function="r" class="tb">
-                                    <svg style="width: 40px; height: 40px">
-                                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116.84 116.84">
-                                            <defs>
-                                                <style>
-                                                    .cls-1{
-                                                        fill:#303030;
-                                                        stroke:#fff;
-                                                        stroke-miterlimit:10;
-                                                        stroke-width:10px;
-                                                    }
-                                                    .cls-2{
-                                                        font-size:60px;
-                                                        fill:#fff;
-                                                        font-family:Lato-Black, Lato;
-                                                    }
-                                                </style>
-                                            </defs>
-                                            <title>dice</title>
-                                            <polygon class="cls-1" points="83.81 15.4 108.81 58.7 83.81 102 33.81 102 8.81 58.7 33.81 15.4 83.81 15.4"/>
-                                            <text class="cls-2" transform="translate(41.41 79.27)">6</text>
-                                        </svg>
-                                    </svg>
-                                </td>
-                            </tr>
-                        </table>
-                        <div style="margin-right: 1px;    background: #303030;">
-                            <input class="roll-general" type="text" readonly>
-                        </div>
+        <main>
+            <section id="loader">
+                <div data-page="loader" id="loader-div" style="display:flex;justify-content:center;align-items:center;">
+                    <div><h1>Load Campaign File</h1>
+                        <button class="load-button">Load</button>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div data-page="loader" id="loader-div" style="display:flex;justify-content:center;align-items:center;">
-            <div><h1>Load Campaign File</h1>
-                <button class="load-button">Load</button>
-            </div>
-        </div>
+            </section>
+        </main>
+
         <footer>
-            <span>
-                Built with Electron! (Electron [
-                <script>
-                    document.write(process.versions.electron)
-                </script>
-                ], Node.js [
-                <script>
-                    document.write(process.versions.node)
-                </script>
-                ], Chromium [
-                <script>
-                    document.write(process.versions.chrome)
-                </script>
-                ])
+            <span id="footer-span">
+                Built with Electron! (Electron [<span id="f-electron"></span>], Node.js [<span id="f-node"></span>], Chromium [<span id="f-chrome"></span>])
             </span>
         </footer>
 
     </body>
-    <!-- Insert this line above script imports  -->
+    
     <script>
         if (typeof module === 'object') {
             window.module = module;
             module = undefined;
         }
-
     </script>
 
     <script src="resources/js/jquery-3.1.1.min.js"></script>
     <script src="resources/js/material-design.js"></script>
     <script src="resources/js/pages/explorer/dice-roller.js"></script>
 
-    <!-- Insert this line after script imports -->
     <script>
         if (window.module) module = window.module;
 
     </script>
 
     <script>
-        // You can also require other files to run in this process
-        require('./resources/js/rendering/bus-response.js');
-        require('./resources/js/rendering/document-response.js');
-        
-        require('./resources/js/campaign-management.js');
+        if(process === undefined){
+            $("#footer-span").text("Built for Electron. Not running an Electron Session.");
+        }else{
+            $("#f-electron").text(process.versions.electron);
+            $("#f-node").text(process.versions.node);
+            $("#f-chrome").text(process.versions.chrome);
+        }
+        // We need the bus first to handle the injector events.
+        const bus = require('./resources/js/system-emitter.js');
+
+        // Once all content on the page has been injected we can begin to load the rest of the scripts
+        bus.on("injected", function(){
+            require('./resources/js/rendering/bus-response.js');
+            require('./resources/js/rendering/document-response.js');
+
+            require('./resources/js/campaign-management.js');
+        });
+
+        // Once the event has been set up, trigger the injector.
+        require('./resources/js/injector.js');
     </script>
 
 </html>

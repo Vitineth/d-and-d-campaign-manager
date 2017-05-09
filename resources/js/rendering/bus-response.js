@@ -392,8 +392,8 @@ function generateMonster(monster){
 //There is an exception added for the loader which requires a flexbox layout rather than the standard
 //block to facilitate the centered content.
 function switchPage(page){
-    $("[data-page]").each(function(e){
-        if($(this).attr("data-page") == page){
+    $("section").each(function(e){
+        if($(this).attr("id") == page){
             if(page == "loader")$(this).css("display", "flex");
             else $(this).css("display", "block");
         }else{
