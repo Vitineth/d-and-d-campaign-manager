@@ -26,47 +26,40 @@
         </main>
 
         <footer>
-            <span>
-                Built with Electron! (Electron [
-                <script>
-                    document.write(process.versions.electron)
-                </script>
-                ], Node.js [
-                <script>
-                    document.write(process.versions.node)
-                </script>
-                ], Chromium [
-                <script>
-                    document.write(process.versions.chrome)
-                </script>
-                ])
+            <span id="footer-span">
+                Built with Electron! (Electron [<span id="f-electron"></span>], Node.js [<span id="f-node"></span>], Chromium [<span id="f-chrome"></span>])
             </span>
         </footer>
 
     </body>
-    <!-- Insert this line above script imports  -->
+    
     <script>
         if (typeof module === 'object') {
             window.module = module;
             module = undefined;
         }
-
     </script>
 
     <script src="resources/js/jquery-3.1.1.min.js"></script>
     <script src="resources/js/material-design.js"></script>
     <script src="resources/js/pages/explorer/dice-roller.js"></script>
 
-    <!-- Insert this line after script imports -->
     <script>
         if (window.module) module = window.module;
 
     </script>
 
     <script>
+        if(process === undefined){
+            $("#footer-span").text("Built for Electron. Not running an Electron Session.");
+        }else{
+            $("#f-electron").text(process.versions.electron);
+            $("#f-node").text(process.versions.node);
+            $("#f-chrome").text(process.versions.chrome);
+        }
         // We need the bus first to handle the injector events.
         const bus = require('./resources/js/system-emitter.js');
-        
+
         // Once all content on the page has been injected we can begin to load the rest of the scripts
         bus.on("injected", function(){
             require('./resources/js/rendering/bus-response.js');
@@ -74,7 +67,7 @@
 
             require('./resources/js/campaign-management.js');
         });
-        
+
         // Once the event has been set up, trigger the injector.
         require('./resources/js/injector.js');
     </script>
