@@ -157,7 +157,7 @@
         </div>
         <div data-page="loader" id="loader-div" style="display:flex;justify-content:center;align-items:center;">
             <div><h1>Load Campaign File</h1>
-            <button class="load-button">Load</button>
+                <button class="load-button">Load</button>
             </div>
         </div>
         <footer>
@@ -190,7 +190,7 @@
 
     <script src="resources/js/jquery-3.1.1.min.js"></script>
     <script src="resources/js/material-design.js"></script>
-    <script src="resources/js/index.js"></script>
+    <script src="resources/js/pages/explorer/dice-roller.js"></script>
 
     <!-- Insert this line after script imports -->
     <script>
@@ -200,9 +200,10 @@
 
     <script>
         // You can also require other files to run in this process
-        require('./renderer.js');
-        require('./resources/js/testing.js');
-
+        require('./resources/js/rendering/bus-response.js');
+        require('./resources/js/rendering/document-response.js');
+        
+        require('./resources/js/campaign-management.js');
     </script>
 
 </html>
