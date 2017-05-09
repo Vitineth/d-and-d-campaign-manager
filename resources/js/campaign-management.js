@@ -1,15 +1,21 @@
-const path = require('path');
-const url = require('url');
+
+// Required to read from the campaign data files
 const fs = require('fs');
-var bus = require('./system-emitter.js');
+// Required to show the error messages
 const dialog = require('electron').remote.dialog;
 
+// Required to distribute the events through the system
+var bus = require('./system-emitter.js');
+// A constant store of the active campaign.
 let campaign;
 
+// This function begins the loading of a campaign stored within a file. This will try and read 
+// from the file system with a UTF8 character set and shows a dialog if it fails prompting for 
+// retry or cancel. If there is a successful read we parse the JSON and verify the campaign
+// which will trigger the rest of the load.
 function loadCampaign(filePath){
     fs.readFile(filePath, "utf8", function(err, data){
         if(err){
-            console.log(err);
             bus.emit("read-error", err);
             dialog.showMessageBox({
                 type: "error",
@@ -26,12 +32,24 @@ function loadCampaign(filePath){
     });
 }
 
+// This is dispatched when the user requests a load of a specific campaign. This sends the file
+// path for the file to be loaded.
 bus.on("load-campaign", function(path){
     loadCampaign(path[0]);
-})
+});
 
+// Verification is a basic process here and only verifies that we have enough stuff to actually start
+// and render the first interface. Right now we only verify the existance of:
+//  /title
+//  /scenes
+//  /encounter
+//  /monsters
+//  /begin
+// Future verification will be added for the correct syntax for puzzles, monsters, encounter, scenes
+// and more but this gives us the basic overview. The improvements are for another feature branch.
+// Once the file has been verified, it will switch to the explorer view, trigger a load for the key
+// specified in /begin and then changes the title.
 function verifyCampaign(){
-    //Verify that we have scenes, encounters, monsters and a beginning.
     if(!campaign.hasOwnProperty("title")){
         bus.emit("error-window", "Campaign data is missing a title. Please verify that the data you have selected is valid");
         return;
@@ -67,12 +85,18 @@ function verifyCampaign(){
         return;
     }
 
-
-    bus.emit("switch-to-explorer");
     window.document.title = "D and D Campaign Manager - " + campaign.title;
+    bus.emit("switch-to-explorer");
     bus.emit("trigger-load", campaign.begin);
 }
 
+// This is registered as a bus event as anyone can trigger a load, not just the function above. 
+// This will attempt to resolve the key from encounters or scenes. This expects the key to be in
+// the form of 
+//  s__[id] = Scene
+//  e__[id] = Encounters
+// If it cannot find it, an error message will be provided but should the key be in an invalid format
+// there will not be an error.
 bus.on("trigger-load", function(id){
     bus.emit("loading-begin");
 
@@ -99,6 +123,19 @@ bus.on("trigger-load", function(id){
     }
 });
 
+// When testing a query, we need to search the possibilities and return the results. This is one of two 
+// events associated with searching, the other being 'expand-query-results'. This expects the option
+// to be one of
+//  Any
+//  Encounters
+//  Scenes
+// and the query to be any regular string. It will search for each and then callback to 
+// expand-query-results with an array of results in the form of
+//  {
+//      "id": [id],
+//      "name": [name],
+//      "type": [e/s]
+//  }
 bus.on('expand-query', function(query, option){
     if(query == "") {
         bus.emit("expand-query-results", []);
@@ -106,8 +143,6 @@ bus.on('expand-query', function(query, option){
     }
 
     var results = [];
-    console.log(option + ", " + query);
-
     if(option == "Encounters" || option == "Any"){
         var encounterKeys = Object.keys(campaign.encounters);
         for(var i = 0; i < encounterKeys.length; i++){
