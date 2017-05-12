@@ -27,8 +27,12 @@ footer>span{
 body{
     min-height: 98%;
     margin: 0;
-    padding: 8px;
+/*    padding: 8px;*/
     padding-bottom: 25px;
+}
+
+#explorer .ten.columns{
+    padding: 8px;
 }
 
 html{
@@ -125,6 +129,15 @@ td.d20{
     margin: 7px;
 }
 
+#sidebar{
+        padding: 10px;
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    background: rgb(75,72,73);
+        box-shadow: 0px 0px 8px #4b4849;
+}
+
 .nav-button>i{
     padding-left: 10px;
     padding-right: 10px;
@@ -132,6 +145,11 @@ td.d20{
 
 .nav-button{
     width: 100%;
+}
+
+#search-type{
+    width: 100%;
+    margin-top: -14px;
 }
 
 .search-results li{

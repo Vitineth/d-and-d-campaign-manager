@@ -1,139 +1,485 @@
 #default none
-<div class="row full-height">
-    <div class="nine columns full-height">
-        <h4><small id="exp-type">Encounter</small><span id="exp-name">Dungeon Room 1</span></h4>
-        <table class="full-width">
-            <tr>
-                <th style="width: 15%">Description</th>
-                <td id="exp-description">Some text</td>
-            </tr>
-            <tr>
-                <th>Key Points</th>
-                <td>
-                    <ul id="exp-key-points"></ul>
-                </td>
-            </tr>
-        </table>
-        <h5 id="exp-monsters-title">Monsters</h5>
-        <div class="expansion-container" id="exp-monsters-container">
-        </div>
-        <h5>Puzzles</h5>
-        <div class="expansion-container" id="exp-puzzle-container">
-            <div data-type="expansion" data-disable-actions="true">
-                <div data-type="expansion-title">Puzzle</div>
-                <div data-type="expansion-element">Angel</div>
-                <div data-type="expansion-body"></div>
-            </div>
-            <div data-type="expansion" data-disable-actions="true">
-                <div data-type="expansion-title">Puzzle</div>
-                <div data-type="expansion-element">Angel</div>
-                <div data-type="expansion-body"></div>
-            </div>
-            <div data-type="expansion" data-disable-actions="true">
-                <div data-type="expansion-title">Puzzle</div>
-                <div data-type="expansion-element">Angel</div>
-                <div data-type="expansion-body"></div>
-            </div>
-            <div data-type="expansion" data-disable-actions="true">
-                <div data-type="expansion-title">Puzzle</div>
-                <div data-type="expansion-element">Angel</div>
-                <div data-type="expansion-body"></div>
-            </div>
-        </div>
-        <h4>Navigation</h4>
-        <div class="row" id="exp-navigation">
-            <div class="six columns">
-                <button class="nav-button"><i class="fa fa-check"></i>Yes</button>
-            </div>
-            <div class="six columns">
-                <button class="nav-button">Yes<i class="fa fa-times"></i></button>
-            </div>
-        </div>
+<!--#link resources/css/explorer.css-->
+<!--#link https://fonts.googleapis.com/css?family=Raleway:200,300,400-->
+<!--#link https://fonts.googleapis.com/icon?family=Material+Icons-->
+<!--#link https://fonts.googleapis.com/css?family=Lato:300-->
+<div class="modeal" id="search-modal">
+    <div class="modal back" style="display: none">
     </div>
-
-    <div class="three columns">
-        <div class="row">
-            <div class="eight columns">
-                <input id="search-field" type="text" class="full-width">
+    <div class="modal fore" style="display: none">
+        <div style="height: 91%;padding: 30px;" class="tabs">
+            <div class="buttons" style="">
+                <div class="real-buttons">
+                    <button class="tab-button active" data-tab="#tab0">
+                        <!--                                All-->
+                        <i class="material-icons">all_inclusive</i> 
+                    </button>
+                    <button class="tab-button" data-tab="#tab1">
+                        <i class="material-icons">face</i> 
+                    </button>
+                    <button class="tab-button" data-tab="#tab2">
+                        <i class="material-icons">highlight_off</i>
+                    </button>
+                    <button class="tab-button" data-tab="#tab3">
+                        <i class="material-icons">bug_report</i>
+                    </button>
+                    <button class="tab-button" data-tab="#tab4">
+                        <i class="material-icons">toys</i>
+                    </button>
+                    <button class="tab-button" data-tab="#tab5">
+                        <i class="material-icons">account_balance</i>
+                    </button>
+                </div>
+                <div style="display: -webkit-box;height: 39px;border-bottom: 1px solid #e2e2e2;"></div>
             </div>
-            <div class="four columns">
-                <select id="search-type">
-                    <option>Any</option>
-                    <option>Encounter</option>
-                    <option>Scene</option>
-                </select>
-                <div>
+            <div class="tab-frames" style="/* margin-top: 40px; */border-left: 1px solid #e2e2e2;padding: 10px;">
+                <div class="tab" id="tab0">
+                    <div class="search-container">
+                        <i class="material-icons search-icon">search</i>
+                        <input type="text" placeholder="Search.." class="searchbar search-field">
+                    </div>
+                </div>
+                <div class="tab" id="tab1">
+                    <div class="search-container">
+                        <i class="material-icons search-icon">search</i>
+                        <input type="text" placeholder="Search.." class="searchbar search-field">
+                    </div>
+                    <div class="expander-surrounder" style="box-shadow: none; margin: 0">
+                        <div class="expander">
+                            <table class="expander-header clear-table">
+                                <tbody>
+                                    <tr>
+                                        <td class="expander-td">
+                                            <i class="material-icons expander-image">code</i>
+                                        </td>
+                                        <td style="width: 30%;font-weight: 900;">Hell Hound</td>
+                                        <td>Monster</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div style="" class="expander-content">
+                            </div>
+                        </div>
+                        <div class="expander">
+                            <table class="expander-header clear-table">
+                                <tbody>
+                                    <tr>
+                                        <td class="expander-td">
+                                            <i class="material-icons expander-image">code</i>
+                                        </td>
+                                        <td style="width: 30%;font-weight: 900;">Hell Hound</td>
+                                        <td>Monster</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div style="height: 100px;" class="expander-content"></div>
+                        </div>
+                        <div class="expander">
+                            <table class="expander-header clear-table">
+                                <tbody>
+                                    <tr>
+                                        <td class="expander-td">
+                                            <i class="material-icons expander-image">code</i>
+                                        </td>
+                                        <td style="width: 30%;font-weight: 900;">Hell Hound</td>
+                                        <td>Monster</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div style="height: 100px;" class="expander-content"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab" id="tab2">
+                    <div class="search-container">
+                        <i class="material-icons search-icon">search</i>
+                        <input type="text" placeholder="Search.." class="searchbar search-field">
+                    </div>
+                </div>
+                <div class="tab" id="tab3">
+                    <div class="search-container">
+                        <i class="material-icons search-icon">search</i>
+                        <input type="text" placeholder="Search.." class="searchbar search-field">
+                    </div>
+                </div>
+                <div class="tab" id="tab4">
+                    <div class="search-container">
+                        <i class="material-icons search-icon">search</i>
+                        <input type="text" placeholder="Search.." class="searchbar search-field">
+                    </div>
+                </div>
+                <div class="tab" id="tab5">
+                    <div class="search-container">
+                        <i class="material-icons search-icon">search</i>
+                        <input type="text" placeholder="Search.." class="searchbar search-field">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="search-results">
-            <ul id="sresults">
-            </ul>
+    </div>
+</div>
+<div class="global-nav">
+    <div>
+        <i class="material-icons" style="margin-left: 9px;padding-right: 0;" onclick="toggleNav()">menu</i>
+    </div>
+    <div style="position: relative;top: 50%;transform: translateY(-60%);" id="search-icons">
+        <table class="clear-table">
+            <tr onclick="launchSearchModal('all')">
+                <td>
+                    <i class="material-icons">search</i>
+                </td>
+                <td><div class="clip-nav">Characters</div></td>
+            </tr>
+            <tr>
+                <td>
+                    <i class="material-icons">edit</i>
+                </td>
+                <td><div class="clip-nav">Edit</div></td>
+            </tr>
+            <tr onclick="launchSearchModal('characters')">
+                <td>
+                    <i class="material-icons">face</i>
+                </td>
+                <td><div class="clip-nav">Characters</div></td>
+            </tr>
+            <tr onclick="launchSearchModal('encounters')">
+                <td>
+                    <i class="material-icons">highlight_off</i>
+                </td>
+                <td><div class="clip-nav">Encounters</div></td>
+            </tr>
+            <tr onclick="launchSearchModal('monsters')">
+                <td>
+                    <i class="material-icons">bug_report</i>
+                </td>
+                <td><div class="clip-nav">Monsters</div></td>
+            </tr>
+            <tr>
+                <td>
+                    <i class="material-icons">casino</i>
+                </td>
+                <td><div class="clip-nav">Dice</div></td>
+            </tr>
+            <tr onclick="launchSearchModal('scenes')">
+                <td>
+                    <i class="material-icons">account_balance</i>
+                </td>
+                <td><div class="clip-nav">Scenes</div></td>
+            </tr>
+            <tr onclick="launchSearchModal('puzzles')">
+                <td>
+                    <i class="material-icons">toys</i>
+                </td>
+                <td><div class="clip-nav">Puzzles</div></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="nav-bar">
+    <table class="nav-table clear-table">
+        <tr>
+            <td style="    width: 3%;"></td>
+            <td>
+                <div class="navigation-title">
+                    <small class="navigation-type">Encounter</small>
+                    <span class="navigation-name">Dungeon Room 1</span>
+                </div>
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <div class="navigation-buttons">
+                    <div style="display: inline-flex;" class="nav-container">
+<!--                        <img src="arrow-left.svg">-->
+                        <i class="material-icons" style="color: #a2a2a2">arrow_back</i>
+                        <span class="nav-span" style="text-align: left">Previous</span>
+                        <div class="centre-line" style="width: 50px;"></div>
+                        <span class="nav-span" style="text-align: right">Next</span>
+<!--                        <img src="arrow-right.svg">-->
+                        <i class="material-icons" style="color: #a2a2a2">arrow_forward</i>
+                    </div>
+                </div>            
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="nav-spacer"></div>
+<div class="main">
+    <div style="width: 80%; margin: auto; ">
+        <div class="header-container">
+            <h1 class="header">Description</h1>
         </div>
-        <div class="roll-container">
-            <table class="roll-table" cellspacing="0" data-elevation="3">
-                <tr>
-                    <td class="d2" style="border-top-left-radius: 4px">d2</td>
-                    <td class="d3">d3</td>
-                    <td class="d4">d4</td>
-                    <td class="d6" style="border-top-right-radius: 4px">d6</td>
-                </tr>
-                <tr>
-                    <td class="d8">d8</td>
-                    <td class="d10">d10</td>
-                    <td class="d12">d12</td>
-                    <td class="d20">d20</td>
-                </tr>
-                <tr>
-                    <td data-function="7" class="tb">7</td>
-                    <td data-function="8" class="tb">8</td>
-                    <td data-function="9" class="tb">9</td>
-                    <td data-function="a" class="tb">Adv</td>
-                </tr>
-                <tr>
-                    <td data-function="4" class="tb">4</td>
-                    <td data-function="5" class="tb">5</td>
-                    <td data-function="6" class="tb">6</td>
-                    <td data-function="d" class="tb">Dis</td>
-                </tr>
-                <tr>
-                    <td data-function="1" class="tb">1</td>
-                    <td data-function="2" class="tb">2</td>
-                    <td data-function="3" class="tb">3</td>
-                    <td data-function="b" class="tb"><i class="fa fa-arrow-left"></i></td>
-                </tr>
-                <tr>
-                    <td data-function="p" class="tb">+</td>
-                    <td data-function="0" class="tb">0</td>
-                    <td data-function="m" class="tb">-</td>
-                    <td data-function="r" class="tb">
-                        <svg style="width: 40px; height: 40px">
-                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116.84 116.84">
-                                <defs>
-                                    <style>
-                                        .cls-1{
-                                            fill:#303030;
-                                            stroke:#fff;
-                                            stroke-miterlimit:10;
-                                            stroke-width:10px;
-                                        }
-                                        .cls-2{
-                                            font-size:60px;
-                                            fill:#fff;
-                                            font-family:Lato-Black, Lato;
-                                        }
-                                    </style>
-                                </defs>
-                                <title>dice</title>
-                                <polygon class="cls-1" points="83.81 15.4 108.81 58.7 83.81 102 33.81 102 8.81 58.7 33.81 15.4 83.81 15.4"/>
-                                <text class="cls-2" transform="translate(41.41 79.27)">6</text>
-                            </svg>
-                        </svg>
-                    </td>
-                </tr>
-            </table>
-            <div style="margin-right: 1px;    background: #303030;">
-                <input class="roll-general" type="text" readonly>
+        <p class="content">
+            Tri-tip boudin pancetta, labore tongue dolore adipisicing aute esse sint burgdoggen.  Cupidatat brisket filet mignon sausage.  In aute voluptate, adipisicing tempor elit meatball pastrami pork pancetta officia dolore bresaola.  Short loin corned beef cupim picanha.  Andouille drumstick commodo ad.  Consectetur landjaeger doner shankle in aliqua alcatra kevin occaecat capicola in qui consequat sed ut.  Quis deserunt incididunt, porchetta meatloaf cillum mollit doner pork chop swine proident.","Biltong brisket reprehenderit, aliqua andouille veniam pastrami laboris eiusmod pork chop jowl.  Id ullamco aliqua capicola chuck ex non dolore ham picanha commodo andouille ut pork loin proident.  Fatback mollit occaecat ut doner sausage enim biltong shoulder bacon id rump.  Flank ground round tail ball tip capicola adipisicing short loin nostrud ea tongue chuck.  Burgdoggen reprehenderit qui corned beef cillum in turkey tempor.  Ullamco velit elit, ut chuck sirloin veniam pork chop laboris porchetta do tongue reprehenderit hamburger.  Leberkas ad in, quis filet mignon reprehenderit do id venison short loin ham hock picanha bacon.","Magna sint corned beef, tail ex chuck duis strip steak tempor.  Hamburger deserunt chicken ut ut, boudin leberkas short ribs cow.  Fugiat laborum andouille flank, drumstick alcatra pork chop strip steak aliqua quis.  Shoulder sausage shank tempor pork loin.  Salami minim landjaeger, frankfurter elit ham anim pastrami t-bone duis meatloaf pork loin pig.","Bresaola duis meatball, jowl eiusmod cow sint leberkas biltong lorem ribeye pork chop venison boudin veniam.  Nisi reprehenderit strip steak, in kielbasa shankle in filet mignon.  Excepteur ut cow biltong mollit.  Ut velit frankfurter beef ribs, turducken kevin shoulder lorem picanha spare ribs swine landjaeger.","Esse burgdoggen turkey strip steak rump.  Pig in incididunt tempor pork loin turducken.  Dolore venison tenderloin kielbasa pancetta pork cupim.  Aliqua beef hamburger landjaeger alcatra bacon qui short ribs filet mignon.  Alcatra ham hock pork loin andouille, cupidatat ground round in filet mignon pork belly reprehenderit labore prosciutto rump occaecat.  T-bone qui spare ribs, aute picanha filet mignon dolore short loin.
+        </p>
+        <div class="header-container">
+            <h1 class="header">Monsters</h1>
+        </div>
+        <div style="margin-top: 50px;">
+            <div class="expander-surrounder">
+                <div class="expander">
+                    <table class="expander-header">
+                        <tbody>
+                            <tr>
+                                <td class="expander-td">
+                                    <i class="material-icons expander-image">code</i>
+                                </td>
+                                <td style="width: 30%;font-weight: 900;">Hell Hound</td>
+                                <td>Monster</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="" class="expander-content">
+                        <div class="header-container">
+                            <h3 class="header">
+                                <small style="color: #c3c3c3;">
+                                    Lvl 13, Lawful Evil
+                                </small>
+                            </h3>
+                        </div>
+                        <table style="width: 100%; text-align: center;margin-top: 30px;" class="clear-table stats-table">
+                            <tbody>
+                                <tr>
+                                    <th>STR</th>
+                                    <th>DEX</th>
+                                    <th>CON</th>
+                                    <th>INT</th>
+                                    <th>WIS</th>
+                                    <th>CHA</th>
+                                </tr>
+                                <tr>
+                                    <td><span id="str">17 (+3)</span></td>
+                                    <td><span id="dex">12 (+1)</span></td>
+                                    <td><span id="con">14 (+2)</span></td>
+                                    <td><span id="int">6 (-2)</span></td>
+                                    <td><span id="wis">13 (+1)</span></td>
+                                    <td><span id="cha">6 (-2)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table style="width: 100%;text-align: center;margin-top: 30px;" class="clear-table stats-table">
+                            <tbody>
+                                <tr>
+                                    <th style="width: 33.3333%;">Armor Class (AC)</th>
+                                    <th style="width: 33.3333%;">Hit Points (HP)</th>
+                                    <th style="width: 33.3333%;">Speed (ft)</th>
+                                </tr>
+                                <tr>
+                                    <td>15 (natural armor)</td>
+                                    <td>45 (7d8+14)</td>
+                                    <td>50ft</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="header-container longer">
+                            <h3 class="header">
+                                <small style="color: #c3c3c3;">
+                                    Skills
+                                </small>
+                            </h3>
+                        </div>
+                        <ul style="margin-top: 30px;">
+                            <li>Skill 1</li>
+                            <li>Skill 2</li>
+                            <li>Skill 3</li>
+                            <li>Skill 4</li>
+                            <li>Skill 5</li>
+                        </ul>
+                        <div class="header-container longer">
+                            <h3 class="header">
+                                <small style="color: #c3c3c3;">
+                                    Immunities and Resistances
+                                </small>
+                            </h3>
+                        </div>
+                        <table style="width: 100%;margin-top: 30px;" class="clear-table">
+                            <tr>
+                                <th style="width: 50%">Damage Immunities</th>
+                                <th style="width: 50%">Damage Resistances</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        <li>DI 1</li>
+                                        <li>DI 2</li>
+                                        <li>DI 3</li>
+                                        <li>DI 4</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>DR 1</li>
+                                        <li>DR 2</li>
+                                        <li>DR 3</li>
+                                        <li>DR 4</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Condition Immunities</th>
+                                <th>Condition Resistances</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        <li>CI 1</li>
+                                        <li>CI 2</li>
+                                        <li>CI 3</li>
+                                        <li>CI 4</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>CR 1</li>
+                                        <li>CR 2</li>
+                                        <li>CR 3</li>
+                                        <li>CR 4</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div class="header-container longer">
+                            <h3 class="header">
+                                <small style="color: #c3c3c3;">
+                                    Senses
+                                </small>
+                            </h3>
+                        </div>
+                        <ul style="margin-top: 30px;">
+                            <li>Sense 1</li>
+                            <li>Sense 2</li>
+                            <li>Sense 3</li>
+                            <li>Sense 4</li>
+                        </ul>
+                        <div class="header-container longer">
+                            <h3 class="header">
+                                <small style="color: #c3c3c3;">
+                                    Languages
+                                </small>
+                            </h3>
+                        </div>
+                        <ul style="margin-top: 30px;">
+                            <li>Language 1</li>
+                            <li>Langauge 2</li>
+                            <li>Language 3</li>
+                            <li>Language 4</li>
+                        </ul>
+                        <div class="header-container longer">
+                            <h3 class="header">
+                                <small style="color: #c3c3c3;">
+                                    Challenge: 3 (700XP)
+                                </small>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="expander">
+                    <table class="expander-header clear-table">
+                        <tbody>
+                            <tr>
+                                <td class="expander-td">
+                                    <i class="material-icons expander-image">code</i>
+                                </td>
+                                <td style="width: 30%;font-weight: 900;">Hell Hound</td>
+                                <td>Monster</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="height: 100px;" class="expander-content"></div>
+                </div>
+                <div class="expander">
+                    <table class="expander-header clear-table">
+                        <tbody>
+                            <tr>
+                                <td class="expander-td">
+                                    <i class="material-icons expander-image">code</i>
+                                </td>
+                                <td style="width: 30%;font-weight: 900;">Hell Hound</td>
+                                <td>Monster</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="height: 100px;" class="expander-content"></div>
+                </div>
+            </div>
+        </div>
+        <div class="header-container">
+            <h1 class="header">Puzzles</h1>
+        </div>
+        <div style="margin-top: 50px;">
+            <div class="expander-surrounder">
+                <div class="expander">
+                    <table class="expander-header clear-table">
+                        <tbody>
+                            <tr>
+                                <td class="expander-td">
+                                    <i class="material-icons expander-image">code</i>
+                                </td>
+                                <td style="width: 30%;font-weight: 900;">Coin Puzzle</td>
+                                <td>Puzzle</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="padding: 30px; padding-top: 0; padding-bottom: 0" class="expander-content">
+                        <div class="header-container longer">
+                            <h3 class="header">
+                                <small style="color: #c3c3c3;">
+                                    Initial Description
+                                </small>
+                            </h3>
+                        </div>
+                        <div style="padding-top: 30px">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar eros non libero gravida convallis at ac massa. Sed quis dapibus mauris. Nunc dignissim tempus velit et molestie. Duis nec imperdiet sem. Morbi porttitor purus ante, at vulputate turpis finibus sed. In quis iaculis eros, quis tempor mauris. Ut enim turpis, sollicitudin vel eros in, sodales faucibus tortor. Nulla facilisi. Vivamus sit amet ligula vitae libero pharetra mollis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam blandit pulvinar purus, vitae congue arcu eleifend ac. Aenean in elementum mauris. Aliquam erat volutpat. Aliquam congue consectetur blandit. Etiam venenatis felis a accumsan dignissim. Ut interdum placerat augue vitae hendrerit.
+
+                                Phasellus dapibus orci leo, eu volutpat elit tempor non. Vivamus consequat imperdiet fringilla. Donec nec suscipit enim. Aliquam congue lacinia quam sit amet consectetur. Vivamus a venenatis libero, in eleifend diam. Vestibulum vitae pulvinar metus. Ut placerat ipsum vitae nisi pulvinar interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur vitae arcu nec tincidunt. Duis vulputate massa et elit euismod commodo.
+
+                                Phasellus a ex sed nulla posuere ultricies. Donec volutpat feugiat erat vel dictum. Nam vulputate volutpat ligula, vitae dictum libero tempor at. Donec tristique hendrerit egestas. Nullam aliquet ex diam, eu ultrices mi condimentum ut. Integer ornare blandit dui et auctor. Proin tincidunt nisi et odio dictum egestas.
+
+                                Phasellus mollis consectetur dolor, nec sagittis ipsum fermentum id. Cras sed vehicula dolor, ac lobortis enim. Nulla facilisi. Pellentesque ac malesuada nulla, id placerat sem. Donec hendrerit turpis vitae erat volutpat accumsan nec id nunc. Vestibulum congue, eros nec auctor faucibus, mauris nisi dictum diam, a facilisis neque nulla eu libero. Vestibulum tempus, leo sit amet maximus venenatis, arcu metus vulputate lectus, a accumsan nisi massa vel lacus. Aenean ut massa laoreet eros lobortis dapibus quis quis felis. Pellentesque interdum nisi efficitur, sodales lectus sit amet, sodales ipsum. Integer a diam risus. Sed id est auctor, egestas augue quis, viverra justo.
+
+                                Maecenas convallis mattis lacinia. Proin dignissim mattis dui, interdum interdum justo vulputate non. Sed id sodales dui, consequat lacinia tellus. Nam quis mi interdum, auctor odio vitae, porttitor lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam semper, dui at laoreet dapibus, diam erat lacinia nulla, eu suscipit mi nulla vel augue. Vestibulum mollis suscipit mi, ut tempus quam lobortis sit amet. Praesent a magna aliquam, vestibulum erat eget, cursus nisi. Ut tellus dui, maximus non rhoncus ac, finibus non enim.
+                            </p>
+                        </div>
+                        <div class="header-container longer">
+                            <h3 class="header">
+                                <small style="color: #c3c3c3;">
+                                    Hints
+                                </small>
+                            </h3>
+                        </div>
+                        <div style="padding-top: 30px">
+                            <ul>
+                                <li>Hint 1</li>
+                                <li>Hint 2</li>
+                                <li>Hint 3</li>
+                            </ul>
+                        </div>
+                        <div class="header-container longer">
+                            <h3 class="header">
+                                <small style="color: #c3c3c3;">
+                                    Solution
+                                </small>
+                            </h3>
+                        </div>
+                        <div style="padding-top: 30px">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar eros non libero gravida convallis at ac massa. Sed quis dapibus mauris. Nunc dignissim tempus velit et molestie. Duis nec imperdiet sem. Morbi porttitor purus ante, at vulputate turpis finibus sed. In quis iaculis eros, quis tempor mauris. Ut enim turpis, sollicitudin vel eros in, sodales faucibus tortor. Nulla facilisi. Vivamus sit amet ligula vitae libero pharetra mollis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam blandit pulvinar purus, vitae congue arcu eleifend ac. Aenean in elementum mauris. Aliquam erat volutpat. Aliquam congue consectetur blandit. Etiam venenatis felis a accumsan dignissim. Ut interdum placerat augue vitae hendrerit.
+
+                                Phasellus dapibus orci leo, eu volutpat elit tempor non. Vivamus consequat imperdiet fringilla. Donec nec suscipit enim. Aliquam congue lacinia quam sit amet consectetur. Vivamus a venenatis libero, in eleifend diam. Vestibulum vitae pulvinar metus. Ut placerat ipsum vitae nisi pulvinar interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur vitae arcu nec tincidunt. Duis vulputate massa et elit euismod commodo.
+
+                                Phasellus a ex sed nulla posuere ultricies. Donec volutpat feugiat erat vel dictum. Nam vulputate volutpat ligula, vitae dictum libero tempor at. Donec tristique hendrerit egestas. Nullam aliquet ex diam, eu ultrices mi condimentum ut. Integer ornare blandit dui et auctor. Proin tincidunt nisi et odio dictum egestas.
+
+                                Phasellus mollis consectetur dolor, nec sagittis ipsum fermentum id. Cras sed vehicula dolor, ac lobortis enim. Nulla facilisi. Pellentesque ac malesuada nulla, id placerat sem. Donec hendrerit turpis vitae erat volutpat accumsan nec id nunc. Vestibulum congue, eros nec auctor faucibus, mauris nisi dictum diam, a facilisis neque nulla eu libero. Vestibulum tempus, leo sit amet maximus venenatis, arcu metus vulputate lectus, a accumsan nisi massa vel lacus. Aenean ut massa laoreet eros lobortis dapibus quis quis felis. Pellentesque interdum nisi efficitur, sodales lectus sit amet, sodales ipsum. Integer a diam risus. Sed id est auctor, egestas augue quis, viverra justo.
+
+                                Maecenas convallis mattis lacinia. Proin dignissim mattis dui, interdum interdum justo vulputate non. Sed id sodales dui, consequat lacinia tellus. Nam quis mi interdum, auctor odio vitae, porttitor lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam semper, dui at laoreet dapibus, diam erat lacinia nulla, eu suscipit mi nulla vel augue. Vestibulum mollis suscipit mi, ut tempus quam lobortis sit amet. Praesent a magna aliquam, vestibulum erat eget, cursus nisi. Ut tellus dui, maximus non rhoncus ac, finibus non enim.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
