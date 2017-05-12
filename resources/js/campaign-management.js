@@ -38,7 +38,7 @@ bus.on("load-campaign", function(path){
     loadCampaign(path[0]);
 });
 
-bus.emit("load-campaign", ["C:\\Users\\Ryan\\Documents\\Git\\Electron\\d-and-d-campaign-manager\\resources\\data.json"]);
+//bus.emit("load-campaign", ["C:\\Users\\Ryan\\Documents\\Git\\Electron\\d-and-d-campaign-manager\\resources\\data.json"]);
 
 // Verification is a basic process here and only verifies that we have enough stuff to actually start
 // and render the first interface. Right now we only verify the existance of:

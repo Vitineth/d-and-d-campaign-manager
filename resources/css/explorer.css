@@ -1,9 +1,3 @@
-body{
-    margin: 0;
-    font-family: Nunito;
-    padding-bottom: 25px;
-}
-
 #explorer .nav-bar{
     position: fixed;
     width: 100%;
@@ -85,9 +79,11 @@ body{
     text-align: center;
     font-family: Raleway;
 }
+
 #explorer .header-container{
     position: relative;
 }
+
 #explorer .header-container:after{
     content: '';
     width: 20%;
@@ -97,10 +93,12 @@ body{
     bottom: -21px;
     margin-left: 40%;
 }
+
 #explorer .header-container.longer:after{
     width: 80%;
     margin-left: 10%;
 }
+
 #explorer .content{
     padding: 50px;
     font-size: 18px;
@@ -142,40 +140,6 @@ body{
 
 #explorer .expander-content{
     display: none;
-}
-
-::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
-}
-::-webkit-scrollbar-button {
-    width: 0px;
-    height: 0px;
-}
-::-webkit-scrollbar-thumb {
-    background: #e1e1e1;
-    border: 0px none #ffffff;
-    border-radius: 50px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #ffffff;
-}
-::-webkit-scrollbar-thumb:active {
-    background: #8c8c8c;
-}
-::-webkit-scrollbar-track {
-    background: #666666;
-    border: 0px none #ffffff;
-    border-radius: 50px;
-}
-::-webkit-scrollbar-track:hover {
-    background: #666666;
-}
-::-webkit-scrollbar-track:active {
-    background: #333333;
-}
-::-webkit-scrollbar-corner {
-    background: transparent;
 }
 
 #explorer .global-nav{
@@ -262,6 +226,7 @@ body{
 #explorer .tab-button:last-child{
     border-right: 1px solid #e2e2e2;
 }
+
 #explorer .tab-button img{
     width: 36px;
     height: 36px;
@@ -331,6 +296,7 @@ body{
     position: relative;
     top: -6px;
 }
+
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

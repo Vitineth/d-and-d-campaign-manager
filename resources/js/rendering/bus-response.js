@@ -7,10 +7,6 @@ const dialog = require('electron').remote.dialog;
 // We need to access our system bus to distribute the events around the systems.
 var bus = require('../system-emitter.js');
 
-//var monsterExpanderTemplate start
-var monsterExpanderTemplate = $("<div class=\"expansion-body clearfix\">\n   <h2 ><span id=\"name\">Hell Hound</span> <small><span id=\"size\">Medium</span> <span id=\"type\">fiend</span>, <span id=\"alignment\">lawful evil</span></small></h2>\n   <table style=\"width: 100%;\" class=\"clear-table\">\n     <tbody>\n       <tr>\n         <th style=\"width: 15%;\">Armor Class</th>\n         <td><span id=\"ac\">15 (natural armor)</span></td>\n       </tr>\n       <tr>\n         <th>Hit Points</th>\n         <td><span id=\"hp\">45 (7d8+14)</hp></td>\n       </tr>\n       <tr>\n         <th>Speed</th>\n         <td><span id=\"speed\">60ft</span></td>\n       </tr>\n     </tbody>\n   </table>\n   <hr>\n   <table style=\"width: 100%; text-align: center\" class=\"clear-table stats-table\">\n     <tbody>\n       <tr>\n         <th>STR</th>\n         <th>DEX</th>\n         <th>CON</th>\n         <th>INT</th>\n         <th>WIS</th>\n         <th>CHA</th>\n       </tr>\n       <tr>\n         <td><span id=\"str\">17 (+3)</span></td>\n         <td><span id=\"dex\">12 (+1)</span></td>\n         <td><span id=\"con\">14 (+2)</span></td>\n         <td><span id=\"int\">6 (-2)</span></td>\n         <td><span id=\"wis\">13 (+1)</span></td>\n         <td><span id=\"cha\">6 (-2)</span></td>\n       </tr>\n     </tbody>\n   </table>\n   <hr>\n   <table style=\"width: 100%;\" class=\"clear-table\">\n     <tbody>\n       <tr>\n         <th style=\"width: 15%;\">Skills</th>\n         <td>\n           <ul id=\"skills\">\n             <li>Perception +5</li>\n           </ul>\n         </td>\n       </tr>\n       <tr>\n         <th>Damage Immunities</th>\n         <td id=\"immunities-damage\">fire</td>\n       </tr>\n       <tr>\n         <th>Condition Immunities</th>\n         <td id=\"immunities-condition\">fire</td>\n       </tr>\n       <tr>\n         <th>Damage Resistances</th>\n         <td id=\"resistances-damage\">fire</td>\n       </tr>\n       <tr id=\"resistances-condition\">\n         <th>Condition Resistances</th>\n         <td  id=\"resistances-condition\">fire</td>\n       </tr>\n       <tr>\n         <th>Senses</th>\n         <td id=\"senses\"><strong>darkvision</strong> (60ft)., <strong>passive perception</strong> 15</td>\n       </tr>\n       <tr>\n         <th>Languages</th>\n         <td>\n           <ul id=\"languages\"></ul>\n         </td>\n       </tr>\n       <tr>\n         <th>Challenge</th>\n         <td id=\"challenge\">3 (700XP)</td>\n       </tr>\n     </tbody>\n   </table>\n   <hr>\n   <div id=\"abilities\">\n     <span>\n       <strong>Keen Hearing and Smell</strong> The hound has advantage on Wisdom (Perception) checks that rely on hearing or smell.\n     </span>\n     <br>\n     <span>\n       <strong>Pack Tactics</strong> The hound has advantage on an attack roll against a creature if a least one of the hound's allies is within 5 feet of the creature and the ally isn't incapacitated.\n     </span>\n   </div>\n   <hr>\n   <h5>Actions</h5>\n   <div id=\"actions\">\n     <span>\n       <strong>Bite</strong> <em>Melee Weapon Attack: </em> +5 to hit, reach 5 ft., one target. <em>Hit: </em> 7 (1d8 + 3) piercing damage plus 7 (2d6) fire damage.\n     </span>\n     <br>\n     <span>\n       <strong>Fire Breath (Recharge 5-6)</strong> THe hound exhales fire in a 15-foot cone. Each creature in that area must make a DC 12 Dexterity waving throw, taking 21 (6d6) fire damage on a failed save or half as much damage on a successful one.\n     </span>\n   </div>\n </div>\n");
-//close
-
 //Should we be sent a request to switch to the loader page we need to distribute it to the generic
 //page switching function but we also need to fix the overflow of the body as we have it set up so 
 //it would have scrollbars otherwise. This is a tad inefficient so we will need to fix this up a bit
@@ -258,18 +254,6 @@ function generatePuzzle(puzzle, copy){
 //finds on page load but as these are being added after the load, it is easier to generate their
 //complete structure.
 function generateMonster(monster, copy){
-    //    var expansion = $("<div></div>").attr("class", "expansion");
-    //    var panel = $("<div></div>").attr("class", "expansion-panel");
-    //    var header = $("<div></div>").attr("class", "expansion-header");
-    //    var table = $("<table></table>").attr("class", "clear-table expansion-table");
-    //    var tbody = $("<tbody></tbody>");
-    //    var tr = $("<tr></tr>");
-    //    var name = $("<td></td>").attr("class", "primary").text(monster.name);
-    //    var type = $("<td></td>").text("Monster");
-    //    var chevronTd = $("<td></td>");
-    //    var chevronSpan = $("<span></span>").attr("class", "expansion-chevron");
-    //    var chevron = $("<i></i>").attr("class", "fa fa-chevron-down");
-
     //The basic details of the monster can be filled in easily. We have a template for the body
     //of the expander above which we can take a clone of. Each thing that needs to be changed
     //within it is associated with an id which must be removed before it is injected into the DOM
@@ -402,22 +386,6 @@ function generateMonster(monster, copy){
         copy.find("#actions").append(div);
     }
     copy.find("#actions").removeAttr("id");
-
-    //Finally we append the copy of the body to the container we are using
-    //    $("#exp-monsters-container").append(copy);
-
-    //Assemble the entire expander from all its base components
-    //    expansion.append(panel);
-    //    panel.append(header);
-    //    header.append(table);
-    //    table.append(tbody);
-    //    tbody.append(tr);
-    //    tr.append(name);
-    //    tr.append(type);
-    //    tr.append(chevronTd);
-    //    chevronTd.append(chevronSpan);
-    //    chevronSpan.append(chevron);
-    //    panel.append(copy);
 
     //And enable the actual dropdown functionality using code quickly modified from material-design.js.
     var header = copy.find(".expander-header");
