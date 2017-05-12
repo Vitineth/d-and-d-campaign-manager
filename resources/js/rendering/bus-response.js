@@ -43,7 +43,7 @@ bus.on("error-window", function(data){
 bus.on('load-encounter', function(encounter, campaign){
     // The loading of a campaign requires rewriting a large portion of the explorer window.
     //Not all code here will be documented as things should be roughly self-explanatory.
-    
+
     $("#exp-type").text("Encounter");
     $("#exp-name").text(encounter.name);
     $("#exp-description").text(encounter.description);
@@ -56,7 +56,7 @@ bus.on('load-encounter', function(encounter, campaign){
         ul.append($("<li></li>").text(encounter.key_points[i]));
     }
     $("#exp-key-points").empty().append(ul);
-    
+
     //Puzzles and monsters form a reasonably complex part of the loading. The general process
     //is simple enough, empty the container and then append an expander for every monster and puzzle.
     //The functions to generating the monsters and puzzles are broken out as the same stuff is used
@@ -64,16 +64,20 @@ bus.on('load-encounter', function(encounter, campaign){
     //will remain separate for now as there will be future expansion at which point the scene and
     //encounter screens will change more significantly.
     $("#exp-monsters-container").empty();
-    $("#exp-puzzle-container").empty();
+    $("#exp-puzzles-container").empty();
 
     for(var i = 0; i < encounter.monsters.length; i++){
         var monster = campaign.monsters[encounter.monsters[i]];
-        $("#exp-monsters-container").append(generateMonster(monster));
+        $.get("resources/html/monster.html", function(data){
+            $("#exp-monsters-container").append(generateMonster(monster, $(data)));
+        });
     }
 
     for(var i = 0; i < encounter.puzzles.length; i++){
         var monster = campaign.puzzles[encounter.puzzles[i]];
-        $("#exp-monsters-container").append(generatePuzzle(monster));
+        $.get("resources/html/puzzle.html", function(data){
+            $("#exp-puzzles-container").append(generatePuzzle(monster, $(data)));
+        });
     }
 
     //Navigation follows a similar basic process as monsters and puzzles and is broken out into a
@@ -81,9 +85,36 @@ bus.on('load-encounter', function(encounter, campaign){
     //is likely a better way to do this but we will get around to doing that during the optimisation 
     //feature branch. TODO
     $("#exp-navigation").empty();
+    var next, previous;
     var keys = Object.keys(encounter.navigation);
     for(var i = 0; i < keys.length; i++){
-        $("#exp-navigation").append(generateNavButton(encounter.navigation[keys[i]], keys[i]));
+        if(keys[i].toLowerCase() == "next"){
+            if(encounter.navigation[keys[i]].hasOwnProperty("location")){
+                $("#next-link").attr("data-location", encounter.navigation[keys[i]].location)
+                $("#next-link").click(function(){
+                    bus.emit("trigger-load",  $(this).attr("data-location"));
+                });
+                next=true;
+            }
+        }else if(keys[i].toLowerCase() == "previous"){
+            if(encounter.navigation[keys[i]].hasOwnProperty("location")){
+                $("#previous-link").attr("data-location", encounter.navigation[keys[i]].location)
+                $("#previous-link").click(function(){
+                    bus.emit("trigger-load",  $(this).attr("data-location"));
+                });
+                previous=true;
+            }
+        }else{
+            $("#exp-navigation").append(generateNavButton(encounter.navigation[keys[i]], keys[i])).append($("<br>"));
+        }
+    }
+    if(!next){
+        $("#next-icon").css("display", "none");
+        $("#next-link").css("display", "none");
+    }
+    if(!previous){
+        $("#previous-icon").css("display", "none");
+        $("#previous-link").css("display", "none");
     }
 
     //Once we've finished the loading we can announce it which will stop the loading icon in the 
@@ -110,18 +141,22 @@ bus.on('load-scene', function(encounter, campaign){
 
     for(var i = 0; i < encounter.monsters.length; i++){
         var monster = campaign.monsters[encounter.monsters[i]];
-        $("#exp-monsters-container").append(generateMonster(monster));
+        $.get("resources/html/monster.html", function(data){
+            $("#exp-monsters-container").append(generateMonster(monster, $(data)));
+        });
     }
 
     for(var i = 0; i < encounter.puzzles.length; i++){
         var monster = campaign.puzzles[encounter.puzzles[i]];
-        $("#exp-monsters-container").append(generatePuzzle(monster));
+        $.get("resources/html/puzzle.html", function(data){
+            $("#exp-puzzles-container").append(generatePuzzle(monster, $(data)));
+        });
     }
 
     $("#exp-navigation").empty();
     var keys = Object.keys(encounter.navigation);
     for(var i = 0; i < keys.length; i++){
-        $("#exp-navigation").append(generateNavButton(encounter.navigation[keys[i]], keys[i]));
+        $("#exp-navigation").append(generateNavButton(encounter.navigation[keys[i]], keys[i])).append($("<br>"));
     }
 
     bus.emit("loading-end");
@@ -179,25 +214,37 @@ bus.on('loading-end', function(){
 //a tiny but of handling if a location is not supplied as it will simply disable the button but still
 //show it (which should highlight the errors). 
 function generateNavButton(navigation, key){
-    var div = $("<div></div>").attr("class", "six columns");
+    var div = $("<div></div>").attr("class", "chip-link");
+    var i = $("<i></i>").attr("class", "material-icons icon").text("link");
+    var text = $("<strong></strong>").attr("class", "text").text(key);
+
     var button = $("<button></button").attr("class", "nav-button").text(key);
     if(navigation.hasOwnProperty("location")){
-        button.attr("data-location", navigation.location)
-        button.click(function(){
+        div.attr("data-location", navigation.location)
+        div.click(function(){
             bus.emit("trigger-load",  $(this).attr("data-location"));
         });
     }else{
-        button.prop("disabled", true);
+        div.css("border", "1px solid red");
+    }
+    if(navigation.hasOwnProperty("icon")){
+        i.text(navigation.icon);
     }
 
-    var icon = $("<i></i>").attr("class", navigation.hasOwnProperty("icon") ? navigation.icon : "");
-    return div.append(button.append(icon));
+    return div.append(i).append(text);
 }
 
 //Puzzles have not been implemented yet but will be generated here when they are added in full, this
 //will be part of another feature branch.
-function generatePuzzle(puzzle){
-
+function generatePuzzle(puzzle, copy){
+    copy.find("#name").text(puzzle.name).removeAttr("id");
+    copy.find("#description").text(puzzle.description).removeAttr("id");
+    copy.find("#solution").text(puzzle.solution).removeAttr("id");
+    for(var i = 0; i < puzzle.hints.length; i++){
+        copy.find("#hints").append($("<li></li>").text(puzzle.hints[i]));
+    }
+    copy.find("#hints").removeAttr("id");
+    return copy;
 }
 
 //The generation of the monster expanders is a more complex process as there is an awful lot of 
@@ -207,24 +254,25 @@ function generatePuzzle(puzzle){
 //straight from the HTML as the material-design.js file automatically converts and enables ones it
 //finds on page load but as these are being added after the load, it is easier to generate their
 //complete structure.
-function generateMonster(monster){
-    var expansion = $("<div></div>").attr("class", "expansion");
-    var panel = $("<div></div>").attr("class", "expansion-panel");
-    var header = $("<div></div>").attr("class", "expansion-header");
-    var table = $("<table></table>").attr("class", "clear-table expansion-table");
-    var tbody = $("<tbody></tbody>");
-    var tr = $("<tr></tr>");
-    var name = $("<td></td>").attr("class", "primary").text(monster.name);
-    var type = $("<td></td>").text("Monster");
-    var chevronTd = $("<td></td>");
-    var chevronSpan = $("<span></span>").attr("class", "expansion-chevron");
-    var chevron = $("<i></i>").attr("class", "fa fa-chevron-down");
+function generateMonster(monster, copy){
+    //    var expansion = $("<div></div>").attr("class", "expansion");
+    //    var panel = $("<div></div>").attr("class", "expansion-panel");
+    //    var header = $("<div></div>").attr("class", "expansion-header");
+    //    var table = $("<table></table>").attr("class", "clear-table expansion-table");
+    //    var tbody = $("<tbody></tbody>");
+    //    var tr = $("<tr></tr>");
+    //    var name = $("<td></td>").attr("class", "primary").text(monster.name);
+    //    var type = $("<td></td>").text("Monster");
+    //    var chevronTd = $("<td></td>");
+    //    var chevronSpan = $("<span></span>").attr("class", "expansion-chevron");
+    //    var chevron = $("<i></i>").attr("class", "fa fa-chevron-down");
 
     //The basic details of the monster can be filled in easily. We have a template for the body
     //of the expander above which we can take a clone of. Each thing that needs to be changed
     //within it is associated with an id which must be removed before it is injected into the DOM
     //or it may mess with things (not many things like duplicate IDs).
-    var copy = monsterExpanderTemplate.clone();
+    //    var copy = monsterExpanderTemplate.clone();
+    //    var copy = $($.get("resources/html/monster.html"));
     copy.find("#name").text(monster.name).removeAttr("id");
     copy.find("#size").text(monster.size).removeAttr("id");
     copy.find("#type").text(monster.type).removeAttr("id");
@@ -315,7 +363,7 @@ function generateMonster(monster){
     //Languages are expressed as an ul so we need to convert each entry in the JSON to a li.
     copy.find("#languages").empty();//ul
     for(var i = 0; i < monster.languages.length; i++){
-        var li = $("<li></li>").text(monster.languages[i].modifier);
+        var li = $("<li></li>").text(monster.languages[i]);
         copy.find("#languages").append(li);
     }
     copy.find("#languages").removeAttr("id");
@@ -353,37 +401,36 @@ function generateMonster(monster){
     copy.find("#actions").removeAttr("id");
 
     //Finally we append the copy of the body to the container we are using
-    $("#exp-monsters-container").append(copy);
+    //    $("#exp-monsters-container").append(copy);
 
     //Assemble the entire expander from all its base components
-    expansion.append(panel);
-    panel.append(header);
-    header.append(table);
-    table.append(tbody);
-    tbody.append(tr);
-    tr.append(name);
-    tr.append(type);
-    tr.append(chevronTd);
-    chevronTd.append(chevronSpan);
-    chevronSpan.append(chevron);
-    panel.append(copy);
+    //    expansion.append(panel);
+    //    panel.append(header);
+    //    header.append(table);
+    //    table.append(tbody);
+    //    tbody.append(tr);
+    //    tr.append(name);
+    //    tr.append(type);
+    //    tr.append(chevronTd);
+    //    chevronTd.append(chevronSpan);
+    //    chevronSpan.append(chevron);
+    //    panel.append(copy);
 
     //And enable the actual dropdown functionality using code quickly modified from material-design.js.
+    var header = copy.find(".expander-header");
+    var image = copy.find(".expander-image");
+    var body = copy.find(".expander-content");
+    console.log([header, image, body]);
+
     header.click(function(){
-        var state = copy.attr("data-state") || "closed";
-        if(state === "open"){
-            copy.attr("data-state", "closed");
-            copy.slideUp();
-            chevron.attr("class", "fa fa-chevron-down");
-        }else if(state === "closed"){
-            copy.attr("data-state", "open");
-            copy.slideDown();
-            chevron.attr("class", "fa fa-chevron-up");
-        }
+        image.addClass("spinner");
+        body.slideToggle(400, function(){
+            image.removeClass("spinner");
+        });
     });
 
     //Then we return the newly created instance which can be injected into the DOM as is.
-    return expansion;
+    return copy;
 }
 
 //This function just hides every page that is not the one requested and shows the one that is specified.
