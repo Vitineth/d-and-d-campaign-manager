@@ -4,7 +4,7 @@ body{
     padding-bottom: 25px;
 }
 
-.nav-bar{
+#explorer .nav-bar{
     position: fixed;
     width: 100%;
     height: 90px;
@@ -12,7 +12,7 @@ body{
     font-family: Raleway;
 }
 
-.nav-bar:after{
+#explorer .nav-bar:after{
     content:''; 
     width:90%; 
     height:1px; 
@@ -22,7 +22,7 @@ body{
     margin-left: 5%;
 }
 
-.navigation-buttons{
+#explorer .navigation-buttons{
     display: inline-flex;
     float: right;
     margin: 30px;
@@ -31,7 +31,7 @@ body{
     font-size: 13px;
 }
 
-.centre-line{
+#explorer .centre-line{
     width: 50px;
     height: 1px;
     background: #a2a2a2;
@@ -40,59 +40,55 @@ body{
     margin-right: 10px;
 }
 
-span.nav-span {
+#explorer span.nav-span {
     line-height: 23px;
     color: #a2a2a2;
 }
 
-.icon{
-
-}
-
-.navigation-title{
+#explorer .navigation-title{
     padding: 60px;
     font-family: Raleway;
 }
 
-.navigation-type{
+#explorer .navigation-type{
     color: #a2a2a2;
     position: relative;
     top: -5px;
 }
 
-.navigation-name{
+#explorer .navigation-name{
     font-weight: 700;
     font-size: 26px;
     margin-left: 10px;
 }
 
-.nav-bar{
+#explorer .nav-bar{
     top: 0;
     left: 0;
     z-index: 1000;
 }
 
-.nav-table{
+#explorer .nav-table{
     width: 100%;
     margin-top: -30px;
 }
 
-.nav-spacer{
+#explorer .nav-spacer{
     height: 90px;
 }
 
-.main{
+#explorer .main{
     display:flex;align-items:center;width:100%;
 }
 
-.header{
+#explorer .header{
     text-align: center;
     font-family: Raleway;
 }
-.header-container{
+#explorer .header-container{
     position: relative;
 }
-.header-container:after{
+#explorer .header-container:after{
     content: '';
     width: 20%;
     height: 1px;
@@ -101,50 +97,50 @@ span.nav-span {
     bottom: -21px;
     margin-left: 40%;
 }
-.header-container.longer:after{
+#explorer .header-container.longer:after{
     width: 80%;
     margin-left: 10%;
 }
-.content{
+#explorer .content{
     padding: 50px;
     font-size: 18px;
     padding-top: 30px;
 }
 
-.expander{
+#explorer .expander{
     background: red; */
     width: 60%;
     background: white;
 }
 
-.expander-surrounder{
+#explorer .expander-surrounder{
     box-shadow: 2px 2px 5px -3px black;
     margin-left: 20%;
     margin-right: 20%;
 }
 
-.expander-header{
+#explorer .expander-header{
     width: 100%;
     padding: 13px;
     border-top: 1px solid #efefef;
     border-bottom: 1px solid #efefef;
 }
 
-.expander-image{
+#explorer .expander-image{
     width: 25px;position: relative;top: 2px;
 }
 
-.spinner{
+#explorer .spinner{
     animation: spin 1s linear infinite;
     -webkit-animation: spin 1s linear infinite;
     -moz-animation: spin 1s linear infinite;
 }
 
-.expander-td{
+#explorer .expander-td{
     width: 4%;
 }
 
-.expander-content{
+#explorer .expander-content{
     display: none;
 }
 
@@ -182,7 +178,7 @@ span.nav-span {
     background: transparent;
 }
 
-.global-nav{
+#explorer .global-nav{
     position: fixed;
     bottom: 0;
     left: 0;
@@ -195,7 +191,7 @@ span.nav-span {
     box-shadow: 0px 0 2px -1px black;
 }
 
-.global-nav i{
+#explorer .global-nav i{
     display: block;
     width: 35px;
     padding-top: 10px;
@@ -204,20 +200,20 @@ span.nav-span {
     font-size: 30px;
 }
 
-.modal{
+#explorer .modal{
     position: fixed;
     top: 0;
     left: 0;
 }
 
-.modal.back{
+#explorer .modal.back{
     width: 100vw;
     height: 100vh;
     z-index: 10001;
     background: rgba(0, 0, 0, 0.7);
 }
 
-.modal.fore{
+#explorer .modal.fore{
     width: 70vw;
     height: 70vh;
     z-index: 10003;
@@ -231,7 +227,7 @@ span.nav-span {
     overflow-y: auto;
 }
 
-button.tab-button {
+#explorer button.tab-button {
     background: none;
     border: none;
     min-width: 60px;
@@ -243,44 +239,44 @@ button.tab-button {
     border-right: none;
 }
 
-.tab{
+#explorer .tab{
     display: none;
 }
 
-.head{
+#explorer .head{
     font-family: 'Raleway';
 }
 
-.body{
+#explorer .body{
     font-family: 'Nunito';
 }
 
-.tab:first-child{
+#explorer .tab:first-child{
     display: block;
 }
 
-button.tab-button.active{
+#explorer button.tab-button.active{
     background: #f7f7f7;
 }
 
-.tab-button:last-child{
+#explorer .tab-button:last-child{
     border-right: 1px solid #e2e2e2;
 }
-.tab-button img{
+#explorer .tab-button img{
     width: 36px;
     height: 36px;
 }
 
-button.tab-button.active {
+#explorer button.tab-button.active {
     border-bottom: none;
 }
 
-.clip-nav{
+#explorer .clip-nav{
     width: 0;
     overflow: hidden;
 }
 
-.search-container{
+#explorer .search-container{
     width: 100%;
     position: relative;
     top: -11px;
@@ -290,11 +286,11 @@ button.tab-button.active {
     box-shadow: 0 3px 11px -7px black;
 }
 
-.search-icon{
+#explorer .search-icon{
     color: gray;margin-left: 15px;margin-top: 14px;
 }
 
-.search-field{
+#explorer .search-field{
     width: 91%;
     padding: 10px;
     position: relative;
@@ -306,16 +302,16 @@ button.tab-button.active {
     font-family: Lato;
 }
 
-.search-field:focus{
+#explorer .search-field:focus{
     border: none;
     outline-width: 0;
 }
 
-#search-icons tr{
+#explorer #search-icons tr{
     cursor: pointer;
 }
 
-.chip-link{
+#explorer .chip-link{
     background: #efefef;
     display: -webkit-inline-box;
     padding: 4px;
@@ -327,11 +323,11 @@ button.tab-button.active {
     margin-bottom: 12px;
 }
 
-.chip-link .icon{
+#explorer .chip-link .icon{
     padding: 3px;background: #dedede;border-radius: 70px;margin-right: 9px;
 }
 
-.chip-link .text{
+#explorer .chip-link .text{
     position: relative;
     top: -6px;
 }

@@ -17,7 +17,9 @@ var monsterExpanderTemplate = $("<div class=\"expansion-body clearfix\">\n   <h2
 //when we get to the rewriting of the pages feature branch.
 bus.on("switch-to-loader", function(){
     switchPage("loader");
-    $("body").css("overflow", "hidden");
+    console.log("X");
+    $("body").css("overflow", "hidden").css("height", "100%");
+    $("main").css("height", "100%");
 });
 
 //Like before, if we are switching to the explorer we can use the default stuff but we need to 
@@ -25,7 +27,8 @@ bus.on("switch-to-loader", function(){
 //back to auto. This will also be rewritten when we get to the rewriting of pages feature branch.
 bus.on("switch-to-explorer", function(){
     switchPage("explorer");
-    $("body").css("overflow", "auto");
+    $("body").css("overflow", "auto").css("height", "");
+    $("main").css("height", "");
 });
 
 //This is a generic function that allows us to spawn an error box from anywhere using a quick bus

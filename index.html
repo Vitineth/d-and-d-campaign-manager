@@ -13,7 +13,13 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
+        <style>
+            html{
+                height: 100%;
+            }
+        </style>
         <link href="resources/css/explorer.css" rel="stylesheet">
+        <link href="resources/css/loader.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     </head>
 
@@ -23,6 +29,7 @@
         </div>
 
         <main>
+<!--
             <section id="loader">
                 <div data-page="loader" id="loader-div" style="display:flex;justify-content:center;align-items:center;">
                     <div>
@@ -32,6 +39,7 @@
                     </div>
                 </div>
             </section>
+-->
         </main>
 <!--
         <footer>
@@ -81,6 +89,8 @@
             $.getScript("resources/js/pages/explorer/dice-roller.js");
 //            $.getScript("resources/js/material-design.js");
             $.getScript("resources/js/pages/explorer/explorer.js");
+            
+            bus.emit("switch-to-loader");
         });
 
         // Once the event has been set up, trigger the injector.
