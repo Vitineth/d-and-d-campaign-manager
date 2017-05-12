@@ -1,0 +1,302 @@
+#explorer .nav-bar{
+    position: fixed;
+    width: 100%;
+    height: 90px;
+    background: white;
+    font-family: Raleway;
+}
+
+#explorer .nav-bar:after{
+    content:''; 
+    width:90%; 
+    height:1px; 
+    background:#efefef; 
+    position:absolute;
+    bottom:-1px; 
+    margin-left: 5%;
+}
+
+#explorer .navigation-buttons{
+    display: inline-flex;
+    float: right;
+    margin: 30px;
+    margin-right: 120px;
+    font-family: "Raleway";
+    font-size: 13px;
+}
+
+#explorer .centre-line{
+    width: 50px;
+    height: 1px;
+    background: #a2a2a2;
+    margin-top: 12px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#explorer span.nav-span {
+    line-height: 23px;
+    color: #a2a2a2;
+}
+
+#explorer .navigation-title{
+    padding: 60px;
+    font-family: Raleway;
+}
+
+#explorer .navigation-type{
+    color: #a2a2a2;
+    position: relative;
+    top: -5px;
+}
+
+#explorer .navigation-name{
+    font-weight: 700;
+    font-size: 26px;
+    margin-left: 10px;
+}
+
+#explorer .nav-bar{
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+#explorer .nav-table{
+    width: 100%;
+    margin-top: -30px;
+}
+
+#explorer .nav-spacer{
+    height: 90px;
+}
+
+#explorer .main{
+    display:flex;align-items:center;width:100%;
+}
+
+#explorer .header{
+    text-align: center;
+    font-family: Raleway;
+}
+
+#explorer .header-container{
+    position: relative;
+}
+
+#explorer .header-container:after{
+    content: '';
+    width: 20%;
+    height: 1px;
+    background: #efefef;
+    position: absolute;
+    bottom: -21px;
+    margin-left: 40%;
+}
+
+#explorer .header-container.longer:after{
+    width: 80%;
+    margin-left: 10%;
+}
+
+#explorer .content{
+    padding: 50px;
+    font-size: 18px;
+    padding-top: 30px;
+}
+
+#explorer .expander{
+    background: red; */
+    width: 60%;
+    background: white;
+}
+
+#explorer .expander-surrounder{
+    box-shadow: 2px 2px 5px -3px black;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#explorer .expander-header{
+    width: 100%;
+    padding: 13px;
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+}
+
+#explorer .expander-image{
+    width: 25px;position: relative;top: 2px;
+}
+
+#explorer .spinner{
+    animation: spin 1s linear infinite;
+    -webkit-animation: spin 1s linear infinite;
+    -moz-animation: spin 1s linear infinite;
+}
+
+#explorer .expander-td{
+    width: 4%;
+}
+
+#explorer .expander-content{
+    display: none;
+}
+
+#explorer .global-nav{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 19px;
+    position: fixed;
+    top: 0;
+    z-index: 1001;
+    height: 100%;
+    background: #f5f5f5;
+    box-shadow: 0px 0 2px -1px black;
+}
+
+#explorer .global-nav i{
+    display: block;
+    width: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 5px;
+    font-size: 30px;
+}
+
+#explorer .modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#explorer .modal.back{
+    width: 100vw;
+    height: 100vh;
+    z-index: 10001;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+#explorer .modal.fore{
+    width: 70vw;
+    height: 70vh;
+    z-index: 10003;
+    background: white;
+    border: 1px solid #efefef;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+    border-radius: 4px;
+    overflow-y: auto;
+}
+
+#explorer button.tab-button {
+    background: none;
+    border: none;
+    min-width: 60px;
+    min-height: 40px;
+    border: 1px solid #e2e2e2;
+    margin: 0;
+    padding: 0;
+    float: left;
+    border-right: none;
+}
+
+#explorer .tab{
+    display: none;
+}
+
+#explorer .head{
+    font-family: 'Raleway';
+}
+
+#explorer .body{
+    font-family: 'Nunito';
+}
+
+#explorer .tab:first-child{
+    display: block;
+}
+
+#explorer button.tab-button.active{
+    background: #f7f7f7;
+}
+
+#explorer .tab-button:last-child{
+    border-right: 1px solid #e2e2e2;
+}
+
+#explorer .tab-button img{
+    width: 36px;
+    height: 36px;
+}
+
+#explorer button.tab-button.active {
+    border-bottom: none;
+}
+
+#explorer .clip-nav{
+    width: 0;
+    overflow: hidden;
+}
+
+#explorer .search-container{
+    width: 100%;
+    position: relative;
+    top: -11px;
+    left: -10px;
+    padding-right: 20px;
+    display: inherit;
+    box-shadow: 0 3px 11px -7px black;
+}
+
+#explorer .search-icon{
+    color: gray;margin-left: 15px;margin-top: 14px;
+}
+
+#explorer .search-field{
+    width: 91%;
+    padding: 10px;
+    position: relative;
+    border: none;
+    top: -7px;
+    font-size: 20px;
+    top: -5px;
+    color: gray;
+    font-family: Lato;
+}
+
+#explorer .search-field:focus{
+    border: none;
+    outline-width: 0;
+}
+
+#explorer #search-icons tr{
+    cursor: pointer;
+}
+
+#explorer .chip-link{
+    background: #efefef;
+    display: -webkit-inline-box;
+    padding: 4px;
+    padding-bottom: 1px;
+    padding-left: 6px;
+    padding-right: 15px;
+    border-radius: 34px;
+    border: 1px solid #e2e2e2;
+    margin-bottom: 12px;
+}
+
+#explorer .chip-link .icon{
+    padding: 3px;background: #dedede;border-radius: 70px;margin-right: 9px;
+}
+
+#explorer .chip-link .text{
+    position: relative;
+    top: -6px;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

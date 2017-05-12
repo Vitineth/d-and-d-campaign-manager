@@ -4,10 +4,69 @@
     <head>
         <meta charset="UTF-8">
         <title>D and D Campaign Manager - No Campaign Loaded</title>
-        <link rel="stylesheet" href="resources/css/skeleton.css">
-        <link rel="stylesheet" href="resources/css/index.css">
-        <link rel="stylesheet" href="resources/css/material-design.css">
         <link rel="stylesheet" href="resources/css/font-awesome.min.css">
+
+
+        <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
+        <style>
+            html{
+                height: 100%;
+            }
+
+
+            ::-webkit-scrollbar {
+                width: 7px;
+                height: 7px;
+            }
+            
+            ::-webkit-scrollbar-button {
+                width: 0px;
+                height: 0px;
+            }
+            
+            ::-webkit-scrollbar-thumb {
+                background: #e1e1e1;
+                border: 0px none #ffffff;
+                border-radius: 50px;
+            }
+            
+            ::-webkit-scrollbar-thumb:hover {
+                background: #ffffff;
+            }
+            
+            ::-webkit-scrollbar-thumb:active {
+                background: #8c8c8c;
+            }
+            
+            ::-webkit-scrollbar-track {
+                background: #666666;
+                border: 0px none #ffffff;
+                border-radius: 50px;
+            }
+            
+            ::-webkit-scrollbar-track:hover {
+                background: #666666;
+            }
+            
+            ::-webkit-scrollbar-track:active {
+                background: #333333;
+            }
+            
+            ::-webkit-scrollbar-corner {
+                background: transparent;
+            }
+            
+            body{
+                margin: 0;
+                font-family: Nunito;
+                padding-bottom: 25px;
+            }
+        </style>
+        <link href="resources/css/explorer.css" rel="stylesheet">
+        <link href="resources/css/loader.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     </head>
 
     <body style="overflow: hidden">
@@ -16,25 +75,9 @@
         </div>
 
         <main>
-            <section id="loader">
-                <div data-page="loader" id="loader-div" style="display:flex;justify-content:center;align-items:center;">
-                    <div>
-                        <h1>D and D Campaign Manager</h1>
-                        <img src="./resources/img/icon-01.png" style="    text-align: center;    margin: auto;    display: block;">
-                        <button class="load-button">Load Campaign File</button>
-                    </div>
-                </div>
-            </section>
         </main>
-
-        <footer>
-            <span id="footer-span">
-                Built with Electron! (Electron [<span id="f-electron"></span>], Node.js [<span id="f-node"></span>], Chromium [<span id="f-chrome"></span>])
-            </span>
-        </footer>
-
     </body>
-    
+
     <script>
         if (typeof module === 'object') {
             window.module = module;
@@ -43,8 +86,6 @@
     </script>
 
     <script src="resources/js/jquery-3.1.1.min.js"></script>
-    <script src="resources/js/material-design.js"></script>
-    <script src="resources/js/pages/explorer/dice-roller.js"></script>
 
     <script>
         if (window.module) module = window.module;
@@ -52,13 +93,6 @@
     </script>
 
     <script>
-        if(process === undefined){
-            $("#footer-span").text("Built for Electron. Not running an Electron Session.");
-        }else{
-            $("#f-electron").text(process.versions.electron);
-            $("#f-node").text(process.versions.node);
-            $("#f-chrome").text(process.versions.chrome);
-        }
         // We need the bus first to handle the injector events.
         const bus = require('./resources/js/system-emitter.js');
 
@@ -68,6 +102,11 @@
             require('./resources/js/rendering/document-response.js');
 
             require('./resources/js/campaign-management.js');
+
+            $.getScript("resources/js/pages/explorer/dice-roller.js");
+            $.getScript("resources/js/pages/explorer/explorer.js");
+
+            bus.emit("switch-to-loader");
         });
 
         // Once the event has been set up, trigger the injector.
