@@ -80,6 +80,7 @@
                 "hell_hound"
             ],
             "puzzles": [
+                "pz1"
             ],
             "navigation":{
                 "next": {
@@ -90,5 +91,15 @@
         }
     },
     "puzzles":{
+        "pz1": {
+            "name": "Coin Puzzle",
+            "description": "Some description",
+            "solution": "Solution",
+            "hints": [
+                "H1",
+                "H2",
+                "H3"
+            ]
+        }
     }
 }

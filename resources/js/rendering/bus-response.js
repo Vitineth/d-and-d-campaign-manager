@@ -73,9 +73,9 @@ bus.on('load-encounter', function(encounter, campaign){
     }
 
     for(var i = 0; i < encounter.puzzles.length; i++){
-        var monster = campaign.puzzles[encounter.puzzles[i]];
+        var puzzle = campaign.puzzles[encounter.puzzles[i]];
         $.get("resources/html/puzzle.html", function(data){
-            $("#exp-puzzles-container").append(generatePuzzle(monster, $(data)));
+            $("#exp-puzzles-container").append(generatePuzzle(puzzle, $(data)));
         });
     }
 
@@ -146,9 +146,9 @@ bus.on('load-scene', function(encounter, campaign){
     }
 
     for(var i = 0; i < encounter.puzzles.length; i++){
-        var monster = campaign.puzzles[encounter.puzzles[i]];
+        var puzzle = campaign.puzzles[encounter.puzzles[i]];
         $.get("resources/html/puzzle.html", function(data){
-            $("#exp-puzzles-container").append(generatePuzzle(monster, $(data)));
+            $("#exp-puzzles-container").append(generatePuzzle(puzzle, $(data)));
         });
     }
 
@@ -243,6 +243,16 @@ function generatePuzzle(puzzle, copy){
         copy.find("#hints").append($("<li></li>").text(puzzle.hints[i]));
     }
     copy.find("#hints").removeAttr("id");
+    
+    var header = copy.find(".expander-header");
+    var image = copy.find(".expander-image");
+    var body = copy.find(".expander-content");
+    header.click(function(){
+        image.addClass("spinner");
+        body.slideToggle(400, function(){
+            image.removeClass("spinner");
+        });
+    });
     return copy;
 }
 
@@ -254,6 +264,7 @@ function generatePuzzle(puzzle, copy){
 //finds on page load but as these are being added after the load, it is easier to generate their
 //complete structure.
 function generateMonster(monster, copy){
+    console.log([monster, copy]);
     //The basic details of the monster can be filled in easily. We have a template for the body
     //of the expander above which we can take a clone of. Each thing that needs to be changed
     //within it is associated with an id which must be removed before it is injected into the DOM
