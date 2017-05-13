@@ -89,6 +89,7 @@ function verifyCampaign(){
 
     window.document.title = "D and D Campaign Manager - " + campaign.title;
     bus.emit("switch-to-explorer");
+    bus.emit("enable-campaign");
     bus.emit("trigger-load", campaign.begin);
 }
 

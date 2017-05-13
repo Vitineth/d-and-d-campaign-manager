@@ -85,3 +85,35 @@ function toggleNav(){
         });     
     }
 }
+
+bus.on("command-search", function(){
+    launchSearchModal("all");
+});
+
+bus.on("command-edit", function(){
+    launchSearchModal("edit");
+});
+
+bus.on("command-characters", function(){
+    launchSearchModal("characters");
+});
+
+bus.on("command-encounters", function(){
+    launchSearchModal("encounters");
+});
+
+bus.on("command-monsters", function(){
+    launchSearchModal("monsters");
+});
+
+bus.on("command-dice", function(){
+    launchSearchModal("dice");
+});
+
+bus.on("command-scenes", function(){
+    launchSearchModal("scenes");
+});
+
+bus.on("command-puzzles", function(){
+    launchSearchModal("puzzles");
+});
