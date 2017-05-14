@@ -27,6 +27,10 @@ bus.on("switch-to-explorer", function(){
     $("main").css("height", "");
 });
 
+bus.on("swtich-to-editor", function(){
+    switchPage("editor");
+});
+
 //This is a generic function that allows us to spawn an error box from anywhere using a quick bus
 //call. This is designed to be expanded in the future and provides a standard layout for error 
 //messages. Functions can create their own with specific buttons for example but this it for

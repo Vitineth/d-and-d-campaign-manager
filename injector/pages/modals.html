@@ -1,0 +1,685 @@
+#nosection
+#location body
+#default block
+<div class="modeal" id="monster-modal">
+    <div class="modal back" style="display: none">
+    </div>
+    <div class="modal fore" style="display: none">
+        <div style="height: 91%;padding: 30px; overflow: auto" class="tabs">
+            <div class="header-container">
+                <h1 class="header">Basic Details</h1>
+            </div>
+            <table class="right-header">
+                <tr>
+                    <th style="width: 8%">ID</th>
+                    <td><input type="text" id="monster-id"></td>
+                    <th>Fully Qualified ID</th>
+                    <td><input type="text" disabled id="monster-q-id"></td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td colspan="3"><input type="text" id="monster-name"></td>
+                </tr>
+                <tr>
+                    <th>Challenge</th>
+                    <td colspan="2"><input type="text" id="monster-challenge"></td>
+                    <td><input type="text" value="XP" id="monster-xp"></td>
+                </tr>
+                <tr>
+                    <th>Type</th>
+                    <td colspan="3">
+                        <select id="monster-type">
+                            <option>Aberration</option>
+                            <option>Animal</option>
+                            <option>Celestial</option>
+                            <option>Construct</option>
+                            <option>Dragon</option>
+                            <option>Elemental</option>
+                            <option>Fey</option>
+                            <option>Fiend</option>
+                            <option>Giant</option>
+                            <option>Humanoid</option>
+                            <option>Magical Beast</option>
+                            <option>Monstrous Humanoid</option>
+                            <option>Ooze</option>
+                            <option>Outsider</option>
+                            <option>Plant</option>
+                            <option>Undead</option>
+                            <option>Vermin</option>
+                            <option>Air</option>
+                            <option>Angel</option>
+                            <option>Aquatic</option>
+                            <option>Archon</option>
+                            <option>Augmented</option>
+                            <option>Chaotic</option>
+                            <option>Cold</option>
+                            <option>Demon</option>
+                            <option>Devil</option>
+                            <option>Earth</option>
+                            <option>Evil</option>
+                            <option>Extraplanar</option>
+                            <option>Fire</option>
+                            <option>Good</option>
+                            <option>Incorporeal</option>
+                            <option>Lawful</option>
+                            <option>Native</option>
+                            <option>Psionic</option>
+                            <option>Shapechanger</option>
+                            <option>Swarm</option>
+                            <option>Water</option>
+                            <option>Aquatic</option>
+                            <option>Dwarf</option>
+                            <option>Elf</option>
+                            <option>Gnoll</option>
+                            <option>Gnome</option>
+                            <option>Goblinoid</option>
+                            <option>Halfling</option>
+                            <option>Human</option>
+                            <option>Orc</option>
+                            <option>Reptilian</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Size</th>
+                    <td colspan="3">
+                        <select id="monster-size">
+                            <option>Fine</option>
+                            <option>Diminitutive</option>
+                            <option>Tiny</option>
+                            <option>Small</option>
+                            <option>Medium</option>
+                            <option>Large</option>
+                            <option>Huge</option>
+                            <option>Gargantuan</option>
+                            <option>Colossal</option>
+                            <option>Colossal+</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Alignment</th>
+                    <td colspan="3">
+                        <select id="monster-alignment">
+                            <option>Lawful Good</option>
+                            <option>Lawful Neutral</option>
+                            <option>Lawful Evil</option>
+                            <option>Neutral Good</option>
+                            <option>Neutral</option>
+                            <option>Netural Evil</option>
+                            <option>Chaotic Good</option>
+                            <option>Chaotic Neutral</option>
+                            <option>Chaotic Evil</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Armor Class (AC)</th>
+                    <td colspan="3"><input type="text" id="monster-ac"></td>
+                </tr>
+                <tr>
+                    <th>Hit Points (HP)</th>
+                    <td colspan="3"><input type="text" id="monster-hp"></td>
+                </tr>
+                <tr>
+                    <th>Speed (ft)</th>
+                    <td colspan="3"><input type="text" id="monster-speed"></td>
+                </tr>
+            </table>
+            <div class="header-container">
+                <h1 class="header">Attributes</h1>
+            </div>
+            <table class="center-header center-content">
+                <tr>
+                    <th>Strength (STR)</th>
+                    <th>Dexterity (DEX)</th>
+                    <th>Constitution (CON)</th>
+                </tr>
+                <tr>
+                    <td><input type="number" id="monster-str"></td>
+                    <td><input type="number" id="monster-dex"></td>
+                    <td><input type="number" id="monster-con"></td>
+                </tr>
+                <tr>
+                    <td id="monster-str-mod">(+3)</td>
+                    <td id="monster-dex-mod">(+3)</td>
+                    <td id="monster-con-mod">(+3)</td>
+                </tr>
+                <tr>
+                    <th>Intelligence (INT)</th>
+                    <th>Wisdom (WIS)</th>
+                    <th>Charisma (CHA)</th>
+                </tr>
+                <tr>
+                    <td><input type="number" id="monster-int"></td>
+                    <td><input type="number" id="monster-wis"></td>
+                    <td><input type="number" id="monster-cha"></td>
+                </tr>
+                <tr>
+                    <td id="monster-int-mod">(+3)</td>
+                    <td id="monster-wis-mod">(+3)</td>
+                    <td id="monster-cha-mod">(+3)</td>
+                </tr>
+            </table>
+            <div class="header-container">
+                <h1 class="header">Skills</h1>
+            </div>
+            <ol class="skills" id="monster-skills">
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="monster-add-skill">add</i>
+            <div class="header-container">
+                <h1 class="header">Abilities</h1>
+            </div>
+            <ol class="abilities" id="monster-abilities">
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <textarea></textarea>
+                </li>
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <textarea></textarea>
+                </li>
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <textarea></textarea>
+                </li>
+            </ol>
+            <i class="material-icons add-icon" style="margin-right: 0" id="monster-add-abilities">add</i>
+            <div class="header-container">
+                <h1 class="header">Actions</h1>
+            </div>
+            <ol class="abilities" id="monster-skills-2">
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <textarea></textarea>
+                </li>
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <textarea></textarea>
+                </li>
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <textarea></textarea>
+                </li>
+            </ol>
+            <i class="material-icons add-icon" style="margin-right: 0" id="monster-add-skill-2">add</i>
+            <div class="header-container">
+                <h1 class="header">Immunities and Resistances</h1>
+            </div>
+            <div class="header-container">
+                <h3 class="header">Damage Immunities</h3>
+            </div>
+            <ol class="skills" id="monster-damage-immunities">
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="monster-add-damage-immunity">add</i>
+            <div class="header-container">
+                <h3 class="header">Damage Resistances</h3>
+            </div>
+            <ol class="skills" id="monster-damage-resistances">
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="monster-add-damage-resistance">add</i>
+            <div class="header-container">
+                <h3 class="header">Condition Immunities</h3>
+            </div>
+            <ol class="skills" id="monster-condition-immunities">
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="monster-add-condition-immunity">add</i>
+            <div class="header-container">
+                <h3 class="header">Condition Resistances</h3>
+            </div>
+            <ol class="skills" id="monster-condition-resistances">
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="monster-add-condition-resistance">add</i>
+            <div class="header-container">
+                <h1 class="header">Senses</h1>
+            </div>
+            <ol class="skills" id="monster-senses">
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="monster-add-senses">add</i>
+            <div class="header-container">
+                <h1 class="header">Languages</h1>
+            </div>
+            <ol class="skills" id="monster-languages">
+                <li>
+                    <select>
+                        <option>Infernal</option>
+                        <option>Common</option>
+                        <option>Dwarven</option>
+                    </select>
+                    <i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="monster-add-languages">add</i>
+            <div style="height: 30px"></div>
+            <div style="    margin-left: 37px;">
+                <button class="save-button" id="monster-save" onclick="saveMonster();toggleModal($('#monster-modal'));">Save</button>
+                <button class="save-button" id="monster-cancel" onclick="toggleModal($('#monster-modal'));">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modeal" id="npc-modal">
+    <div class="modal back" style="display: none">
+    </div>
+    <div class="modal fore" style="display: none">
+        <div style="height: 91%;padding: 30px; overflow: auto" class="tabs">
+            <div class="header-container">
+                <h1 class="header">Basic Details</h1>
+            </div>
+            <table class="right-header">
+                <tr>
+                    <th style="width: 8%">ID</th>
+                    <td><input type="text" id="npc-id"></td>
+                    <th>Fully Qualified ID</th>
+                    <td><input type="text" disabled id="npc-id-q"></td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td colspan="3"><input type="text" id="npc-name"></td>
+                </tr>
+                <tr>
+                    <th>Class</th>
+                    <td colspan="3">
+                        <select id="npc-class">
+                            <option>Barbarian</option>
+                            <option>Bard</option>
+                            <option>Cleric</option>
+                            <option>Druid</option>
+                            <option>Fighter</option>
+                            <option>Monk</option>
+                            <option>Paladin</option>
+                            <option>Ranger</option>
+                            <option>Rogue</option>
+                            <option>Sorcerer</option>
+                            <option>Warlock</option>
+                            <option>Wizard</option>
+                            <option>Custom (Noteworthy Point)</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Race</th>
+                    <td colspan="3">
+                        <select id="npc-race">
+                            <option>Dragonborn</option>
+                            <option>Dwarf</option>
+                            <option>Elf</option>
+                            <option>Gnome</option>
+                            <option>Half-Elf</option>
+                            <option>Half-Orc</option>
+                            <option>Halfling</option>
+                            <option>Human</option>
+                            <option>Tiefling</option>
+                            <option>Custom (Noteworthy Point)</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Alignment</th>
+                    <td colspan="3">
+                        <select id="npc-alignment">
+                            <option>Lawful Good</option>
+                            <option>Lawful Neutral</option>
+                            <option>Lawful Evil</option>
+                            <option>Neutral Good</option>
+                            <option>Neutral</option>
+                            <option>Netural Evil</option>
+                            <option>Chaotic Good</option>
+                            <option>Chaotic Neutral</option>
+                            <option>Chaotic Evil</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Background</th>
+                    <td colspan="3">
+                        <select id="npc-background">
+                            <option>Acolyte</option>
+                            <option>Charlatan</option>
+                            <option>Criminal</option>
+                            <option>Entertainer</option>
+                            <option>Folk Hero</option>
+                            <option>Guild Artisan</option>
+                            <option>Hermit</option>
+                            <option>Noble</option>
+                            <option>Outlander</option>
+                            <option>Sage</option>
+                            <option>Sailor</option>
+                            <option>Soldier</option>
+                            <option>Urchin</option>
+                            <option>Other (Noteworthy Point)</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <div class="header-container">
+                <h1 class="header">Physical Description</h1>
+            </div>
+            <textarea id="npc-physical-description"></textarea>
+            <div class="header-container">
+                <h1 class="header">Traits</h1>
+            </div>
+            <textarea id="npc-traits"></textarea>
+            <div class="header-container">
+                <h1 class="header">Noteworthy Points</h1>
+            </div>
+            <ol class="abilities" id="npc-noteworthy">
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <textarea></textarea>
+                </li>
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <textarea></textarea>
+                </li>
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <textarea></textarea>
+                </li>
+            </ol>
+            <i class="material-icons add-icon" style="margin-right: 0" id="npc-add-noteworthy">add</i>
+            <div class="header-container">
+                <h1 class="header">Languages</h1>
+            </div>
+            <ol class="skills" id="npc-languages">
+                <li>
+                    <select>
+                        <option>Infernal</option>
+                        <option>Common</option>
+                        <option>Dwarven</option>
+                    </select>
+                    <i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="npc-add-language">add</i>
+            <div style="height: 30px"></div>
+            <div style="    margin-left: 37px;">
+                <button class="save-button" id="npc-save" onclick="saveNPC();toggleModal($('#npc-modal'));">Save</button>
+                <button class="save-button" id="npc-cancel" onclick="toggleModal($('#npc-modal'));">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modeal" id="puzzle-modal">
+    <div class="modal back" style="display: none">
+    </div>
+    <div class="modal fore" style="display: none">
+        <div style="height: 91%;padding: 30px; overflow: auto" class="tabs">
+            <div class="header-container">
+                <h1 class="header">Basic Details</h1>
+            </div>
+            <table class="right-header">
+                <tr>
+                    <th style="width: 8%">ID</th>
+                    <td><input type="text" id="puzzle-id"></td>
+                    <th>Fully Qualified ID</th>
+                    <td><input type="text" disabled id="puzzle-id-q"></td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td colspan="3"><input type="text" id="puzzle-name"></td>
+                </tr>
+            </table>
+            <div class="header-container">
+                <h1 class="header">Description</h1>
+            </div>
+            <textarea id="puzzle-description"></textarea>
+
+            <div class="header-container">
+                <h1 class="header">Hints</h1>
+            </div>
+            <ol class="skills" id="puzzle-hints">
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="puzzle-add-hints">add</i>
+            <div class="header-container">
+                <h1 class="header">Solution</h1>
+            </div>
+            <textarea id="puzzle-solution"></textarea>
+            <div style="height: 30px"></div>
+            <div style="    margin-left: 37px;">
+                <button class="save-button" id="puzzle-save" onclick="savePuzzle();toggleModal($('#puzzle-modal'));">Save</button>
+                <button class="save-button" id="puzzle-cancel" onclick="toggleModal($('#puzzle-modal'));">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modeal" id="scene-modal">
+    <div class="modal back" style="display: none">
+    </div>
+    <div class="modal fore" style="display: none">
+        <div style="height: 91%;padding: 30px; overflow: auto" class="tabs">
+            <div class="header-container">
+                <h1 class="header">Basic Details</h1>
+            </div>
+            <table class="right-header">
+                <tr>
+                    <th style="width: 8%">ID</th>
+                    <td><input type="text" id="scene-id"></td>
+                    <th>Fully Qualified ID</th>
+                    <td><input type="text" disabled id="scene-id-q"></td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td colspan="3"><input type="text" id="scene-name"></td>
+                </tr>
+            </table>
+            <div class="header-container">
+                <h1 class="header">Description</h1>
+            </div>
+            <textarea id="scene-description"></textarea>
+            <div class="header-container">
+                <h3 class="header">Key Points</h3>
+            </div>
+            <ol class="skills" id="scene-key-points">
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="scene-add-key-points">add</i>
+            <div class="header-container">
+                <h1 class="header">NPCs</h1>
+            </div>
+            <ol class="skills" id="scene-npc">
+                <li>
+                    <select>
+                        <option>Infernal</option>
+                        <option>Common</option>
+                        <option>Dwarven</option>
+                    </select>
+                    <i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="scene-add-npc">add</i>
+            <div class="header-container">
+                <h1 class="header">Puzzles</h1>
+            </div>
+            <ol class="skills" id="scene-puzzles">
+                <li>
+                    <select>
+                        <option>Infernal</option>
+                        <option>Common</option>
+                        <option>Dwarven</option>
+                    </select>
+                    <i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="scene-add-puzzle">add</i>
+            <div class="header-container">
+                <h1 class="header">Navigation</h1>
+            </div>
+            <ol class="abilities" id="scene-navigation">
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <select>
+                        <option>Infernal</option>
+                        <option>Common</option>
+                        <option>Dwarven</option>
+                    </select>
+                </li>
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <select>
+                        <option>Infernal</option>
+                        <option>Common</option>
+                        <option>Dwarven</option>
+                    </select>
+                </li>
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <select>
+                        <option>Infernal</option>
+                        <option>Common</option>
+                        <option>Dwarven</option>
+                    </select>
+                </li>
+            </ol>
+            <i class="material-icons add-icon" style="margin-right: 0" id="scene-add-navigation">add</i>
+            <div style="height: 30px"></div>
+            <div style="    margin-left: 37px;">
+                <button class="save-button" id="scene-save" onclick="saveScene();toggleModal($('#scene-modal'));">Save</button>
+                <button class="save-button" id="scene-cancel" onclick="toggleModal($('#scene-modal'));">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modeal" id="encounter-modal">
+    <div class="modal back" style="display: none">
+    </div>
+    <div class="modal fore" style="display: none">
+        <div style="height: 91%;padding: 30px; overflow: auto" class="tabs">
+            <div class="header-container">
+                <h1 class="header">Basic Details</h1>
+            </div>
+            <table class="right-header">
+                <tr>
+                    <th style="width: 8%">ID</th>
+                    <td><input type="text" id="encounter-id"></td>
+                    <th>Fully Qualified ID</th>
+                    <td><input type="text" disabled id="encounter-id-q"></td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td colspan="3"><input type="text" id="encounter-name"></td>
+                </tr>
+            </table>
+            <div class="header-container">
+                <h1 class="header">Description</h1>
+            </div>
+            <textarea id="encounter-description"></textarea>
+            <div class="header-container">
+                <h3 class="header">Key Points</h3>
+            </div>
+            <ol class="skills" id="encounter-key-points">
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="encounter-add-key-points">add</i>
+            <div class="header-container">
+                <h1 class="header">Monsters</h1>
+            </div>
+            <ol class="skills" id="encounter-monsters">
+                <li>
+                    <select>
+                        <option>Infernal</option>
+                        <option>Common</option>
+                        <option>Dwarven</option>
+                    </select>
+                    <i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="encounter-add-monsters">add</i>
+            <div class="header-container">
+                <h1 class="header">Puzzles</h1>
+            </div>
+            <ol class="skills" id="encounter-puzzles">
+                <li>
+                    <select>
+                        <option>Infernal</option>
+                        <option>Common</option>
+                        <option>Dwarven</option>
+                    </select>
+                    <i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+                <li><input type="text"><i class="material-icons">close</i></li>
+            </ol>
+            <i class="material-icons add-icon" id="encounter-add-puzzles">add</i>
+            <div class="header-container">
+                <h1 class="header">Navigation</h1>
+            </div>
+            <ol class="abilities" id="encounter-navigation">
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <select>
+                        <option>Infernal</option>
+                        <option>Common</option>
+                        <option>Dwarven</option>
+                    </select>
+                </li>
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <select>
+                        <option>Infernal</option>
+                        <option>Common</option>
+                        <option>Dwarven</option>
+                    </select>
+                </li>
+                <li>
+                    <input type="text">
+                    <i class="material-icons">close</i>
+                    <select>
+                        <option>Infernal</option>
+                        <option>Common</option>
+                        <option>Dwarven</option>
+                    </select>
+                </li>
+            </ol>
+            <i class="material-icons add-icon" style="margin-right: 0" id="encounter-add-navigation">add</i>
+            <div style="height: 30px"></div>
+            <div style="    margin-left: 37px;">
+                <button class="save-button" id="encounter-save" onclick="saveEncounter();toggleModal($('#encounter-modal'));">Save</button>
+                <button class="save-button" id="encounter-cancel" onclick="toggleModal($('#encounter-modal'));">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
