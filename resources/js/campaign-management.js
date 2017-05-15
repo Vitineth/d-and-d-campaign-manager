@@ -38,9 +38,9 @@ bus.on("load-campaign", function(path){
     loadCampaign(path[0]);
 });
 
-bus.on("fetch-campaign", function(){
-    bus.emit("announce-campaign", campaign);
-})
+bus.on("fetch-campaign", function(callback){
+    if(typeof(callback)==="function") callback(campaign);
+});
 
 //bus.emit("load-campaign", ["C:\\Users\\Ryan\\Documents\\Git\\Electron\\d-and-d-campaign-manager\\resources\\data.json"]);
 

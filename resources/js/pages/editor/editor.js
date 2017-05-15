@@ -1,10 +1,6 @@
 bus.on("enable-campaign", function(){
-    bus.on("announce-campaign", function(campaign){
+    bus.emit("fetch-campaign", function(campaign){
         load();
-//        $(".modeal .modal.back").click(function(){
-//            console.log("Magix");
-//            toggleModal($(this).parent());
-//        });
 
         function savePuzzle(){
             var puzzleModal = $("#puzzle-modal");
@@ -779,6 +775,5 @@ bus.on("enable-campaign", function(){
                 loadNPCModal($(this).attr("data-id"));  
             })
         }
-    })
-    bus.emit("fetch-campaign");
+    });
 });
