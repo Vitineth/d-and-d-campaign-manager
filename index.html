@@ -19,48 +19,74 @@
                 width: 7px;
                 height: 7px;
             }
-            
+
             ::-webkit-scrollbar-button {
                 width: 0px;
                 height: 0px;
             }
-            
+
             ::-webkit-scrollbar-thumb {
                 background: #e1e1e1;
                 border: 0px none #ffffff;
                 border-radius: 50px;
             }
-            
+
             ::-webkit-scrollbar-thumb:hover {
                 background: #ffffff;
             }
-            
+
             ::-webkit-scrollbar-thumb:active {
                 background: #8c8c8c;
             }
-            
+
             ::-webkit-scrollbar-track {
                 background: #666666;
                 border: 0px none #ffffff;
                 border-radius: 50px;
             }
-            
+
             ::-webkit-scrollbar-track:hover {
                 background: #666666;
             }
-            
+
             ::-webkit-scrollbar-track:active {
                 background: #333333;
             }
-            
+
             ::-webkit-scrollbar-corner {
                 background: transparent;
             }
-            
+
             body{
                 margin: 0;
                 font-family: Nunito;
                 padding-bottom: 25px;
+            }
+
+            #notification-div{
+                position: fixed;
+                z-index: 1005;
+                max-width: 29pc;
+                top: 2pc;
+                right: -29pc;
+                background: rgba(16, 171, 195, 0.8);
+                color: white;
+            }
+
+            #notification-container{
+                height: 100%;
+                padding: 10px;
+            }
+
+            #notification-icon-td{
+                vertical-align: middle;
+                width: 17%;
+                text-align: center;
+            }
+
+            #notification-icon{
+                margin-top: 9px;
+                margin-right: 10px;
             }
         </style>
         <link href="resources/css/explorer.css" rel="stylesheet">
@@ -70,6 +96,19 @@
     </head>
 
     <body style="overflow: hidden">
+        <div id="notification-div">
+            <table id="notification-container">
+                <tbody>
+                    <tr>
+                        <td id="notification-icon-td">
+                            <i class="material-icons" id="notification-icon">announcement</i>
+                        </td>
+                        <td id="notification-content">Some random message Some random message Some random message Some random message Some random message Some random message Some random message Some random message </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <div class="loading-div" style="display: none">
             <i class="fa fa-cog fa-spin"></i>
         </div>
@@ -79,6 +118,24 @@
     </body>
 
     <script>
+        function showNotification(text){
+            $("#notification-content").html(text);
+            notificationIn();
+            setTimeout(function(){
+                notificationOut();
+            }, 2000);
+        }
+        function notificationIn(){
+            $("#notification-div").animate({
+                right: "+=31pc"
+            }, 500);
+        }
+
+        function notificationOut(){
+            $("#notification-div").animate({
+                right: "-=31pc"
+            }, 500);
+        }
         if (typeof module === 'object') {
             window.module = module;
             module = undefined;
@@ -95,7 +152,9 @@
     <script>
         // We need the bus first to handle the injector events.
         const bus = require('./resources/js/system-emitter.js');
-
+        bus.on("notification", function(data){
+            showNotification(data);
+        });
         // Once all content on the page has been injected we can begin to load the rest of the scripts
         bus.on("injected", function(){
             require('./resources/js/rendering/bus-response.js');
