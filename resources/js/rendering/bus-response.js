@@ -142,12 +142,12 @@ bus.on('load-scene', function(encounter, campaign){
     $("#exp-monsters-container").empty();
     $("#exp-puzzle-container").empty();
 
-    for(var i = 0; i < encounter.monsters.length; i++){
-        var monster = campaign.monsters[encounter.monsters[i]];
-        $.get("resources/html/monster.html", function(data){
-            $("#exp-monsters-container").append(generateMonster(monster, $(data)));
-        });
-    }
+//    for(var i = 0; i < encounter.monsters.length; i++){
+//        var monster = campaign.monsters[encounter.monsters[i]];
+//        $.get("resources/html/monster.html", function(data){
+//            $("#exp-monsters-container").append(generateMonster(monster, $(data)));
+//        });
+//    }
 
     for(var i = 0; i < encounter.puzzles.length; i++){
         var puzzle = campaign.puzzles[encounter.puzzles[i]];

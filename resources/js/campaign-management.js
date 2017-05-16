@@ -118,13 +118,13 @@ bus.on("trigger-load", function(id){
         bus.emit("load-encounter", encounter, campaign);
     }else if(id.indexOf("s__") == 0){
         //Load a scene;
-        if(!campaign.encounters.hasOwnProperty(id.replace("s__", ""))){
+        if(!campaign.scenes.hasOwnProperty(id.replace("s__", ""))){
             bus.emit("error-window", "A scene ID has been specified but the corrosponding scene could not be found. Ensure that your data is valid.");
             return;
         }
 
-        var encounter = campaign.encounters[id.replace("s__", "")];
-        bus.emit("load-scene", encounter);
+        var encounter = campaign.scenes[id.replace("s__", "")];
+        bus.emit("load-scene", encounter, campaign);
     }else{
         bus.emit("loading-end");
     }
