@@ -1,25 +1,14 @@
 {
-    "title": "Campaign Test Data",
-    "begin": "e__encounter",
-
+    "title": "The Plot of Elmbiss",
+    "begin": "s__scene",
     "encounters": {
         "encounter": {
             "name": "Test Data Encounter",
             "description": "This is the description of the encounter that you will read when the players get to this stage.",
-            "key_points": [
-                "This is a key point",
-                "These are used to store info you will need at a glance",
-                "Maybe the weather or a dice roll to do to begin with"
-            ],
-            "monsters": [
-                "monster"
-            ],
-            "puzzles": [
-                "<id>"
-            ],
-            "npcs": [
-                "npc"
-            ],
+            "key_points": ["This is a key point", "These are used to store info you will need at a glance", "Maybe the weather or a dice roll to do to begin with"],
+            "monsters": ["monster"],
+            "puzzles": ["<id>"],
+            "npcs": ["npc"],
             "navigation": {
                 "next": "s__scene"
             }
@@ -29,23 +18,15 @@
         "scene": {
             "name": "Test Data Scene",
             "description": "description",
-            "key_points": [
-                "This is a key point",
-                "These are used to store info you will need at a glance",
-                "Maybe the weather or a dice roll to do to begin with"
-            ],
-            "npcs": [
-                "npc"
-            ],
-            "puzzles": [
-                "<id>"
-            ],
+            "key_points": ["This is a key point", "These are used to store info you will need at a glance", "Maybe the weather or a dice roll to do to begin with"],
+            "npcs": ["npc"],
+            "puzzles": ["<id>"],
             "navigation": {
                 "next": "e__encounter"
             }
         }
     },
-    "monsters":{
+    "monsters": {
         "monster": {
             "name": "Test Data Monster",
             "challenge": {
@@ -66,12 +47,10 @@
                 "wis": 7,
                 "cha": 18
             },
-            "skills": [
-                {
-                    "name": "Perception",
-                    "modifier": "+5"
-                }
-            ],
+            "skills": [{
+                "name": "Perception",
+                "modifier": "+5"
+            }],
             "abilities": {
                 "Ability 1": "I don't know, maybe it can see better or something."
             },
@@ -83,17 +62,11 @@
                 "condition": []
             },
             "resistances": {
-                "damage": [
-                    "fire"
-                ],
+                "damage": ["fire"],
                 "condition": []
             },
-            "senses": [
-                "A sense"
-            ],
-            "languages": [
-                "Infernal"
-            ]
+            "senses": ["A sense"],
+            "languages": ["Infernal"]
         }
     },
     "npcs": {
@@ -108,20 +81,14 @@
             "key_points": {
                 "Some points": "You can store important info here. Like what he's carrying"
             },
-            "languages": [
-                "Common"
-            ]
+            "languages": ["Common"]
         }
     },
-    "puzzles":{
+    "puzzles": {
         "<id>": {
             "name": "Test Data Puzzle",
             "description": "The description of the puzzle.",
-            "hints": [
-                "These don't always have to be hints",
-                "They could be descriptions and stuff",
-                "This wasn't really planned out very well."
-            ],
+            "hints": ["These don't always have to be hints", "They could be descriptions and stuff", "This wasn't really planned out very well."],
             "solution": "The actual solutions, in case your players are idiots. Or the description of what happens when they solve it. "
         }
     }
