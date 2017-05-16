@@ -6,6 +6,7 @@ const dialog = require('electron').remote.dialog;
 
 // Required to distribute the events through the system
 var bus = require('./system-emitter.js');
+let fileLocation;
 // A constant store of the active campaign.
 let campaign;
 
@@ -27,7 +28,7 @@ function loadCampaign(filePath){
             });
         }else{
             campaign = JSON.parse(data);
-            verifyCampaign();
+            verifyCampaign(filePath);
         }
     });
 }
@@ -40,6 +41,23 @@ bus.on("load-campaign", function(path){
 
 bus.on("fetch-campaign", function(callback){
     if(typeof(callback)==="function") callback(campaign);
+});
+
+bus.on("save-campaign", function(nCampaign){
+    campaign = nCampaign;
+    console.log(campaign);
+    verifyCampaign(fileLocation);
+
+    if(fileLocation!==undefined){
+        console.log("Saving");
+        fs.writeFile(fileLocation, JSON.stringify(campaign), (err) => {
+            if(err){
+                bus.emit("notification", "There was an error saving the campaign to file! The error is: " + err);
+            }else{
+                bus.emit("notification", "The campaign was saved successfully");
+            }
+        });
+    }
 });
 
 //bus.emit("load-campaign", ["C:\\Users\\Ryan\\Documents\\Git\\Electron\\d-and-d-campaign-manager\\resources\\data.json"]);
@@ -55,7 +73,7 @@ bus.on("fetch-campaign", function(callback){
 // and more but this gives us the basic overview. The improvements are for another feature branch.
 // Once the file has been verified, it will switch to the explorer view, trigger a load for the key
 // specified in /begin and then changes the title.
-function verifyCampaign(){
+function verifyCampaign(location){
     if(!campaign.hasOwnProperty("title")){
         bus.emit("error-window", "Campaign data is missing a title. Please verify that the data you have selected is valid");
         return;
@@ -91,6 +109,7 @@ function verifyCampaign(){
         return;
     }
 
+    fileLocation = location;
     window.document.title = "D and D Campaign Manager - " + campaign.title;
     bus.emit("switch-to-explorer");
     bus.emit("enable-campaign");
