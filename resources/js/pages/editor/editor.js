@@ -1,15 +1,15 @@
+const dialog = require("electron").remote.dialog;
+
 let localCampaign;
+let hasChanges = false;
 
-$(document).ready(function(){
-
-})
-
-function realSave(){
+function realSave(callback){
     var name = $("#campaign-title-edit").val();
     var first = $("#begin-event").val();
     localCampaign.begin = first;
     localCampaign.title = name;
-    bus.emit("save-campaign", localCampaign);
+    hasChanges = false;
+    bus.emit("save-campaign", localCampaign, callback);
 }
 
 function savePuzzle(){
@@ -33,6 +33,7 @@ function savePuzzle(){
     };
 
     localCampaign = JSON.parse(JSON.stringify(localCampaign).replace(original, id));
+    hasChanges = true;
 }
 
 function saveNPC(){
@@ -69,6 +70,7 @@ function saveNPC(){
         "key_points": noteworthy_points,
         "languages": languages
     };
+    hasChanges = true;
 }
 
 function saveMonster(){
@@ -173,6 +175,7 @@ function saveMonster(){
     }
 
     localCampaign = JSON.parse(JSON.stringify(localCampaign).replace(original, id));
+    hasChanges = true;
 }
 
 function saveScene(){
@@ -211,6 +214,7 @@ function saveScene(){
     };
 
     localCampaign = JSON.parse(JSON.stringify(localCampaign).replace(original, id));
+    hasChanges = true;
 
 }
 
@@ -250,6 +254,7 @@ function saveEncounter(){
     };
 
     localCampaign = JSON.parse(JSON.stringify(localCampaign).replace(original, id));
+    hasChanges = true;
 }
 
 function loadMonsterModal(id){
@@ -566,6 +571,7 @@ function reloadClose(){
 }
 
 function load(){
+    hasChanges = false;
     $("#localCampaign-title").text(localCampaign.name);
     $("#localCampaign-title-edit").val(localCampaign.name);
 
@@ -823,7 +829,27 @@ bus.on("enable-campaign", function(){
         load();
 
         $("#editor-return").off("click").click(function(){
-            realSave();
+            if(hasChanges){
+                dialog.showMessageBox({
+                    type:"question",
+                    buttons: ["Save", "Discard"],
+                    title: "You have unsaved changes",
+                    message: "You have made changes that have not yet been saved to the campaign. Would you like to save them now or discard them."
+                }, function(response){
+                    if(response == 0) { //Save
+                        realSave(function(err){
+                            if(!err)bus.emit("switch-to-explorer");
+                        });
+                    }else if(response == 1){ // Discard
+                        bus.emit("switch-to-explorer");
+                    }
+                });
+            }
+        });
+        $("#editor-save").off("click").click(function(){
+            realSave(function(err){});
+        });
+        $("#editor-discard").off("click").click(function(){
             bus.emit("switch-to-explorer");
         });
     });

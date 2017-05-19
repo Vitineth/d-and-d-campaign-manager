@@ -43,7 +43,7 @@ bus.on("fetch-campaign", function(callback){
     if(typeof(callback)==="function") callback(campaign);
 });
 
-bus.on("save-campaign", function(nCampaign){
+bus.on("save-campaign", function(nCampaign, callback){
     campaign = nCampaign;
     console.log(campaign);
     verifyCampaign(fileLocation);
@@ -53,8 +53,10 @@ bus.on("save-campaign", function(nCampaign){
         fs.writeFile(fileLocation, JSON.stringify(campaign), (err) => {
             if(err){
                 bus.emit("notification", "There was an error saving the campaign to file! The error is: " + err);
+                callback(err);
             }else{
                 bus.emit("notification", "The campaign was saved successfully");
+                callback();
             }
         });
     }
