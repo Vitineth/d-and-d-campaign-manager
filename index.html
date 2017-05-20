@@ -88,6 +88,49 @@
                 margin-top: 9px;
                 margin-right: 10px;
             }
+
+            .notification-div{
+                position: fixed;
+                z-index: 1005;
+                max-width: 29pc;
+                top: 20px;
+                right: -29pc;
+                background: rgba(16, 171, 195, 0.8);
+                color: white;
+            }
+
+            .notification-container{
+                height: 100%;
+                padding: 10px;
+            }
+
+            .notification-icon-td{
+                vertical-align: middle;
+                width: 17%;
+                text-align: center;
+            }
+
+            .notification-icon{
+                margin-top: 9px;
+                margin-right: 10px;
+            }
+
+            .not-buttons button {
+                width: 45%;
+                border: 1px solid #7eedff;
+                padding: 7px;
+                margin: 5px;
+                background: none;
+                margin-top: 0;
+                color: white;
+            }
+
+            .notification-dismiss{
+                position: absolute;
+                z-index: 1005;
+                top: 3px;
+                right: 3px;
+            }
         </style>
         <link href="resources/css/explorer.css" rel="stylesheet">
         <link href="resources/css/loader.css" rel="stylesheet">
@@ -118,24 +161,6 @@
     </body>
 
     <script>
-        function showNotification(text){
-            $("#notification-content").html(text);
-            notificationIn();
-            setTimeout(function(){
-                notificationOut();
-            }, 2000);
-        }
-        function notificationIn(){
-            $("#notification-div").animate({
-                right: "+=31pc"
-            }, 500);
-        }
-
-        function notificationOut(){
-            $("#notification-div").animate({
-                right: "-=31pc"
-            }, 500);
-        }
         if (typeof module === 'object') {
             window.module = module;
             module = undefined;
@@ -152,9 +177,8 @@
     <script>
         // We need the bus first to handle the injector events.
         const bus = require('./resources/js/system-emitter.js');
-        bus.on("notification", function(data){
-            showNotification(data);
-        });
+
+        $.getScript("./resources/js/pages/notifications.js");
         // Once all content on the page has been injected we can begin to load the rest of the scripts
         bus.on("injected", function(){
             require('./resources/js/rendering/bus-response.js');
