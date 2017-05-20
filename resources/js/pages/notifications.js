@@ -10,8 +10,8 @@ function generateID(){
     return output;
 }
 
-function generateNotification(id, text, buttons, callback, ignore){
-    var wrapper = $("<div></div>").addClass("notification-div").attr("id", id).css("top", "20px");
+function generateNotification(id, text, buttons, callback, ignore, color, icon){
+    var wrapper = $("<div></div>").addClass("notification-div").attr("id", id).css("top", "20px").css("background-color", color);
 
     //. css("top", parseInt(shownNotifications) + "px");
     var container = $("<table></table>").addClass("notification-container");
@@ -19,7 +19,7 @@ function generateNotification(id, text, buttons, callback, ignore){
     var row = $("<tr></tr>");
     var close = $("<i></i>").addClass("notification-dismiss").addClass("material-icons").text("close");
     var cell1 = $("<td></td>").addClass("notification-icon-td");
-    var icon = $("<i></i>").addClass("material-icons").text("announcement").addClass("notification-icon");
+    var icon = $("<i></i>").addClass("material-icons").text(icon).addClass("notification-icon");
     var cell2 = $("<td></td>").addClass("notification-content").text(text);
     var buttonWrapper = $("<div></div>").addClass("not-buttons");
     for(var i in buttons){
@@ -64,9 +64,11 @@ function launchNotification(text, options){
     var dismiss = options.hasOwnProperty("dismiss") ? options.dismiss : (buttons == null ? 2000 : -1);
     var callback = options.hasOwnProperty("callback") ? options.callback : function(){return true;};
     var ignoreClose = options.hasOwnProperty("ignore") ? options.ignore : false;
+    var color = options.hasOwnProperty("color") ? options.color : "rgba(16,171,195,0.8)";
+    var icon = options.hasOwnProperty("icon") ? options.icon : "announcement";
 
     var id = generateID();
-    var notification = generateNotification(id, text, buttons, callback, ignoreClose);
+    var notification = generateNotification(id, text, buttons, callback, ignoreClose, color, icon);
     $("body").append(notification);
 
     notifications.unshift(id);
