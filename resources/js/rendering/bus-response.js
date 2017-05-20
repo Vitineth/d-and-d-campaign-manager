@@ -27,7 +27,7 @@ bus.on("switch-to-explorer", function(){
     $("main").css("height", "");
 });
 
-bus.on("swtich-to-editor", function(){
+bus.on("switch-to-editor", function(){
     switchPage("editor");
 });
 

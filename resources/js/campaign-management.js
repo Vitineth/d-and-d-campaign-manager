@@ -52,7 +52,7 @@ bus.on("save-campaign", function(nCampaign, callback){
         console.log("Saving");
         fs.writeFile(fileLocation, JSON.stringify(campaign), (err) => {
             if(err){
-                bus.emit("notification", "There was an error saving the campaign to file! The error is: " + err);
+//                bus.emit("notification", "There was an error saving the campaign to file! The error is: " + err);
                 callback(err);
             }else{
                 bus.emit("notification", "The campaign was saved successfully");
@@ -61,6 +61,10 @@ bus.on("save-campaign", function(nCampaign, callback){
         });
     }
 });
+
+bus.on("change-save-location", function(location){
+    fileLocation = location;
+})
 
 //bus.emit("load-campaign", ["C:\\Users\\Ryan\\Documents\\Git\\Electron\\d-and-d-campaign-manager\\resources\\data.json"]);
 

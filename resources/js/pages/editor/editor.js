@@ -844,10 +844,38 @@ bus.on("enable-campaign", function(){
                         bus.emit("switch-to-explorer");
                     }
                 });
+            }else{
+                bus.emit("switch-to-explorer");    
             }
         });
+        function save(){
+            bus.emit("notification", "Saving...", {icon: "save"});
+            realSave(function(err){
+                if(err){
+                    bus.emit("notification", "There was an error saving the campaign. Would you like to retry the save, specify a new save location or cancel", {color: "rgba(198, 32, 32, 0.8);", callback: function(button){
+                        if(button.text() == "Retry"){
+                            save();
+                        }
+                        if(button.text() == "New Location"){
+                            dialog.showSaveDialog({
+                                title: "Load Campaign File",
+                                filters: [
+                                    { name: "Campaign Data", extensions: ["json"] }
+                                ],
+                            }, function(path){
+                                if(path){
+                                    bus.emit("change-save-location", path);
+                                    save();
+                                }
+                            })
+                        }
+                        return true;
+                    }, buttons: ["Retry", "New Location", "Cancel"]})
+                }
+            });
+        }
         $("#editor-save").off("click").click(function(){
-            realSave(function(err){});
+            save();
         });
         $("#editor-discard").off("click").click(function(){
             bus.emit("switch-to-explorer");
