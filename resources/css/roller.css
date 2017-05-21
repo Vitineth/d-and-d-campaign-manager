@@ -1,0 +1,90 @@
+.roll-container {
+    -webkit-box-shadow: 1px 1px 10px -2px rgba(128, 128, 128, 1);
+    -moz-box-shadow: 1px 1px 10px -2px rgba(128, 128, 128, 1);
+    box-shadow: 1px 1px 10px -2px rgba(128, 128, 128, 1);
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1010;
+    width: 18pc;
+}
+
+.roll-container table.roll-table {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.roll-container table.roll-table tr {
+    border: none;
+}
+
+.roll-container table.roll-table td {
+    border: none;
+    text-align: center;
+    padding: 0;
+    height: 60px;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.roll-container table.roll-table th {
+    border: none;
+    text-align: center;
+}
+
+.roll-container table.roll-table td.empty {
+    cursor: default !important;
+}
+
+.roll-container td[class^="d"] {
+    color: white;
+    width: 25%;
+}
+
+.roll-container .tb {
+    background: rgb(48, 48, 48);
+    color: white;
+}
+
+.roll-container table.roll-table td:not(td[class^="d"]) {
+    background: rgb(48, 48, 48);
+}
+
+.roll-container td.d2 {
+    background: rgb(63, 81, 181);
+}
+
+.roll-container td.d3 {
+    background: rgb(103, 58, 183);
+}
+
+.roll-container td.d4 {
+    background: rgb(183, 28, 28);
+}
+
+.roll-container td.d6 {
+    background: rgb(255, 87, 34);
+}
+
+.roll-container td.d8 {
+    background: rgb(255, 193, 7);
+}
+
+.roll-container td.d10 {
+    background: rgb(139, 195, 74);
+}
+
+.roll-container td.d12 {
+    background: rgb(0, 150, 136);
+}
+
+.roll-container td.d20 {
+    background: rgb(33, 150, 243);
+}
+
+.roll-container .roll-general {
+    width: 94%;
+    /* margin-bottom: 0; */
+    margin: 7px;
+}

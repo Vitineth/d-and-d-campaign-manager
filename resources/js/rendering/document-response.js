@@ -28,3 +28,7 @@ $(".load-button").click(function(){
 $("#search-field").on('input', function(){
     bus.emit("expand-query", $(this).val(), $("#search-type").val());
 });
+
+$("#roller-close").click(function(){
+    $("#roller").css("display", "none");
+});
