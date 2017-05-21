@@ -134,6 +134,11 @@ function generateScene(puzzle, copy, id, idx) {
             image.removeClass("spinner");
         });
     });
+    
+    copy.find(".search-open").css("display", "block").click(function(){
+        bus.emit("trigger-load", "s__" + id);
+        toggleModal($("#search-modal"));
+    })
 
     if(idx){
         indexText(id, id + "_s");
@@ -186,6 +191,11 @@ function generateEncounter(puzzle, copy, id, idx) {
             image.removeClass("spinner");
         });
     });
+    
+    copy.find(".search-open").css("display", "block").click(function(){
+        bus.emit("trigger-load", "e__" + id);
+        toggleModal($("#search-modal"));
+    })
 
     if(idx){
         indexText(id, id + "_e");
