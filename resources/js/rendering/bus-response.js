@@ -68,6 +68,7 @@ bus.on('load-encounter', function(encounter, campaign){
     //encounter screens will change more significantly.
     $("#exp-monsters-container").empty();
     $("#exp-puzzles-container").empty();
+    $("#exp-toggle-title").text("Monsters");
 
     for(var i = 0; i < encounter.monsters.length; i++){
         var monster = campaign.monsters[encounter.monsters[i]];
@@ -141,18 +142,19 @@ bus.on('load-scene', function(encounter, campaign){
     $("#exp-key-points").empty().append(ul);
     $("#exp-monsters-container").empty();
     $("#exp-puzzle-container").empty();
-
-//    for(var i = 0; i < encounter.monsters.length; i++){
-//        var monster = campaign.monsters[encounter.monsters[i]];
-//        $.get("resources/html/monster.html", function(data){
-//            $("#exp-monsters-container").append(generateMonster(monster, $(data)));
-//        });
-//    }
+    $("#exp-toggle-title").text("NPCs");
 
     for(var i = 0; i < encounter.puzzles.length; i++){
         var puzzle = campaign.puzzles[encounter.puzzles[i]];
         $.get("resources/html/puzzle.html", function(data){
             $("#exp-puzzles-container").append(generatePuzzle(puzzle, $(data)));
+        });
+    }
+
+    for(var i = 0; i < encounter.npcs.length; i++){
+        var npc = campaign.npcs[encounter.npcs[i]];
+        $.get("resources/html/npc.html", function(data){
+            $("#exp-monsters-container").append(generateNPC(npc, $(data)));
         });
     }
 
@@ -247,7 +249,7 @@ function generatePuzzle(puzzle, copy){
         copy.find("#hints").append($("<li></li>").text(puzzle.hints[i]));
     }
     copy.find("#hints").removeAttr("id");
-    
+
     var header = copy.find(".expander-header");
     var image = copy.find(".expander-image");
     var body = copy.find(".expander-content");
@@ -416,6 +418,33 @@ function generateMonster(monster, copy){
     });
 
     //Then we return the newly created instance which can be injected into the DOM as is.
+    return copy;
+}
+
+function generateNPC(npc, copy){
+    console.log(npc);
+    copy.find("#name").text(npc.name).removeAttr("id");;
+    copy.find("#name2").text(npc.name).removeAttr("id");;
+    copy.find("#race").text(npc.race).removeAttr("id");;
+    copy.find("#class").text(npc.class).removeAttr("id");;
+    copy.find("#alignment").text(npc.alignment).removeAttr("id");;
+    copy.find("#background").text(npc.background).removeAttr("id");;
+    copy.find("#languages").text(npc.languages.join(", ")).removeAttr("id");;
+    copy.find("#description").text(npc.description).removeAttr("id");;
+    copy.find("#traits").text(npc.traits).removeAttr("id");;
+    for(var i in npc.key_points){
+        copy.find("#kp").append($("<li></li>").text(npc.key_points[i]));
+    }
+    copy.find("#kp").removeAttr("id");
+    var header = copy.find(".expander-header");
+    var image = copy.find(".expander-image");
+    var body = copy.find(".expander-content");
+    header.click(function(){
+        image.addClass("spinner");
+        body.slideToggle(400, function(){
+            image.removeClass("spinner");
+        });
+    });
     return copy;
 }
 
