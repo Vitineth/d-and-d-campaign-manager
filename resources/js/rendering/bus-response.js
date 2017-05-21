@@ -286,7 +286,6 @@ function generatePuzzle(puzzle, copy){
 //finds on page load but as these are being added after the load, it is easier to generate their
 //complete structure.
 function generateMonster(monster, copy){
-    console.log([monster, copy]);
     //The basic details of the monster can be filled in easily. We have a template for the body
     //of the expander above which we can take a clone of. Each thing that needs to be changed
     //within it is associated with an id which must be removed before it is injected into the DOM
@@ -424,7 +423,6 @@ function generateMonster(monster, copy){
     var header = copy.find(".expander-header");
     var image = copy.find(".expander-image");
     var body = copy.find(".expander-content");
-    console.log([header, image, body]);
 
     header.click(function(){
         image.addClass("spinner");
@@ -438,7 +436,6 @@ function generateMonster(monster, copy){
 }
 
 function generateNPC(npc, copy){
-    console.log(npc);
     copy.find("#name").text(npc.name).removeAttr("id");;
     copy.find("#name2").text(npc.name).removeAttr("id");;
     copy.find("#race").text(npc.race).removeAttr("id");;
