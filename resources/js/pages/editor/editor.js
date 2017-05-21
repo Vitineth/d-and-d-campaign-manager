@@ -296,7 +296,7 @@ function loadMonsterModal(id){
         var skill = $(".material-icons#monster-add-skill").prev();
         skill.empty();
         for(var i in monster.skills){
-            var s = $("<li><input type=\"text\"><input type=\"text\"><i class=\"material-icons\">close</i></li>");
+            var s = $("<li><input type=\"text\"><input type=\"text\"><i class=\"material-icons delete\">close</i></li>");
             $(s.find("input")[0]).val(monster.skills[i].name);
             $(s.find("input")[1]).val(monster.skills[i].modifier);
             skill.append(s);
@@ -305,7 +305,7 @@ function loadMonsterModal(id){
         var abilities = $(".material-icons#monster-add-abilities").prev();
         abilities.empty();
         for(var i in monster.abilities){
-            var s = $('<li><input type="text"><i class="material-icons">close</i><textarea></textarea></li>');
+            var s = $('<li><input type="text"><i class="material-icons delete">close</i><textarea></textarea></li>');
             s.find("input").val(i);
             s.find("textarea").text(monster.abilities[i]);
             abilities.append(s);
@@ -314,7 +314,7 @@ function loadMonsterModal(id){
         var skill2 = $(".material-icons#monster-add-skill-2").prev();
         skill2.empty();
         for(var i in monster.actions){
-            var s = $('<li><input type="text"><i class="material-icons">close</i><textarea></textarea></li>');
+            var s = $('<li><input type="text"><i class="material-icons delete">close</i><textarea></textarea></li>');
             s.find("input").val(i);
             s.find("textarea").val(monster.actions[i]);
             skill2.append(s);
@@ -323,7 +323,7 @@ function loadMonsterModal(id){
         var di = $(".material-icons#monster-add-damage-immunity").prev();
         di.empty();
         for(var i in monster.immunities.damage){
-            var s = $("<li><input type=\"text\"><i class=\"material-icons\">close</i></li>");
+            var s = $("<li><input type=\"text\"><i class=\"material-icons delete\">close</i></li>");
             s.find("input").val(monster.immunities.damage[i]);
             di.append(s);
         }
@@ -331,7 +331,7 @@ function loadMonsterModal(id){
         var dr = $(".material-icons#monster-add-damage-resistance").prev();
         dr.empty();
         for(var i in monster.resistances.damage){
-            var s = $("<li><input type=\"text\"><i class=\"material-icons\">close</i></li>");
+            var s = $("<li><input type=\"text\"><i class=\"material-icons delete\">close</i></li>");
             s.find("input").val(monster.resistances.damage[i])
             dr.append(s);
         }
@@ -339,7 +339,7 @@ function loadMonsterModal(id){
         var ci = $(".material-icons#monster-add-condition-immunity").prev();
         ci.empty();
         for(var i in monster.immunities.condition){
-            var s = $("<li><input type=\"text\"><i class=\"material-icons\">close</i></li>");
+            var s = $("<li><input type=\"text\"><i class=\"material-icons delete\">close</i></li>");
             s.find("input").val(monster.immunities.condition[i]);
             ci.append(s);
         }
@@ -347,7 +347,7 @@ function loadMonsterModal(id){
         var cr = $(".material-icons#monster-add-condition-resistance").prev();
         cr.empty();
         for(var i in monster.resistances.condition){
-            var s = $("<li><input type=\"text\"><i class=\"material-icons\">close</i></li>");
+            var s = $("<li><input type=\"text\"><i class=\"material-icons delete\">close</i></li>");
             s.find("input").val(monster.resistances.condition[i]);
             cr.append(s);
         }
@@ -355,7 +355,7 @@ function loadMonsterModal(id){
         var senses = $(".material-icons#monster-add-senses").prev();
         senses.empty();
         for(var i in monster.senses){
-            var s = $("<li><input type=\"text\"><i class=\"material-icons\">close</i></li>");
+            var s = $("<li><input type=\"text\"><i class=\"material-icons delete\">close</i></li>");
             s.find("input").val(monster.senses[i]);
             senses.append(s);
         }
@@ -363,7 +363,7 @@ function loadMonsterModal(id){
         var languages = $(".material-icons#monster-add-languages").prev();
         languages.empty();
         for(var i in monster.languages){
-            var s = $('<li><select><option>Abyssal</option><option>Aquan</option><option>Auran</option><option>Celestial</option><option>Common</option><option>Deep Speech</option><option>Draconic</option><option>Druidic</option><option>Dwarvish</option><option>Elvish</option><option>Giant</option><option>Gnomish</option><option>Goblin</option><option>Gnoll</option><option>Halfling</option><option>Ignan</option><option>Infernal</option><option>Orc</option><option>Primordial</option><option>Sylvan</option><option>Terran</option><option>Undercommon</option></select><i class="material-icons">close</i></li>');
+            var s = $('<li><select><option>Abyssal</option><option>Aquan</option><option>Auran</option><option>Celestial</option><option>Common</option><option>Deep Speech</option><option>Draconic</option><option>Druidic</option><option>Dwarvish</option><option>Elvish</option><option>Giant</option><option>Gnomish</option><option>Goblin</option><option>Gnoll</option><option>Halfling</option><option>Ignan</option><option>Infernal</option><option>Orc</option><option>Primordial</option><option>Sylvan</option><option>Terran</option><option>Undercommon</option></select><i class="material-icons delete">close</i></li>');
             s.find("select").val(monster.languages[i]);
             languages.append(s);
         }
@@ -385,7 +385,7 @@ function loadPuzzleModal(id){
         var hints = $(".material-icons#puzzle-add-hints").prev();
         hints.empty();
         for(var i in puzzle.hints){
-            var s = $('<li><input type="text"><i class="material-icons">close</i></li>');
+            var s = $('<li><input type="text"><i class="material-icons delete">close</i></li>');
             s.find("input").val(puzzle.hints[i]);
             hints.append(s);
         }
@@ -405,7 +405,7 @@ function loadSceneModal(id){
         var keyPoints = $(".material-icons#scene-add-key-points").prev();
         keyPoints.empty();
         for(var i in scene.key_points){
-            var s = $('<li><input type="text"><i class="material-icons">close</i></li>');
+            var s = $('<li><input type="text"><i class="material-icons delete">close</i></li>');
             s.find("input").val(scene.key_points[i]);
             keyPoints.append(s);
         }
@@ -413,7 +413,7 @@ function loadSceneModal(id){
         var npcs = $(".material-icons#scene-add-npc").prev();
         npcs.empty();
         for(var i in scene.npcs){
-            var element = $('<li><select></select><i class="material-icons">close</i></li>');
+            var element = $('<li><select></select><i class="material-icons delete">close</i></li>');
             var select = element.find("select");
             for(var i in localCampaign.npcs){
                 select.append($("<option></option>").text(localCampaign.npcs[i].name).val("n__" + i));
@@ -425,7 +425,7 @@ function loadSceneModal(id){
         var puzzles = $(".material-icons#scene-add-puzzle").prev();
         puzzles.empty();
         for(var i in scene.puzzles){
-            var element = $('<li><select></select><i class="material-icons">close</i></li>');
+            var element = $('<li><select></select><i class="material-icons delete">close</i></li>');
             var select = element.find("select");
             for(var i in localCampaign.puzzles){
                 select.append($("<option></option>").text(localCampaign.puzzles[i].name).val("p__" + i));
@@ -437,7 +437,7 @@ function loadSceneModal(id){
         var navigation = $(".material-icons#scene-add-navigation").prev();
         navigation.empty();
         for(var i in scene.navigation){
-            var element = $('<li><input type="text"><select></select><i class="material-icons">close</i></li>');
+            var element = $('<li><input type="text"><select></select><i class="material-icons delete">close</i></li>');
             var select = element.find("select");
             for(var j in localCampaign.encounters){
                 select.append($("<option></option>").text(localCampaign.encounters[j].name + " (Encounter)").val("e__" + j));
@@ -471,7 +471,7 @@ function loadEncounterModal(id){
         var keyPoints = $(".material-icons#encounter-add-key-points").prev();
         keyPoints.empty();
         for(var i in encounter.key_points){
-            var s = $('<li><input type="text"><i class="material-icons">close</i></li>');
+            var s = $('<li><input type="text"><i class="material-icons delete">close</i></li>');
             s.find("input").val(encounter.key_points[i]);
             keyPoints.append(s);
         }
@@ -479,7 +479,7 @@ function loadEncounterModal(id){
         var npcs = $(".material-icons#encounter-add-monsters").prev();
         npcs.empty();
         for(var i in encounter.monsters){
-            var element = $('<li><select></select><i class="material-icons">close</i></li>');
+            var element = $('<li><select></select><i class="material-icons delete">close</i></li>');
             var select = element.find("select");
             for(var i in localCampaign.monsters){
                 select.append($("<option></option>").text(localCampaign.monsters[i].name).val("m__" + i));
@@ -491,7 +491,7 @@ function loadEncounterModal(id){
         var puzzles = $(".material-icons#encounter-add-puzzles").prev();
         puzzles.empty();
         for(var i in encounter.puzzles){
-            var element = $('<li><select></select><i class="material-icons">close</i></li>');
+            var element = $('<li><select></select><i class="material-icons delete">close</i></li>');
             var select = element.find("select");
             for(var j in localCampaign.puzzles){
                 select.append($("<option></option>").text(localCampaign.puzzles[j].name).val("p__" + j));
@@ -504,7 +504,7 @@ function loadEncounterModal(id){
         var navigation = $(".material-icons#encounter-add-navigation").prev();
         navigation.empty();
         for(var i in encounter.navigation){
-            var element = $('<li><input type="text"><select></select><i class="material-icons">close</i></li>');
+            var element = $('<li><input type="text"><select></select><i class="material-icons delete">close</i></li>');
             var select = element.find("select");
             for(var j in localCampaign.encounters){
                 select.append($("<option></option>").text(localCampaign.encounters[j].name + " (Encounter)").val("e__" + j));
@@ -541,7 +541,7 @@ function loadNPCModal(id){
 
         $("#npc-noteworthy").empty();
         for(var i in npc.key_points){
-            var entry = $('<li><input type="text"><i class="material-icons">close</i><textarea></textarea></li>');
+            var entry = $('<li><input type="text"><i class="material-icons delete">close</i><textarea></textarea></li>');
             entry.find("input").val(i);
             entry.find("textarea").val(npc.key_points[i]);
             $("#npc-noteworthy").append(entry);
@@ -550,7 +550,7 @@ function loadNPCModal(id){
         var languages = $("#npc-languages");
         languages.empty();
         for(var i in npc.languages){
-            var s = $('<li><select><option>Abyssal</option><option>Aquan</option><option>Auran</option><option>Celestial</option><option>Common</option><option>Deep Speech</option><option>Draconic</option><option>Druidic</option><option>Dwarvish</option><option>Elvish</option><option>Giant</option><option>Gnomish</option><option>Goblin</option><option>Gnoll</option><option>Halfling</option><option>Ignan</option><option>Infernal</option><option>Orc</option><option>Primordial</option><option>Sylvan</option><option>Terran</option><option>Undercommon</option></select><i class="material-icons">close</i></li>');
+            var s = $('<li><select><option>Abyssal</option><option>Aquan</option><option>Auran</option><option>Celestial</option><option>Common</option><option>Deep Speech</option><option>Draconic</option><option>Druidic</option><option>Dwarvish</option><option>Elvish</option><option>Giant</option><option>Gnomish</option><option>Goblin</option><option>Gnoll</option><option>Halfling</option><option>Ignan</option><option>Infernal</option><option>Orc</option><option>Primordial</option><option>Sylvan</option><option>Terran</option><option>Undercommon</option></select><i class="material-icons delete">close</i></li>');
             s.find("select").val(npc.languages[i]);
             languages.append(s);
         }
@@ -565,7 +565,8 @@ function toggleModal(reference){
 }
 
 function reloadClose(){
-    $(".material-icons:contains(close)").off("click").click(function(){
+    $(".material-icons.delete:contains(close)").off("click").click(function(){
+        console.log("Motherfucker");
         $(this).parent().remove();
     });
 }
@@ -645,7 +646,7 @@ function load(){
         $("#npc-container").append(npc);
     }
 
-    $(".material-icons:contains(close)").click(function(){
+    $(".material-icons.delete:contains(close)").click(function(){
         $(this).parent().remove();
     });
 
@@ -671,72 +672,72 @@ function load(){
 
     $(".material-icons#monster-add-skill").click(function(){
         var ins = $(this).prev();
-        ins.append($("<li><input type=\"text\"><i class=\"material-icons\">close</i></li>"));
+        ins.append($("<li><input type=\"text\"><i class=\"material-icons delete\">close</i></li>"));
         reloadClose();
     })
     $(".material-icons#monster-add-abilities").click(function(){
         var ins = $(this).prev();
-        ins.append($('<li><input type="text"><i class="material-icons">close</i><textarea></textarea></li>'));
+        ins.append($('<li><input type="text"><i class="material-icons delete">close</i><textarea></textarea></li>'));
         reloadClose();
     })
     $(".material-icons#monster-add-skill-2").click(function(){
         var ins = $(this).prev();
-        ins.append($('<li><input type="text"><i class="material-icons">close</i><textarea></textarea></li>'));
+        ins.append($('<li><input type="text"><i class="material-icons delete">close</i><textarea></textarea></li>'));
         reloadClose();
     })
     $(".material-icons#monster-add-damage-immunity").click(function(){
         var ins = $(this).prev();
-        ins.append($("<li><input type=\"text\"><i class=\"material-icons\">close</i></li>"));
+        ins.append($("<li><input type=\"text\"><i class=\"material-icons delete\">close</i></li>"));
         reloadClose();
     })
     $(".material-icons#monster-add-damage-resistance").click(function(){
         var ins = $(this).prev();
-        ins.append($("<li><input type=\"text\"><i class=\"material-icons\">close</i></li>"));
+        ins.append($("<li><input type=\"text\"><i class=\"material-icons delete\">close</i></li>"));
         reloadClose();
     })
     $(".material-icons#monster-add-condition-immunity").click(function(){
         var ins = $(this).prev();
-        ins.append($("<li><input type=\"text\"><i class=\"material-icons\">close</i></li>"));
+        ins.append($("<li><input type=\"text\"><i class=\"material-icons delete\">close</i></li>"));
         reloadClose();
     })
     $(".material-icons#monster-add-condition-resistance").click(function(){
         var ins = $(this).prev();
-        ins.append($("<li><input type=\"text\"><i class=\"material-icons\">close</i></li>"));
+        ins.append($("<li><input type=\"text\"><i class=\"material-icons delete\">close</i></li>"));
         reloadClose();
     })
     $(".material-icons#monster-add-senses").click(function(){
         var ins = $(this).prev();
-        ins.append($("<li><input type=\"text\"><i class=\"material-icons\">close</i></li>"));
+        ins.append($("<li><input type=\"text\"><i class=\"material-icons delete\">close</i></li>"));
         reloadClose();
     })
     $(".material-icons#monster-add-languages").click(function(){
         var ins = $(this).prev();
-        ins.append('<li><select><option>Abyssal</option><option>Aquan</option><option>Auran</option><option>Celestial</option><option>Common</option><option>Deep Speech</option><option>Draconic</option><option>Druidic</option><option>Dwarvish</option><option>Elvish</option><option>Giant</option><option>Gnomish</option><option>Goblin</option><option>Gnoll</option><option>Halfling</option><option>Ignan</option><option>Infernal</option><option>Orc</option><option>Primordial</option><option>Sylvan</option><option>Terran</option><option>Undercommon</option></select><i class="material-icons">close</i></li>');
+        ins.append('<li><select><option>Abyssal</option><option>Aquan</option><option>Auran</option><option>Celestial</option><option>Common</option><option>Deep Speech</option><option>Draconic</option><option>Druidic</option><option>Dwarvish</option><option>Elvish</option><option>Giant</option><option>Gnomish</option><option>Goblin</option><option>Gnoll</option><option>Halfling</option><option>Ignan</option><option>Infernal</option><option>Orc</option><option>Primordial</option><option>Sylvan</option><option>Terran</option><option>Undercommon</option></select><i class="material-icons delete">close</i></li>');
         reloadClose();
     })
     $(".material-icons#npc-add-noteworthy").click(function(){
         var ins = $(this).prev();
-        ins.append($('<li><input type="text"><i class="material-icons">close</i><textarea></textarea></li>'));
+        ins.append($('<li><input type="text"><i class="material-icons delete">close</i><textarea></textarea></li>'));
         reloadClose();
     })
     $(".material-icons#npc-add-languages").click(function(){
         var ins = $(this).prev();
-        ins.append('<li><select><option>Abyssal</option><option>Aquan</option><option>Auran</option><option>Celestial</option><option>Common</option><option>Deep Speech</option><option>Draconic</option><option>Druidic</option><option>Dwarvish</option><option>Elvish</option><option>Giant</option><option>Gnomish</option><option>Goblin</option><option>Gnoll</option><option>Halfling</option><option>Ignan</option><option>Infernal</option><option>Orc</option><option>Primordial</option><option>Sylvan</option><option>Terran</option><option>Undercommon</option></select><i class="material-icons">close</i></li>');
+        ins.append('<li><select><option>Abyssal</option><option>Aquan</option><option>Auran</option><option>Celestial</option><option>Common</option><option>Deep Speech</option><option>Draconic</option><option>Druidic</option><option>Dwarvish</option><option>Elvish</option><option>Giant</option><option>Gnomish</option><option>Goblin</option><option>Gnoll</option><option>Halfling</option><option>Ignan</option><option>Infernal</option><option>Orc</option><option>Primordial</option><option>Sylvan</option><option>Terran</option><option>Undercommon</option></select><i class="material-icons delete">close</i></li>');
         reloadClose();
     })
     $(".material-icons#puzzle-add-hints").click(function(){
         var ins = $(this).prev();
-        ins.append($('<li><input type="text"><i class="material-icons">close</i></li>'));
+        ins.append($('<li><input type="text"><i class="material-icons delete">close</i></li>'));
         reloadClose();
     })
     $(".material-icons#scene-add-key-points").click(function(){
         var ins = $(this).prev();
-        ins.append($('<li><input type="text"><i class="material-icons">close</i></li>'));
+        ins.append($('<li><input type="text"><i class="material-icons delete">close</i></li>'));
         reloadClose();
     })
     $(".material-icons#scene-add-npc").click(function(){
         var ins = $(this).prev();
-        var element = $('<li><select></select><i class="material-icons">close</i></li>');
+        var element = $('<li><select></select><i class="material-icons delete">close</i></li>');
         var select = element.find("select");
         for(var i in localCampaign.npcs){
             select.append($("<option></option>").text(localCampaign.npcs[i].name));
@@ -746,7 +747,7 @@ function load(){
     })
     $(".material-icons#scene-add-puzzle").click(function(){
         var ins = $(this).prev();
-        var element = $('<li><select></select><i class="material-icons">close</i></li>');
+        var element = $('<li><select></select><i class="material-icons delete">close</i></li>');
         var select = element.find("select");
         for(var i in localCampaign.puzzles){
             select.append($("<option></option>").text(localCampaign.puzzles[i].name));
@@ -756,7 +757,7 @@ function load(){
     })
     $(".material-icons#scene-add-navigation").click(function(){
         var ins = $(this).prev();
-        var element = $('<li><select></select><i class="material-icons">close</i></li>');
+        var element = $('<li><select></select><i class="material-icons delete">close</i></li>');
         var select = element.find("select");
         for(var i in localCampaign.encounters){
             select.append($("<option></option>").text(localCampaign.npcs[i].name + " (Encounter)"));
@@ -769,12 +770,12 @@ function load(){
     })
     $(".material-icons#encounter-add-key-points").click(function(){
         var ins = $(this).prev();
-        ins.append($('<li><input type="text"><i class="material-icons">close</i></li>'));
+        ins.append($('<li><input type="text"><i class="material-icons delete">close</i></li>'));
         reloadClose();
     })
     $(".material-icons#encounter-add-monsters").click(function(){
         var ins = $(this).prev();
-        var element = $('<li><select></select><i class="material-icons">close</i></li>');
+        var element = $('<li><select></select><i class="material-icons delete">close</i></li>');
         var select = element.find("select");
         for(var i in localCampaign.monsters){
             select.append($("<option></option>").text(localCampaign.monsters[i].name));
@@ -784,7 +785,7 @@ function load(){
     })
     $(".material-icons#encounter-add-navigation").click(function(){
         var ins = $(this).prev();
-        var element = $('<li><select></select><i class="material-icons">close</i></li>');
+        var element = $('<li><select></select><i class="material-icons delete">close</i></li>');
         var select = element.find("select");
         for(var i in localCampaign.encounters){
             select.append($("<option></option>").text(localCampaign.encounters[i].name + " (Encounter)"));
@@ -797,7 +798,7 @@ function load(){
     })
     $(".material-icons#encounter-add-puzzles").click(function(){
         var ins = $(this).prev();
-        var element = $('<li><select></select><i class="material-icons">close</i></li>');
+        var element = $('<li><select></select><i class="material-icons delete">close</i></li>');
         var select = element.find("select");
         for(var i in localCampaign.puzzles){
             select.append($("<option></option>").text(localCampaign.puzzles[i].name));
