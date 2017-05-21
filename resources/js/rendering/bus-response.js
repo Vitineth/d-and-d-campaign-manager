@@ -27,6 +27,10 @@ bus.on("switch-to-explorer", function(){
     $("main").css("height", "");
 });
 
+bus.on("switch-to-editor", function(){
+    switchPage("editor");
+});
+
 //This is a generic function that allows us to spawn an error box from anywhere using a quick bus
 //call. This is designed to be expanded in the future and provides a standard layout for error 
 //messages. Functions can create their own with specific buttons for example but this it for
@@ -64,6 +68,9 @@ bus.on('load-encounter', function(encounter, campaign){
     //encounter screens will change more significantly.
     $("#exp-monsters-container").empty();
     $("#exp-puzzles-container").empty();
+    $("#exp-toggle-title").text("Monsters");
+    $("#next-link").off("click");
+    $("#previous-link").off("click");
 
     for(var i = 0; i < encounter.monsters.length; i++){
         var monster = campaign.monsters[encounter.monsters[i]];
@@ -88,21 +95,17 @@ bus.on('load-encounter', function(encounter, campaign){
     var keys = Object.keys(encounter.navigation);
     for(var i = 0; i < keys.length; i++){
         if(keys[i].toLowerCase() == "next"){
-            if(encounter.navigation[keys[i]].hasOwnProperty("location")){
-                $("#next-link").attr("data-location", encounter.navigation[keys[i]].location)
-                $("#next-link").click(function(){
-                    bus.emit("trigger-load",  $(this).attr("data-location"));
-                });
-                next=true;
-            }
+            $("#next-link").attr("data-location", encounter.navigation[keys[i]]);
+            $("#next-link").click(function(){
+                bus.emit("trigger-load",  $(this).attr("data-location"));
+            });
+            next=true;
         }else if(keys[i].toLowerCase() == "previous"){
-            if(encounter.navigation[keys[i]].hasOwnProperty("location")){
-                $("#previous-link").attr("data-location", encounter.navigation[keys[i]].location)
-                $("#previous-link").click(function(){
-                    bus.emit("trigger-load",  $(this).attr("data-location"));
-                });
-                previous=true;
-            }
+            $("#previous-link").attr("data-location", encounter.navigation[keys[i]])
+            $("#previous-link").click(function(){
+                bus.emit("trigger-load",  $(this).attr("data-location"));
+            });
+            previous=true;
         }else{
             $("#exp-navigation").append(generateNavButton(encounter.navigation[keys[i]], keys[i])).append($("<br>"));
         }
@@ -136,26 +139,52 @@ bus.on('load-scene', function(encounter, campaign){
     }
     $("#exp-key-points").empty().append(ul);
     $("#exp-monsters-container").empty();
-    $("#exp-puzzle-container").empty();
-
-    for(var i = 0; i < encounter.monsters.length; i++){
-        var monster = campaign.monsters[encounter.monsters[i]];
-        $.get("resources/html/monster.html", function(data){
-            $("#exp-monsters-container").append(generateMonster(monster, $(data)));
-        });
-    }
+    $("#exp-puzzles-container").empty();
+    $("#exp-toggle-title").text("NPCs");
+    $("#next-link").off("click");
+    $("#previous-link").off("click");
 
     for(var i = 0; i < encounter.puzzles.length; i++){
         var puzzle = campaign.puzzles[encounter.puzzles[i]];
         $.get("resources/html/puzzle.html", function(data){
-            $("#exp-puzzles-container").append(generatePuzzle(puzzle, $(data)));
+            $("#exp-puzzles-container").append(generatePuzzle(puzzle, $(data)).attr("scene", "true"));
+        });
+    }
+
+    for(var i = 0; i < encounter.npcs.length; i++){
+        var npc = campaign.npcs[encounter.npcs[i]];
+        $.get("resources/html/npc.html", function(data){
+            $("#exp-monsters-container").append(generateNPC(npc, $(data)));
         });
     }
 
     $("#exp-navigation").empty();
+    var next, previous;
     var keys = Object.keys(encounter.navigation);
     for(var i = 0; i < keys.length; i++){
-        $("#exp-navigation").append(generateNavButton(encounter.navigation[keys[i]], keys[i])).append($("<br>"));
+        if(keys[i].toLowerCase() == "next"){
+            $("#next-link").attr("data-location", encounter.navigation[keys[i]])
+            $("#next-link").click(function(){
+                bus.emit("trigger-load",  $(this).attr("data-location"));
+            });
+            next=true;
+        }else if(keys[i].toLowerCase() == "previous"){
+            $("#previous-link").attr("data-location", encounter.navigation[keys[i]])
+            $("#previous-link").click(function(){
+                bus.emit("trigger-load",  $(this).attr("data-location"));
+            });
+            previous=true;
+        }else{
+            $("#exp-navigation").append(generateNavButton(encounter.navigation[keys[i]], keys[i])).append($("<br>"));
+        }
+    }
+    if(!next){
+        $("#next-icon").css("display", "none");
+        $("#next-link").css("display", "none");
+    }
+    if(!previous){
+        $("#previous-icon").css("display", "none");
+        $("#previous-link").css("display", "none");
     }
 
     bus.emit("loading-end");
@@ -218,17 +247,10 @@ function generateNavButton(navigation, key){
     var text = $("<strong></strong>").attr("class", "text").text(key);
 
     var button = $("<button></button").attr("class", "nav-button").text(key);
-    if(navigation.hasOwnProperty("location")){
-        div.attr("data-location", navigation.location)
-        div.click(function(){
-            bus.emit("trigger-load",  $(this).attr("data-location"));
-        });
-    }else{
-        div.css("border", "1px solid red");
-    }
-    if(navigation.hasOwnProperty("icon")){
-        i.text(navigation.icon);
-    }
+    div.attr("data-location", navigation)
+    div.click(function(){
+        bus.emit("trigger-load",  $(this).attr("data-location"));
+    });
 
     return div.append(i).append(text);
 }
@@ -243,7 +265,7 @@ function generatePuzzle(puzzle, copy){
         copy.find("#hints").append($("<li></li>").text(puzzle.hints[i]));
     }
     copy.find("#hints").removeAttr("id");
-    
+
     var header = copy.find(".expander-header");
     var image = copy.find(".expander-image");
     var body = copy.find(".expander-content");
@@ -264,7 +286,6 @@ function generatePuzzle(puzzle, copy){
 //finds on page load but as these are being added after the load, it is easier to generate their
 //complete structure.
 function generateMonster(monster, copy){
-    console.log([monster, copy]);
     //The basic details of the monster can be filled in easily. We have a template for the body
     //of the expander above which we can take a clone of. Each thing that needs to be changed
     //within it is associated with an id which must be removed before it is injected into the DOM
@@ -402,7 +423,6 @@ function generateMonster(monster, copy){
     var header = copy.find(".expander-header");
     var image = copy.find(".expander-image");
     var body = copy.find(".expander-content");
-    console.log([header, image, body]);
 
     header.click(function(){
         image.addClass("spinner");
@@ -412,6 +432,32 @@ function generateMonster(monster, copy){
     });
 
     //Then we return the newly created instance which can be injected into the DOM as is.
+    return copy;
+}
+
+function generateNPC(npc, copy){
+    copy.find("#name").text(npc.name).removeAttr("id");;
+    copy.find("#name2").text(npc.name).removeAttr("id");;
+    copy.find("#race").text(npc.race).removeAttr("id");;
+    copy.find("#class").text(npc.class).removeAttr("id");;
+    copy.find("#alignment").text(npc.alignment).removeAttr("id");;
+    copy.find("#background").text(npc.background).removeAttr("id");;
+    copy.find("#languages").text(npc.languages.join(", ")).removeAttr("id");;
+    copy.find("#description").text(npc.description).removeAttr("id");;
+    copy.find("#traits").text(npc.traits).removeAttr("id");;
+    for(var i in npc.key_points){
+        copy.find("#kp").append($("<li></li>").text(npc.key_points[i]));
+    }
+    copy.find("#kp").removeAttr("id");
+    var header = copy.find(".expander-header");
+    var image = copy.find(".expander-image");
+    var body = copy.find(".expander-content");
+    header.click(function(){
+        image.addClass("spinner");
+        body.slideToggle(400, function(){
+            image.removeClass("spinner");
+        });
+    });
     return copy;
 }
 

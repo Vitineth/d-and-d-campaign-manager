@@ -3,7 +3,7 @@
 <!--#link https://fonts.googleapis.com/css?family=Raleway:200,300,400-->
 <!--#link https://fonts.googleapis.com/icon?family=Material+Icons-->
 <!--#link https://fonts.googleapis.com/css?family=Lato:300-->
-<div class="modeal" id="search-modal">
+<div class="explorer-modal" id="search-modal">
     <div class="modal back" style="display: none">
     </div>
     <div class="modal fore" style="display: none">
@@ -130,7 +130,7 @@
                 </td>
                 <td><div class="clip-nav">Characters</div></td>
             </tr>
-            <tr>
+            <tr onclick="bus.emit('switch-to-editor');">
                 <td>
                     <i class="material-icons">edit</i>
                 </td>
@@ -218,7 +218,7 @@
         </div>
         <ul id="exp-key-points"></ul>
         <div class="header-container">
-            <h1 class="header">Monsters</h1>
+            <h1 class="header" id="exp-toggle-title">Monsters</h1>
         </div>
         <div style="margin-top: 50px;">
             <div class="expander-surrounder" id="exp-monsters-container">

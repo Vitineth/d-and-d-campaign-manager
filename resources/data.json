@@ -1,105 +1,95 @@
 {
-    "title": "The Plot of Aladrin",
-    "begin": "e__dr1",
-    "monsters": {
-        "hell_hound": {
-            "name":"hell hound",
-            "size":"medium",
-            "type":"fiend",
-            "alignment":"lawful evil",
-            "ac":"15 (natural armor)",
-            "hp":"45 (7d8+14)",
-            "speed":"50ft",
-            "stats": {
-                "str": 17,
-                "dex": 12,
-                "con": 14,
-                "int": 6,
-                "wis": 13,
-                "cha": 6
-            },
-            "skills":[
-                {
-                    "name": "perception",
-                    "modifier":"+5"
-                }
-            ],
-            "resistances": {
-                "damage": [],
-                "condition": []
-            },
-            "immunities": {
-                "damage": ["fire"],
-                "condition": []
-            },
-            "senses": [
-                "darkvision (60ft)",
-                "passive perception (15)"
-            ],
-            "languages": [
-                "infernal (understood, not spoken)"
-            ],
-            "challenge":{
-                "level": 3,
-                "xp": 700
-            },
-            "actions":[
-                {
-                    "name": "bite",
-                    "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) piercing damage plus 7 (2d6) fire damage. "
-                },
-                {
-                    "name": "Fire Breath (Recharge 5-6) ",
-                    "description": "THe hound exhales fire in a 15-foot cone. Each creature in that area must make a DC 12 Dexterity waving throw, taking 21 (6d6) fire damage on a failed save or half as much damage on a successful one."
-                }
-            ],
-            "abilities":[
-                {
-                    "name": "Keen Hearing and Smell",
-                    "description": "The hound has advantage on Wisdom (Perception) checks that rely on hearing or smell. "
-                },
-                {
-                    "name": "Pack Tactics ",
-                    "description": "The hound has advantage on an attack roll against a creature if a least one of the hound's allies is within 5 feet of the creature and the ally isn't incapacitated."
-                }
-            ]
-        }
-    },
-    "scenes": [
-    ],
+    "title": "The Plot of Elmbiss",
+    "begin": "s__scene",
     "encounters": {
-        "dr1": {
-            "name":"Dungeon Room 1",
-            "description":"Lorem ipsum",
-            "map":null,
-            "key_points": [
-                "kp1",
-                "kp2"
-            ],
-            "monsters": [
-                "hell_hound"
-            ],
-            "puzzles": [
-                "pz1"
-            ],
-            "navigation":{
-                "next": {
-                    "location": "e__dr1",
-                    "icon": "face"
-                }
+        "encounter": {
+            "name": "Test Data Encounter",
+            "description": "This is the description of the encounter that you will read when the players get to this stage.",
+            "key_points": ["This is a key point", "These are used to store info you will need at a glance", "Maybe the weather or a dice roll to do to begin with"],
+            "monsters": ["monster"],
+            "puzzles": ["<id>"],
+            "npcs": ["npc"],
+            "navigation": {
+                "next": "s__scene"
             }
         }
     },
-    "puzzles":{
-        "pz1": {
-            "name": "Coin Puzzle",
-            "description": "Some description",
-            "solution": "Solution",
-            "hints": [
-                "H1",
-                "H2",
-                "H3"
-            ]
+    "scenes": {
+        "scene": {
+            "name": "Test Data Scene",
+            "description": "description",
+            "key_points": ["This is a key point", "These are used to store info you will need at a glance", "Maybe the weather or a dice roll to do to begin with"],
+            "npcs": ["npc"],
+            "puzzles": ["<id>"],
+            "navigation": {
+                "next": "e__encounter"
+            }
+        }
+    },
+    "monsters": {
+        "monster": {
+            "name": "Test Data Monster",
+            "challenge": {
+                "level": 1,
+                "xp": 1000
+            },
+            "type": "Ooze",
+            "size": "Small",
+            "alignment": "Chaotic Evil",
+            "ac": "16",
+            "hp": "13",
+            "speed": "25",
+            "stats": {
+                "str": 9,
+                "dex": 8,
+                "con": 15,
+                "int": 14,
+                "wis": 7,
+                "cha": 18
+            },
+            "skills": [{
+                "name": "Perception",
+                "modifier": "+5"
+            }],
+            "abilities": {
+                "Ability 1": "I don't know, maybe it can see better or something."
+            },
+            "actions": {
+                "Jelly Kick": "Kicks and enemy in the face with a jelly foot"
+            },
+            "immunities": {
+                "damage": [],
+                "condition": []
+            },
+            "resistances": {
+                "damage": ["fire"],
+                "condition": []
+            },
+            "senses": ["A sense"],
+            "languages": ["Infernal"]
+        }
+    },
+    "npcs": {
+        "<id>": {
+            "name": "Jim the NPC",
+            "class": "Fighter",
+            "race": "Elf",
+            "alignment": "Neutral",
+            "background": "Acolyte",
+            "description": "Some description about him. Maybe he's tall, maybe he's short. Who knows. Probably Jim.",
+            "traits": "Some traits that he might have. Maybe he's angry, or happy, or depressed, or manic. ",
+            "key_points": {
+                "Some points": "You can store important info here. Like what he's carrying"
+            },
+            "languages": ["Common"]
+        }
+    },
+    "puzzles": {
+        "<id>": {
+            "name": "Test Data Puzzle",
+            "description": "The description of the puzzle.",
+            "hints": ["These don't always have to be hints", "They could be descriptions and stuff", "This wasn't really planned out very well."],
+            "solution": "The actual solutions, in case your players are idiots. Or the description of what happens when they solve it. "
         }
     }
 }

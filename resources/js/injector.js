@@ -97,23 +97,27 @@ function processInjection(id, data){
     var lines = data.split("\n");
     var repl = "";
     var def;
+    var location = "main";
+    var nosection = false;
     for(var i = 0; i < lines.length; i++){
         if(lines[i].indexOf("#") == 0){
             if(lines[i].indexOf("script") == 1) loadScript(lines[i]);
             if(lines[i].indexOf("link") == 1) loadLink(lines[i]);
             if(lines[i].indexOf("default") == 1) def = lines[i].replace("#default ", "");
+            if(lines[i].indexOf("location") == 1) location = lines[i].replace("#location ", "");
+            if(lines[i].indexOf("nosection") == 1) nosection = true;
         }else{
             repl += lines[i] + "\n";
         }
     }
     
     var element = $(repl);
-    var container = $("<section></section>").attr("id", id);
+    var container = nosection ? element : $("<section></section>").attr("id", id);
     
     if(def) container.attr("style", "display: " + def);
     else container.attr("style", "display: none");
     
-    $("main").append(container.append(element));
+    $(location).append(container.append(element));
 }
 
 // The two functions below are very simple so no full documentation is provided, they 

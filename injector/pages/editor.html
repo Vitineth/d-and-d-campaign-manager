@@ -1,0 +1,79 @@
+<div class="nav-bar">
+    <table class="nav-table">
+        <tr>
+            <td style="    width: 3%;"></td>
+            <td>
+                <div class="navigation-title">
+                    <small class="navigation-type">Edit Campaign</small>
+                    <span class="navigation-name" id="campaign-title">The Plot of Aladrin</span>
+                </div>
+            </td>
+            <td>
+                <div id="editor-return"><i class="material-icons">arrow_back</i><span style="
+                    position: relative;
+                    top: -6px;
+                    "> Return to explorer</span></div>
+            </td>
+            <td>
+                <i class="material-icons" id="editor-save">save</i>
+                <i class="material-icons" id="editor-discard">cancel</i>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="nav-spacer"></div>
+<div class="main">
+    <div style="width: 80%; margin: auto; ">
+        <div class="header-container">
+            <h1 class="header">Basic Properties</h1>
+        </div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <td><input type="text" id="campaign-title-edit" value="The Plot of Aladrin"></td>
+            </tr>
+            <tr>
+                <th>First Event</th>
+                <td>
+                    <select id="begin-event">
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <div class="header-container">
+            <h1 class="header"><i class="material-icons">bug_report</i><br>Monsters</h1>
+        </div>
+        <div style="margin-top: 50px;">
+            <div class="expander-surrounder" data-type="monsters" id="monster-container">
+            </div>
+        </div>
+        <div class="header-container">
+            <h1 class="header"><i class="material-icons">toys</i><br>Puzzles</h1>
+        </div>
+        <div style="margin-top: 50px;">
+            <div class="expander-surrounder" data-type="puzzles" id="puzzle-container">
+            </div>
+        </div>
+        <div class="header-container">
+            <h1 class="header"><i class="material-icons">account_balance</i><br>Scenes</h1>
+        </div>
+        <div style="margin-top: 50px;">
+            <div class="expander-surrounder" data-type="scenes" id="scene-container">
+            </div>
+        </div>
+        <div class="header-container">
+            <h1 class="header"><i class="material-icons">highlight_off</i><br>Encounters</h1>
+        </div>
+        <div style="margin-top: 50px;">
+            <div class="expander-surrounder" data-type="encounters" id="encounter-container">
+            </div>
+        </div>
+        <div class="header-container">
+            <h1 class="header"><i class="material-icons">person</i><br>NPCs</h1>
+        </div>
+        <div style="margin-top: 50px;">
+            <div class="expander-surrounder" data-type="npcs" id="npc-container">
+            </div>
+        </div>
+    </div>
+</div>

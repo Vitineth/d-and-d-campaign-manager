@@ -6,6 +6,7 @@ const dialog = require('electron').remote.dialog;
 
 // Required to distribute the events through the system
 var bus = require('./system-emitter.js');
+let fileLocation;
 // A constant store of the active campaign.
 let campaign;
 
@@ -27,7 +28,7 @@ function loadCampaign(filePath){
             });
         }else{
             campaign = JSON.parse(data);
-            verifyCampaign();
+            verifyCampaign(filePath);
         }
     });
 }
@@ -37,6 +38,33 @@ function loadCampaign(filePath){
 bus.on("load-campaign", function(path){
     loadCampaign(path[0]);
 });
+
+bus.on("fetch-campaign", function(callback){
+    if(typeof(callback)==="function") callback(campaign);
+});
+
+bus.on("save-campaign", function(nCampaign, callback){
+    campaign = nCampaign;
+    console.log(campaign);
+    verifyCampaign(fileLocation);
+
+    if(fileLocation!==undefined){
+        console.log("Saving");
+        fs.writeFile(fileLocation, JSON.stringify(campaign), (err) => {
+            if(err){
+//                bus.emit("notification", "There was an error saving the campaign to file! The error is: " + err);
+                callback(err);
+            }else{
+                bus.emit("notification", "The campaign was saved successfully");
+                callback();
+            }
+        });
+    }
+});
+
+bus.on("change-save-location", function(location){
+    fileLocation = location;
+})
 
 //bus.emit("load-campaign", ["C:\\Users\\Ryan\\Documents\\Git\\Electron\\d-and-d-campaign-manager\\resources\\data.json"]);
 
@@ -51,7 +79,7 @@ bus.on("load-campaign", function(path){
 // and more but this gives us the basic overview. The improvements are for another feature branch.
 // Once the file has been verified, it will switch to the explorer view, trigger a load for the key
 // specified in /begin and then changes the title.
-function verifyCampaign(){
+function verifyCampaign(location){
     if(!campaign.hasOwnProperty("title")){
         bus.emit("error-window", "Campaign data is missing a title. Please verify that the data you have selected is valid");
         return;
@@ -87,6 +115,7 @@ function verifyCampaign(){
         return;
     }
 
+    fileLocation = location;
     window.document.title = "D and D Campaign Manager - " + campaign.title;
     bus.emit("switch-to-explorer");
     bus.emit("enable-campaign");
@@ -114,13 +143,13 @@ bus.on("trigger-load", function(id){
         bus.emit("load-encounter", encounter, campaign);
     }else if(id.indexOf("s__") == 0){
         //Load a scene;
-        if(!campaign.encounters.hasOwnProperty(id.replace("s__", ""))){
+        if(!campaign.scenes.hasOwnProperty(id.replace("s__", ""))){
             bus.emit("error-window", "A scene ID has been specified but the corrosponding scene could not be found. Ensure that your data is valid.");
             return;
         }
 
-        var encounter = campaign.encounters[id.replace("s__", "")];
-        bus.emit("load-scene", encounter);
+        var encounter = campaign.scenes[id.replace("s__", "")];
+        bus.emit("load-scene", encounter, campaign);
     }else{
         bus.emit("loading-end");
     }
