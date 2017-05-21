@@ -3,3 +3,7 @@ node_modules
 run\.bat
 
 *.bak
+
+resources/allhell\.json
+
+resources/data\.json
