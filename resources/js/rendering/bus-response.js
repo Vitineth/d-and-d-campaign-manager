@@ -69,6 +69,8 @@ bus.on('load-encounter', function(encounter, campaign){
     $("#exp-monsters-container").empty();
     $("#exp-puzzles-container").empty();
     $("#exp-toggle-title").text("Monsters");
+    $("#next-link").off("click");
+    $("#previous-link").off("click");
 
     for(var i = 0; i < encounter.monsters.length; i++){
         var monster = campaign.monsters[encounter.monsters[i]];
@@ -93,21 +95,17 @@ bus.on('load-encounter', function(encounter, campaign){
     var keys = Object.keys(encounter.navigation);
     for(var i = 0; i < keys.length; i++){
         if(keys[i].toLowerCase() == "next"){
-            if(encounter.navigation[keys[i]].hasOwnProperty("location")){
-                $("#next-link").attr("data-location", encounter.navigation[keys[i]].location)
-                $("#next-link").click(function(){
-                    bus.emit("trigger-load",  $(this).attr("data-location"));
-                });
-                next=true;
-            }
+            $("#next-link").attr("data-location", encounter.navigation[keys[i]]);
+            $("#next-link").click(function(){
+                bus.emit("trigger-load",  $(this).attr("data-location"));
+            });
+            next=true;
         }else if(keys[i].toLowerCase() == "previous"){
-            if(encounter.navigation[keys[i]].hasOwnProperty("location")){
-                $("#previous-link").attr("data-location", encounter.navigation[keys[i]].location)
-                $("#previous-link").click(function(){
-                    bus.emit("trigger-load",  $(this).attr("data-location"));
-                });
-                previous=true;
-            }
+            $("#previous-link").attr("data-location", encounter.navigation[keys[i]])
+            $("#previous-link").click(function(){
+                bus.emit("trigger-load",  $(this).attr("data-location"));
+            });
+            previous=true;
         }else{
             $("#exp-navigation").append(generateNavButton(encounter.navigation[keys[i]], keys[i])).append($("<br>"));
         }
@@ -141,13 +139,15 @@ bus.on('load-scene', function(encounter, campaign){
     }
     $("#exp-key-points").empty().append(ul);
     $("#exp-monsters-container").empty();
-    $("#exp-puzzle-container").empty();
+    $("#exp-puzzles-container").empty();
     $("#exp-toggle-title").text("NPCs");
+    $("#next-link").off("click");
+    $("#previous-link").off("click");
 
     for(var i = 0; i < encounter.puzzles.length; i++){
         var puzzle = campaign.puzzles[encounter.puzzles[i]];
         $.get("resources/html/puzzle.html", function(data){
-            $("#exp-puzzles-container").append(generatePuzzle(puzzle, $(data)));
+            $("#exp-puzzles-container").append(generatePuzzle(puzzle, $(data)).attr("scene", "true"));
         });
     }
 
@@ -159,9 +159,32 @@ bus.on('load-scene', function(encounter, campaign){
     }
 
     $("#exp-navigation").empty();
+    var next, previous;
     var keys = Object.keys(encounter.navigation);
     for(var i = 0; i < keys.length; i++){
-        $("#exp-navigation").append(generateNavButton(encounter.navigation[keys[i]], keys[i])).append($("<br>"));
+        if(keys[i].toLowerCase() == "next"){
+            $("#next-link").attr("data-location", encounter.navigation[keys[i]])
+            $("#next-link").click(function(){
+                bus.emit("trigger-load",  $(this).attr("data-location"));
+            });
+            next=true;
+        }else if(keys[i].toLowerCase() == "previous"){
+            $("#previous-link").attr("data-location", encounter.navigation[keys[i]])
+            $("#previous-link").click(function(){
+                bus.emit("trigger-load",  $(this).attr("data-location"));
+            });
+            previous=true;
+        }else{
+            $("#exp-navigation").append(generateNavButton(encounter.navigation[keys[i]], keys[i])).append($("<br>"));
+        }
+    }
+    if(!next){
+        $("#next-icon").css("display", "none");
+        $("#next-link").css("display", "none");
+    }
+    if(!previous){
+        $("#previous-icon").css("display", "none");
+        $("#previous-link").css("display", "none");
     }
 
     bus.emit("loading-end");
@@ -224,17 +247,10 @@ function generateNavButton(navigation, key){
     var text = $("<strong></strong>").attr("class", "text").text(key);
 
     var button = $("<button></button").attr("class", "nav-button").text(key);
-    if(navigation.hasOwnProperty("location")){
-        div.attr("data-location", navigation.location)
-        div.click(function(){
-            bus.emit("trigger-load",  $(this).attr("data-location"));
-        });
-    }else{
-        div.css("border", "1px solid red");
-    }
-    if(navigation.hasOwnProperty("icon")){
-        i.text(navigation.icon);
-    }
+    div.attr("data-location", navigation)
+    div.click(function(){
+        bus.emit("trigger-load",  $(this).attr("data-location"));
+    });
 
     return div.append(i).append(text);
 }
