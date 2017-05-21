@@ -134,7 +134,7 @@ function generateScene(puzzle, copy, id, idx) {
             image.removeClass("spinner");
         });
     });
-    
+
     copy.find(".search-open").css("display", "block").click(function(){
         bus.emit("trigger-load", "s__" + id);
         toggleModal($("#search-modal"));
@@ -191,7 +191,7 @@ function generateEncounter(puzzle, copy, id, idx) {
             image.removeClass("spinner");
         });
     });
-    
+
     copy.find(".search-open").css("display", "block").click(function(){
         bus.emit("trigger-load", "e__" + id);
         toggleModal($("#search-modal"));
@@ -505,14 +505,12 @@ $("#exp-search-field-all").on("input", function(){
     $("#exp-search-all").children().each(function(){all.push($(this).attr("id").replace("ex-srcha-", ""));});
     if($(this).val() != ""){
         let matches = search($(this).val().split(" "));
-        console.log(all);
 
         for(let i = 0; i < all.length; i++){
-            if(matches.indexOf(all[i]) != -1){
-                $("#ex-srcha-" + all[i]).css("display", "block");
-            }else{
-                $("#ex-srcha-" + all[i]).css("display", "none");
-            }
+            $("#exp-search-all").find("#ex-srcha-" + all[i]).css("display", "none");
+        }
+        for(let i = 0; i < matches.length; i++){
+            $("#exp-search-all").append($("#exp-search-all").find("#ex-srcha-" + matches[i]).css("display", "block").detach());
         }
     }else{
         for(let i = 0; i < all.length; i++){
@@ -529,11 +527,10 @@ function registerSearch(type){
             let matches = search($(this).val().split(" "));
 
             for(let i = 0; i < all.length; i++){
-                if(matches.indexOf(all[i]) != -1){
-                    $("#exp-search-" + type).find("#ex-srch-" + all[i]).css("display", "block");
-                }else{
-                    $("#exp-search-" + type).find("#ex-srch-" + all[i]).css("display", "none");
-                }
+                $("#exp-search-" + type).find("#ex-srch-" + all[i]).css("display", "none");
+            }
+            for(let i = 0; i < matches.length; i++){
+                $("#exp-search-" + type).append($("#exp-search-" + type).find("#ex-srch-" + all[i]).css("display", "block").detach());
             }
         }else{
             for(let i = 0; i < all.length; i++){
