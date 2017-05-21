@@ -212,7 +212,7 @@ function roll(expression) {
     
     for (var i = 0; i < expression.length; i++) {
         if (/^d[0-9]{1,2}$/.test(expression[i])) {
-            expression[i] = "(" + Math.floor((Math.random() * (expression[i].replace("d", "") - 1)) + 1) + ")";
+            expression[i] = "" + Math.floor((Math.random() * (expression[i].replace("d", "") - 1)) + 1) + "";
         }
     }
     
