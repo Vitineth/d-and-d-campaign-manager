@@ -436,15 +436,15 @@ function generateMonster(monster, copy){
 }
 
 function generateNPC(npc, copy){
-    copy.find("#name").text(npc.name).removeAttr("id");;
-    copy.find("#name2").text(npc.name).removeAttr("id");;
-    copy.find("#race").text(npc.race).removeAttr("id");;
-    copy.find("#class").text(npc.class).removeAttr("id");;
-    copy.find("#alignment").text(npc.alignment).removeAttr("id");;
-    copy.find("#background").text(npc.background).removeAttr("id");;
-    copy.find("#languages").text(npc.languages.join(", ")).removeAttr("id");;
-    copy.find("#description").text(npc.description).removeAttr("id");;
-    copy.find("#traits").text(npc.traits).removeAttr("id");;
+    copy.find("#name").text(npc.name).removeAttr("id");
+    copy.find("#name2").text(npc.name).removeAttr("id");
+    copy.find("#race").text(npc.race).removeAttr("id");
+    copy.find("#class").text(npc.class).removeAttr("id");
+    copy.find("#alignment").text(npc.alignment).removeAttr("id");
+    copy.find("#background").text(npc.background).removeAttr("id");
+    copy.find("#languages").text(npc.languages.join(", ")).removeAttr("id");
+    copy.find("#description").text(npc.description).removeAttr("id");
+    copy.find("#traits").text(npc.traits).removeAttr("id");
     for(var i in npc.key_points){
         copy.find("#kp").append($("<li></li>").text(npc.key_points[i]));
     }
